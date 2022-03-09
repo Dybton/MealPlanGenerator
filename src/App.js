@@ -2,15 +2,17 @@ import './App.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { useKey } from "rooks";
 
+// TODO: Implement some check that ensures there's enough mockdata / recipes
+
 
 function App() {
   const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}])
+  
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
   const [mockdata, setMockData] = useState([]);
 
-  
   useEffect(() => {
-    MockDataGenerator(12)
+    MockDataGenerator(25)
   },[])
 
     const MockDataGenerator = (n) => {
@@ -29,22 +31,23 @@ function App() {
 // COMPONENT THAT GENERATES MOCK DATA - END
 
 // FUNCTIONS THAT CHANGES THE SIZE OF THE OBJECTS ARR - START
+
 // Function that adds new object to the array via index
   const increaseArraySize = (index) => {
-    if(objectArray.length < 10) {
-      const recipeSize = mockdata.length - 1;
-      let temp_arr = [...objectArray];
-      let uniqueArrayAdded = false;
-      while(uniqueArrayAdded == false) {
-        let randomNum = Math.floor(Math.random()*recipeSize) +1;
-        let newValue = mockdata[randomNum];
-        if(!in_array(newValue, temp_arr)) {
-          temp_arr.splice(index, 0, newValue);
-          uniqueArrayAdded = true;
+    const recipeSize = mockdata.length - 1;
+    let temp_arr = [...objectArray];
+      if(objectArray.length < 10) {
+        let uniqueArrayAdded = false;
+        while(uniqueArrayAdded == false) {
+          let randomNum = Math.floor(Math.random()*recipeSize) +1;
+          let newValue = mockdata[randomNum];
+          if(!in_array(newValue, temp_arr)) {
+            temp_arr.splice(index, 0, newValue);
+            uniqueArrayAdded = true;
+          }
         }
+        setObjectArray(temp_arr)
       }
-      setObjectArray(temp_arr)
-    }
   }
 
   const removeObj = (index) => {
@@ -54,8 +57,9 @@ function App() {
       setObjectArray(temp_arr)
     }
   }
-
 // FUNCTIONS THAT CHANGES THE SIZE OF THE OBJECTS ARR - END
+
+
 // Function that checks whether an object is in an array
 function in_array(obj, array) {
   for(var i = 0 ; i < array.length; i++) 
