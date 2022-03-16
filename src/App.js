@@ -51,35 +51,6 @@ function App() {
     }
 // COMPONENT THAT GENERATES MOCK DATA - END
 
-// FUNCTIONS THAT CHANGES THE SIZE OF THE OBJECTS ARR - START
-
-// Function that adds new object to the array via index
-  const increaseArraySize = (index) => {
-    const recipeSize = mockdata.length - 1;
-    let temp_arr = [...objectArray];
-      if(objectArray.length < 10) {
-        let uniqueArrayAdded = false;
-        while(uniqueArrayAdded == false) {
-          let randomNum = Math.floor(Math.random()*recipeSize) +1;
-          let newValue = mockdata[randomNum];
-          if(!in_array(newValue, temp_arr)) {
-            temp_arr.splice(index, 0, newValue);
-            uniqueArrayAdded = true;
-          }
-        }
-        setObjectArray(temp_arr)
-      }
-  }
-
-  const removeObj = (index) => {
-    if(objectArray.length > 3) {
-      let temp_arr = [...objectArray];
-      let removed = temp_arr.splice(index, 1)
-      setObjectArray(temp_arr)
-    }
-  }
-// FUNCTIONS THAT CHANGES THE SIZE OF THE OBJECTS ARR - END
-
 
 // Function that checks whether an object is in an array
 function in_array(obj, array) {
@@ -147,42 +118,33 @@ function in_array(obj, array) {
 // This needs to take the objects to be shown. It then need to loop through them and show the differnet components. 
 // it also needs to calculate the spacing. 
 const RecipeGrid = () => {
+  
+
   return (
     <div className="RecipeGrid">
-    <Grid container spacing={1.5}>
-      <Grid item xs={2.4}>
-        <RecipeComponent/>
+      <Grid container spacing={1.5}>
+      {objectArray.map(object => (
+        <Grid item xs={2.4}>
+          <RecipeComponent recipe={object.val}/>
+        </Grid>
+      ))}
       </Grid>
-      <Grid item xs={2.4}>
-        <RecipeComponent/>
-      </Grid>
-      <Grid item xs={2.4}>
-        <RecipeComponent/>
-      </Grid>
-      <Grid item xs={2.4}>
-        <RecipeComponent/>
-      </Grid>
-      <Grid item xs={2.4}>
-        <RecipeComponent/>
-      </Grid>
-    </Grid>
     </div>
   )
 }
 
-const RecipeComponent = (image) => {
+const RecipeComponent = (props) => {
   return (
   <div className="RecipeComponent">
     <RecipeImage/>
+    <p> {props.recipe} </p>
   </div>
   )
 }
 
-
 const RecipeImage = () => {
   return (
     <div className="RecipeImage">
-    <p>Lasagne</p>
       {/* This image also needs to contain the two button components */} 
     </div>
   )
@@ -198,24 +160,13 @@ const RecipeImage = () => {
       </div>
       <div>
         {/* TODO: Disable focus on the buttons after click. Also this should be a component */} 
-        <button onClick={() => increaseArraySize(0)}>Left</button> 
-        <button onClick={() => increaseArraySize(objectArray.length)}>Right</button> 
-        <button onClick={() => increaseArraySize(Math.ceil(objectArray.length / 2))}>Middle</button>
-        <button onClick={() => removeObj(0)}>Remove from left</button> 
         <button onClick={() => lockObject(Math.floor(objectArray.length / 2))}>Lock middle</button>
       </div>
       <div>
-      {objectArray.map(object => (
-        <span> {object.val} </span>
-      ))}
-      </div>
-      <div>
-        <RecipeGrid/>
+        <RecipeGrid array={objectArray}/>
       </div>
     </div>
   );
 }
-
-
 
 export default App;
