@@ -2,6 +2,7 @@ import './App.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { useKey } from "rooks";
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 
 
 // TODO: Implement some check that ensures there's enough mock data / recipes
@@ -136,16 +137,20 @@ const RecipeGrid = () => {
 const RecipeComponent = (props) => {
   return (
   <div className="RecipeComponent">
-    <RecipeImage/>
+    <RecipeImage recipe={props.recipe}/>
     <p> {props.recipe} </p>
   </div>
   )
 }
 
-const RecipeImage = () => {
+const RecipeImage = (props) => {
+  function printObject() {
+    console.log(props.recipe)
+  }
   return (
     <div className="RecipeImage">
-      {/* This image also needs to contain the two button components */} 
+    <Button onClick={printObject}>Lock me</Button>
+      {/* This image also needs to contain the two button components */}
     </div>
   )
 }
