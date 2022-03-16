@@ -1,18 +1,39 @@
 import './App.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { useKey } from "rooks";
+import image from "/Users/jakobtolstrup/Desktop/Projects/foodprep/src/recipeImages/pexels-alexy-almond-3756498.jpg";
 
-// TODO: Implement some check that ensures there's enough mockdata / recipes
 
+// TODO: Implement some check that ensures there's enough mock data / recipes
+let data = [
+  {
+      val: 0,
+      locked: false,
+      image:"./recipeImages/pexels-alexy-almond-3756498.jpg"
+  },
+  {
+      val: 1,
+      locked: false,
+      image: "./recipeImages/pexels-alexy-almond-3756523.jpg"
+  },
+  {
+      val: 2,
+      locked: false,
+      image: "./recipeImages/pexels-ana-madeleine-uribe-2762942.jpg"
+  }
+]
 
 function App() {
+  const [dataObjects, setDataObjects] = useState(data)
   const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}])
-  
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
   const [mockdata, setMockData] = useState([]);
 
+
+
   useEffect(() => {
     MockDataGenerator(25)
+    console.log(dataObjects)
   },[])
 
     const MockDataGenerator = (n) => {
@@ -117,8 +138,28 @@ function in_array(obj, array) {
       event.preventDefault(); // Basically states that space's default action should not be taken as it usually is.
     }
   // SPACE BAR END
-};
 
+  
+}; //function App end
+
+// COMPONENTS START
+
+const RecipeComponent = (image) => {
+  return (
+  <div height={200} weight={200}>
+    Test
+  </div>
+  )
+}
+
+
+const ImgComponent = (image) => {
+  return (
+  <div>
+      <img src={image} height={200} weight={200} />
+  </div>
+  )
+}
   return (
     <div className="App">
       <div>
@@ -140,8 +181,18 @@ function in_array(obj, array) {
         <span> {object.val} </span>
       ))}
       </div>
+      <div>
+        <recipeComponent/>
+      </div>
+      {/* <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/>
+      <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/>
+      <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/>
+      <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/>
+      <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/> */}
     </div>
   );
 }
+
+
 
 export default App;

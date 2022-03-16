@@ -1,15 +1,30 @@
 
-let Recipe = class {
-    constructor(val, id, img) {
-      this.val = val;
-      this.id = id; // here we could also use an id generator
-      this.img = img;
-    }
-};
-
-new Recipe("abc", 22, )
+// let Recipe = class {
+//     constructor(val, id, img) {
+//       this.val = val;
+//       this.id = id; // here we could also use an id generator
+//       this.img = img;
+//     }
+// };
 
 
 let data = [
+    {
+        val: 0,
+        locked: false,
+        image:"./recipeImages/pexels-alexy-almond-3756498.jpg"
+    },
+    {
+        val: 1,
+        locked: false,
+        image: "./recipeImages/pexels-alexy-almond-3756523.jpg"
+    },
+    {
+        val: 2,
+        locked: false,
+        // image: "./recipeImages/pexels-ana-madeleine-uribe-2762942.jpg"
+    }
 ]
+
+export default data;
 
