@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { useKey } from "rooks";
-import image from "/Users/jakobtolstrup/Desktop/Projects/foodprep/src/recipeImages/pexels-alexy-almond-3756498.jpg";
+import Grid from '@mui/material/Grid';
 
 
 // TODO: Implement some check that ensures there's enough mock data / recipes
@@ -25,7 +25,7 @@ let data = [
 
 function App() {
   const [dataObjects, setDataObjects] = useState(data)
-  const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}])
+  const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}])
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
   const [mockdata, setMockData] = useState([]);
 
@@ -144,22 +144,50 @@ function in_array(obj, array) {
 
 // COMPONENTS START
 
+// This needs to take the objects to be shown. It then need to loop through them and show the differnet components. 
+// it also needs to calculate the spacing. 
+const RecipeGrid = () => {
+  return (
+    <div className="RecipeGrid">
+    <Grid container spacing={1.5}>
+      <Grid item xs={2.4}>
+        <RecipeComponent/>
+      </Grid>
+      <Grid item xs={2.4}>
+        <RecipeComponent/>
+      </Grid>
+      <Grid item xs={2.4}>
+        <RecipeComponent/>
+      </Grid>
+      <Grid item xs={2.4}>
+        <RecipeComponent/>
+      </Grid>
+      <Grid item xs={2.4}>
+        <RecipeComponent/>
+      </Grid>
+    </Grid>
+    </div>
+  )
+}
+
 const RecipeComponent = (image) => {
   return (
-  <div height={200} weight={200}>
-    Test
+  <div className="RecipeComponent">
+    <RecipeImage/>
   </div>
   )
 }
 
 
-const ImgComponent = (image) => {
+const RecipeImage = () => {
   return (
-  <div>
-      <img src={image} height={200} weight={200} />
-  </div>
+    <div className="RecipeImage">
+    <p>Lasagne</p>
+      {/* This image also needs to contain the two button components */} 
+    </div>
   )
 }
+
   return (
     <div className="App">
       <div>
@@ -169,7 +197,7 @@ const ImgComponent = (image) => {
         <p> Press space to generate new objects</p>
       </div>
       <div>
-        {/* TODO: Disable focus on the buttons after click */}
+        {/* TODO: Disable focus on the buttons after click. Also this should be a component */} 
         <button onClick={() => increaseArraySize(0)}>Left</button> 
         <button onClick={() => increaseArraySize(objectArray.length)}>Right</button> 
         <button onClick={() => increaseArraySize(Math.ceil(objectArray.length / 2))}>Middle</button>
@@ -182,13 +210,8 @@ const ImgComponent = (image) => {
       ))}
       </div>
       <div>
-        <recipeComponent/>
+        <RecipeGrid/>
       </div>
-      {/* <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/>
-      <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/>
-      <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/>
-      <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/>
-      <img src={require("./recipeImages/pexels-alexy-almond-3756498.jpg")} height={400} width={250}/> */}
     </div>
   );
 }
