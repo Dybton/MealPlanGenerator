@@ -5,36 +5,14 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 
 
-// TODO: Implement some check that ensures there's enough mock data / recipes
-let data = [
-  {
-      val: 0,
-      locked: false,
-      src: "pexels-alexy-almond-3756498"
-  },
-  {
-      val: 1,
-      locked: false,
-      src: "./recipeImages/pexels-alexy-almond-3756523.jpg"
-  },
-  {
-      val: 2,
-      locked: false,
-      src: "./recipeImages/pexels-ana-madeleine-uribe-2762942.jpg"
-  }
-]
-
 function App() {
-  const [dataObjects, setDataObjects] = useState(data)
   const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}])
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
   const [mockdata, setMockData] = useState([]);
 
-
-
+// TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
     MockDataGenerator(25)
-    console.log(dataObjects)
   },[])
 
     const MockDataGenerator = (n) => {
@@ -91,12 +69,20 @@ function in_array(obj, array) {
     }
     setObjectArray(newObjectArr)
   }
-
+  
   // A function that specifies an object to lock by index
-  const lockObject = (index) => {
+  const lockObjectByIndex = (index) => {
     objectArray[index].locked = true;
   }
 
+  const generateGroceryList = () => {
+    var output = "";
+    objectArray.forEach(object => {
+      output += object.val +"\n"
+    });
+    console.log(output)
+  }
+  
   // SPACE BAR START
   // Triggers the changeNum by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
   function spacePress(e) {
@@ -120,13 +106,12 @@ function in_array(obj, array) {
 // it also needs to calculate the spacing. 
 const RecipeGrid = () => {
   
-
   return (
     <div className="RecipeGrid">
       <Grid container spacing={1.5}>
       {objectArray.map(object => (
         <Grid item xs={2.4}>
-          <RecipeComponent recipe={object.val}/>
+          <RecipeComponent recipe={object}/>
         </Grid>
       ))}
       </Grid>
@@ -137,19 +122,20 @@ const RecipeGrid = () => {
 const RecipeComponent = (props) => {
   return (
   <div className="RecipeComponent">
-    <RecipeImage recipe={props.recipe}/>
-    <p> {props.recipe} </p>
+    <RecipeImage recipe={props}/>
+    <p> {props.recipe.val} </p>
   </div>
   )
 }
 
 const RecipeImage = (props) => {
-  function printObject() {
-    console.log(props.recipe)
+  function lockObject() {
+    const index = objectArray.indexOf(props.recipe.recipe)
+    lockObjectByIndex(index)
   }
   return (
     <div className="RecipeImage">
-    <Button onClick={printObject}>Lock me</Button>
+    <Button onClick={lockObject}>Lock me</Button>
       {/* This image also needs to contain the two button components */}
     </div>
   )
@@ -160,13 +146,16 @@ const RecipeImage = (props) => {
       <div>
         <h1> Hello Foodpreppers</h1>
       </div>
-      <div> 
-        <p> Press space to generate new objects</p>
-      </div>
-      <div>
-        {/* TODO: Disable focus on the buttons after click. Also this should be a component */} 
-        <button onClick={() => lockObject(Math.floor(objectArray.length / 2))}>Lock middle</button>
-      </div>
+      <Grid container spacing={3}
+      >
+        <Grid item xs></Grid>
+        <Grid item xs={6}>
+          <div> <p> Press space to generate new objects</p></div>
+        </Grid>
+        <Grid item xs>
+          <Button variant="contained" onClick={generateGroceryList}>Generate grocery list</Button>
+        </Grid>
+      </Grid>
       <div>
         <RecipeGrid array={objectArray}/>
       </div>

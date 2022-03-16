@@ -18,11 +18,6 @@ let data = [
         val: 1,
         locked: false,
         image: "./recipeImages/pexels-alexy-almond-3756523.jpg"
-    },
-    {
-        val: 2,
-        locked: false,
-        // image: "./recipeImages/pexels-ana-madeleine-uribe-2762942.jpg"
     }
 ]
 
