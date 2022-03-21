@@ -1,25 +1,26 @@
 
-// let Recipe = class {
-//     constructor(val, id, img) {
-//       this.val = val;
-//       this.id = id; // here we could also use an id generator
-//       this.img = img;
-//     }
-// };
-
-
-let data = [
-    {
-        val: 0,
-        locked: false,
-        image:"./recipeImages/pexels-alexy-almond-3756498.jpg"
-    },
-    {
-        val: 1,
-        locked: false,
-        image: "./recipeImages/pexels-alexy-almond-3756523.jpg"
+let Recipe = class {
+    constructor(name, id, ingredients) {
+      this.name = name;
+      this.id = id; // here we could also use an id generator
+      this.ingredients = ingredients; // Needs to be an array of objects containing: ingriedient, amount and maybe brand?
     }
-]
+};
 
-export default data;
+// let Ingredient = class {
+//     constructor(name, brand, ingredients) {
+//         this.name = name;
+//         this.id = id; // here we could also use an id generator
+//         this.ingredients = ingredients; // Needs to be an array of objects containing: ingriedient, amount and maybe brand?
+//       }
+
+// }
+
+// const Lasagne = new Recipe('Lasagne', 0, [{ingredient: "Tomater", amount: 2}, {ingredient: "Løg", amount: 1}, {ingredient: "Hvidløg", amount: 2}, {ingredient: "Hakket Oksekød", amount: z},])
+
+
+
+
+
+// export default Lasagne;
 

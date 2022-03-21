@@ -3,12 +3,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useKey } from "rooks";
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Lasagne from './data';
 
 
 function App() {
+
+  console.log(Lasagne)
+
   const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}])
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
   const [mockdata, setMockData] = useState([]);
+  const [groceries, setGroceries] = useState()
 
 // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
@@ -75,13 +83,6 @@ function in_array(obj, array) {
     objectArray[index].locked = true;
   }
 
-  const generateGroceryList = () => {
-    var output = "";
-    objectArray.forEach(object => {
-      output += object.val +"\n"
-    });
-    console.log(output)
-  }
   
   // SPACE BAR START
   // Triggers the changeNum by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
@@ -98,14 +99,13 @@ function in_array(obj, array) {
   // SPACE BAR END
 
   
-}; //function App end
+}; //function App end 
 
 // COMPONENTS START
 
 // This needs to take the objects to be shown. It then need to loop through them and show the differnet components. 
 // it also needs to calculate the spacing. 
 const RecipeGrid = () => {
-  
   return (
     <div className="RecipeGrid">
       <Grid container spacing={1.5}>
@@ -135,11 +135,49 @@ const RecipeImage = (props) => {
   }
   return (
     <div className="RecipeImage">
-    <Button onClick={lockObject}>Lock me</Button>
+    <Button onClick={lockObject}>Lock recipe</Button>
       {/* This image also needs to contain the two button components */}
     </div>
   )
 }
+
+// GROCERY LIST COMPONENT START
+
+const GroceryListComponent = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return (
+    <div>
+      <Button variant="contained" onClick={() => { handleOpen()}}>Generate grocery list</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="Modalbox">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Indkøbsseddel
+            <GroceryList/>
+          </Typography>
+        </Box>
+      </Modal>
+    </div>
+  );
+}
+
+const GroceryList = () => {
+  return(
+      (objectArray).map(groceryItem => {
+        return (
+          <li>{groceryItem.val}</li>
+        )
+      })
+  )
+}
+
 
   return (
     <div className="App">
@@ -153,12 +191,14 @@ const RecipeImage = (props) => {
           <div> <p> Press space to generate new objects</p></div>
         </Grid>
         <Grid item xs>
-          <Button variant="contained" onClick={generateGroceryList}>Generate grocery list</Button>
+          {/* I need to replace this with a component */}
+          <GroceryListComponent/>
         </Grid>
       </Grid>
       <div>
         <RecipeGrid array={objectArray}/>
       </div>
+      {/* <BasicModal/> */}
     </div>
   );
 }
