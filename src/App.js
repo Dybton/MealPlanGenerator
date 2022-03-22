@@ -6,12 +6,14 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Lasagne from './data';
+import Gyros from './data';
 
 
 function App() {
 
-  console.log(Lasagne)
+  // console.log(JSON.stringify(Gyros, null, 4));
+  console.log(Gyros.ingredients)
+  console.log(Gyros.name)
 
   const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}])
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
