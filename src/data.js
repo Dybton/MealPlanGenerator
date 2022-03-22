@@ -2,8 +2,9 @@
 let Recipe = class {
     constructor(name, ingredients) {
       this.name = name;
-      this.ingredients = ingredients; // Needs to be an array of objects containing: ingriedient, amount and maybe brand?
       this.locked = false;
+      this.ingredients = ingredients; // Needs to be an array of objects containing: ingriedient, amount and maybe brand?
+      
     }
 };
 

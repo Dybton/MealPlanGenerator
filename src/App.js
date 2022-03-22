@@ -11,40 +11,21 @@ import recipeData from './data';
 
 function App() {
 
-  // console.log(JSON.stringify(Gyros, null, 4));
-  console.log(recipeData[0].name)
-
 
   const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}])
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
-  const [mockdata, setMockData] = useState([]);
-  const [groceries, setGroceries] = useState()
+  const [mockdata, setMockData] = useState([]); // rename this
 
 // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
-    MockDataGenerator(25)
+    setMockData(recipeData)
   },[])
-
-    const MockDataGenerator = (n) => {
-      const arr = [];
-      for (let i = 0; i < n; i++) {
-        const object = 
-        {
-          // Generates random string
-          val: Math.random().toString(36).substring(2,5),
-          locked: false
-        }
-        arr.push(object)
-      };
-      setMockData(arr)
-    }
-// COMPONENT THAT GENERATES MOCK DATA - END
 
 
 // Function that checks whether an object is in an array
 function in_array(obj, array) {
   for(var i = 0 ; i < array.length; i++) 
-      if(array[i].val == obj.val) return true;
+      if(array[i].name == obj.name) return true;
   return false;
 }
 
@@ -125,7 +106,7 @@ const RecipeComponent = (props) => {
   return (
   <div className="RecipeComponent">
     <RecipeImage recipe={props}/>
-    <p> {props.recipe.val} </p>
+    <p> {props.recipe.name} </p>
   </div>
   )
 }
@@ -174,7 +155,7 @@ const GroceryList = () => {
   return(
       (objectArray).map(groceryItem => {
         return (
-          <li>{groceryItem.val}</li>
+          <li>{groceryItem.name}</li>
         )
       })
   )
