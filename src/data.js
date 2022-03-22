@@ -42,7 +42,7 @@ const Panang_karry = new Recipe("Panang karry",[{ingredient: "Grøntsagsboulion"
 const Tikka_Massala = new Recipe("Tikka Massala",[{ingredient: "Grøntsagsboulion", amount: 1, meassurement: "stk"}, {ingredient: "Ris", amount: 150, meassurement: "gram"}, {ingredient: "Gulerod", amount: 1, meassurement: "stk"}, {ingredient: "Pak Choi", amount: 200, meassurement: "gram"}, {ingredient: "Squash", amount: 0.5, meassurement: "stk"}, {ingredient: "Ingefær", amount: 0.5, meassurement: "stk"}, {ingredient: "Hvidløg", amount: 1, meassurement: "stk"}, {ingredient: "Forårsløg", amount: 1, meassurement: "stk"}, {ingredient: "Lime", amount: 1, meassurement: "stk"}, {ingredient: "Soya", amount: 25, meassurement: "milliliter"}, {ingredient: "Sød chilisauce", amount: 40, meassurement: "gram"}, {ingredient: "Laksefilet", amount: 250, meassurement: "gram"}])
 
 
+let recipeData = [Gyros, Halloumi_Tacos, Pasta_m_ost_bacon, Middelhavs_Havaborre, Spicy_Oksekød_på_Bulgur, Lasagne, Fiskefrikadeller_m_ovn_kartofler_og_gulerodssalat, Fajita_Bowl, Chili_sin_carne, Sød_chililaks, Boller_i_karry, Mexi_Bowl, Buddha_Bowl, Wienerschnitzel, Panang_karry, Tikka_Massala]
 
-
-export default Gyros;
+export default recipeData;
 
