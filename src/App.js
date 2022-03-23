@@ -142,15 +142,19 @@ const GroceryListComponent = () => {
         aria-describedby="modal-modal-description"
       >
         <Box className="Modalbox">
-        <Grid>
-        <Grid item xs={4}>
-            <Typography id="modal-modal-title" variant="h5" component="h2" mt={5} ml={4} mb={2}> Indkøbsseddel </Typography>
-        </Grid>
-        <Grid item xs={3}>
-        <ContentCopyRoundedIcon fontSize="large"/>
-        </Grid>
+        <Grid container>
+            <Grid item xs={8}>
+                <Typography id="modal-modal-title" variant="h5" component="h2" mt={3} ml={4} > Indkøbsseddel </Typography>
+            </Grid>
+            <Grid item xs={3.5} mt={3} align="right">
+              <ContentCopyRoundedIcon fontSize="large" />
+            </Grid>
+          <Grid item xs={10.7} mt={2} ml={4} align="center">
             <Divider/>
-            <GroceryList/>
+          </Grid>
+          <Grid item xs={8}>
+              <GroceryList/>
+          </Grid>
         </Grid>
         </Box>
       </Modal>
