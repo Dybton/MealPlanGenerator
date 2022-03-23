@@ -11,7 +11,6 @@ import recipeData from './data';
 
 function App() {
 
-
   const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}])
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
   const [mockdata, setMockData] = useState([]); // rename this
@@ -151,11 +150,18 @@ const GroceryListComponent = () => {
   );
 }
 
+
 const GroceryList = () => {
+  const list = [];
+  objectArray.forEach(recipe =>
+    (recipe.ingredients).forEach(ingredient => 
+      list.push(ingredient))
+  )
+
   return(
-      (objectArray).map(groceryItem => {
+      list.map(ingredient => {
         return (
-          <li>{groceryItem.name}</li>
+          <li>{ingredient.ingredient + " " + ingredient.amount + " " + ingredient.meassurement}</li>
         )
       })
   )
