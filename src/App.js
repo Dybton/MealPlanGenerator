@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import Divider from '@mui/material/Divider';
+import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
 import recipeData from './data';
 
 
@@ -140,17 +142,23 @@ const GroceryListComponent = () => {
         aria-describedby="modal-modal-description"
       >
         <Box className="Modalbox">
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Indkøbsseddel
+        <Grid>
+        <Grid item xs={4}>
+            <Typography id="modal-modal-title" variant="h5" component="h2" mt={5} ml={4} mb={2}> Indkøbsseddel </Typography>
+        </Grid>
+        <Grid item xs={3}>
+        <ContentCopyRoundedIcon fontSize="large"/>
+        </Grid>
+            <Divider/>
             <GroceryList/>
-          </Typography>
+        </Grid>
         </Box>
       </Modal>
     </div>
   );
 }
 
-
+// Function that displays a list of ingridients. 
 const GroceryList = () => {
   const list = [];
   objectArray.forEach(recipe =>
@@ -161,7 +169,7 @@ const GroceryList = () => {
   return(
       list.map(ingredient => {
         return (
-          <li>{ingredient.ingredient + " " + ingredient.amount + " " + ingredient.meassurement}</li>
+          <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.meassurement} </Typography>
         )
       })
   )
@@ -187,7 +195,7 @@ const GroceryList = () => {
       <div>
         <RecipeGrid array={objectArray}/>
       </div>
-      {/* <BasicModal/> */}
+      
     </div>
   );
 }
