@@ -7,53 +7,54 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
 import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
+import IconButton from '@mui/material/IconButton';
 import recipeData from './data';
 
 
 function App() {
 
-  const [objectArray, setObjectArray] = useState([{val: "A", locked: false}, {val: "A", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}, {val: "C", locked: false}])
+  const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
   // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
   const [mockdata, setMockData] = useState([]); // rename this
 
-// TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
+  // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
     setMockData(recipeData)
-  },[])
+  }, [])
 
-
-// Function that checks whether an object is in an array
-function in_array(obj, array) {
-  for(var i = 0 ; i < array.length; i++) 
-      if(array[i].name == obj.name) return true;
-  return false;
-}
+  // Function that checks whether an object is in an array
+  function in_array(obj, array) {
+    for (var i = 0; i < array.length; i++)
+      if (array[i].name == obj.name) return true;
+    return false;
+  }
 
   const changeObject = () => {
     // TODO: Currently the mockData.length needs to be arraySize.length * 2, because I do not allow any values from the prev array
     // in the newly generated array. Currently it's not that big of an issue, but if I decide to add filters the mockdata.length might get
     // quite small. An if the arraySize is large, at the same time, it will be problematic.
     // One option would be to dynamically change the size of the arraySize, or to make sure that the mockdata.lengt is always >= arraySize *2
-    
+
     let arraySize = objectArray.length; // How many objects we need to generate
     let recipeSize = mockdata.length - 1; // How many objects there is to choose from (affects the random num gen)
     let newObjectArr = []; // Instantiate the new arr
     let index = 0;
 
-    while(newObjectArr.length < arraySize) {
+    while (newObjectArr.length < arraySize) {
       // Keep running until array is filled
       const object = objectArray[index];
       // if object from old array is locked, add to array
       if (object.locked) {
-         newObjectArr.push(object)
-         index++;
-       } else {
-      // if object is not locked, check if the random object exist in newObjectArr
-      // if not add to array and increment the value
-      let randomNum = Math.floor(Math.random()*recipeSize) +1;
-      let randomObject = mockdata[randomNum];
-        if(!in_array(randomObject, newObjectArr) && !in_array(randomObject, objectArray)) {
+        newObjectArr.push(object)
+        index++;
+      } else {
+        // if object is not locked, check if the random object exist in newObjectArr
+        // if not add to array and increment the value
+        let randomNum = Math.floor(Math.random() * recipeSize) + 1;
+        let randomObject = mockdata[randomNum];
+        if (!in_array(randomObject, newObjectArr) && !in_array(randomObject, objectArray)) {
           newObjectArr.push(randomObject)
           index++;
         }
@@ -61,13 +62,12 @@ function in_array(obj, array) {
     }
     setObjectArray(newObjectArr)
   }
-  
+
   // A function that specifies an object to lock by index
   const lockObjectByIndex = (index) => {
     objectArray[index].locked = true;
   }
 
-  
   // SPACE BAR START
   // Triggers the changeNum by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
   function spacePress(e) {
@@ -80,105 +80,113 @@ function in_array(obj, array) {
     if (event.keyCode === 32) {
       event.preventDefault(); // Basically states that space's default action should not be taken as it usually is.
     }
-  // SPACE BAR END
+    // SPACE BAR END
 
-  
-}; //function App end 
 
-// COMPONENTS START
+  }; //function App end 
 
-// This needs to take the objects to be shown. It then need to loop through them and show the differnet components. 
-// it also needs to calculate the spacing. 
-const RecipeGrid = () => {
-  return (
-    <div className="RecipeGrid">
-      <Grid container spacing={1.5}>
-      {objectArray.map(object => (
-        <Grid item xs={2.4}>
-          <RecipeComponent recipe={object}/>
+  // COMPONENTS START
+
+  // This needs to take the objects to be shown. It then need to loop through them and show the differnet components. 
+  // it also needs to calculate the spacing. 
+  const RecipeGrid = () => {
+    return (
+      <div className="RecipeGrid">
+        <Grid container spacing={1.5}>
+          {objectArray.map(object => (
+            <Grid item xs={2.4}>
+              <RecipeComponent recipe={object} />
+            </Grid>
+          ))}
         </Grid>
-      ))}
-      </Grid>
-    </div>
-  )
-}
-
-const RecipeComponent = (props) => {
-  return (
-  <div className="RecipeComponent">
-    <RecipeImage recipe={props}/>
-    <p> {props.recipe.name} </p>
-  </div>
-  )
-}
-
-const RecipeImage = (props) => {
-  function lockObject() {
-    const index = objectArray.indexOf(props.recipe.recipe)
-    lockObjectByIndex(index)
+      </div>
+    )
   }
-  return (
-    <div className="RecipeImage">
-    <Button onClick={lockObject}>Lock recipe</Button>
-      {/* This image also needs to contain the two button components */}
-    </div>
-  )
-}
 
-// GROCERY LIST COMPONENT START
+  const RecipeComponent = (props) => {
+    return (
+      <div className="RecipeComponent">
+        <RecipeImage recipe={props} />
+        <p> {props.recipe.name} </p>
+      </div>
+    )
+  }
 
-const GroceryListComponent = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const RecipeImage = (props) => {
+    function lockObject() {
+      const index = objectArray.indexOf(props.recipe.recipe)
+      lockObjectByIndex(index)
+    }
+    return (
+      <div className="RecipeImage">
+        <Button onClick={lockObject}>Lock recipe</Button>
+        {/* This image also needs to contain the two button components */}
+      </div>
+    )
+  }
 
-  return (
-    <div>
-      <Button variant="contained" onClick={() => { handleOpen()}}>Generate grocery list</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box className="Modalbox">
-        <Grid container>
-            <Grid item xs={8}>
+  // GROCERY LIST COMPONENT START
+
+  const GroceryListComponent = () => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const [groceries, setGroceries] = useState([])
+
+    function testo() {
+      console.log("testo")
+    }
+
+    return (
+      <div>
+        <Button variant="contained" onClick={() => { handleOpen() }}>Generate grocery list</Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box className="Modalbox">
+            <Grid container>
+              <Grid item xs={8}>
                 <Typography id="modal-modal-title" variant="h5" component="h2" mt={3} ml={4} > Indkøbsseddel </Typography>
-            </Grid>
-            <Grid item xs={3.5} mt={3} align="right">
-              <ContentCopyRoundedIcon fontSize="large" />
-            </Grid>
-          <Grid item xs={10.7} mt={2} ml={4} align="center">
-            <Divider/>
-          </Grid>
-          <Grid item xs={8}>
-              <GroceryList/>
-          </Grid>
-        </Grid>
-        </Box>
-      </Modal>
-    </div>
-  );
-}
+              </Grid>
+              <Grid item xs={3.5} mt={3} align="right">
+                <Tooltip title="Kopier ingredienser">
+                  <IconButton onClick={() => { alert("✔️ This works on every component!"); }}>
+                    <ContentCopyRoundedIcon fontSize="large" />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
 
-// Function that displays a list of ingridients. 
-const GroceryList = () => {
-  const list = [];
-  objectArray.forEach(recipe =>
-    (recipe.ingredients).forEach(ingredient => 
-      list.push(ingredient))
-  )
+              <Grid item xs={10.7} mt={2} ml={4} align="center">
+                <Divider />
+              </Grid>
+              <Grid item xs={8}>
+                <GroceryList setGroceries={setGroceries}/>
+              </Grid>
+            </Grid>
+          </Box>
+        </Modal>
+      </div>
+    );
+  }
 
-  return(
+  // Function that displays a list of ingridients. 
+  const GroceryList = (props) => {
+    const list = [];
+    objectArray.forEach(recipe =>
+      (recipe.ingredients).forEach(ingredient =>
+        list.push(ingredient))
+    )
+    return (
       list.map(ingredient => {
         return (
           <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.meassurement} </Typography>
         )
       })
-  )
-}
-
+    )
+  }
 
   return (
     <div className="App">
@@ -193,13 +201,13 @@ const GroceryList = () => {
         </Grid>
         <Grid item xs>
           {/* I need to replace this with a component */}
-          <GroceryListComponent/>
+          <GroceryListComponent />
         </Grid>
       </Grid>
       <div>
-        <RecipeGrid array={objectArray}/>
+        <RecipeGrid array={objectArray} />
       </div>
-      
+
     </div>
   );
 }
