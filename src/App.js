@@ -14,34 +14,24 @@ import recipeData from './data';
 
 
 function App() {
-
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
-  // COMPONENT THAT GENERATES MOCK DATA - START // Note, later this will be generated via a query to a db
-  const [mockdata, setMockData] = useState([]); // rename this
 
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
-    setMockData(recipeData)
+    changeObject();
   }, [])
 
-  // Function that checks whether an object is in an array
-  function in_array(obj, array) {
-    for (var i = 0; i < array.length; i++)
-      if (array[i].name == obj.name) return true;
-    return false;
-  }
 
   const changeObject = () => {
-    // TODO: Currently the mockData.length needs to be arraySize.length * 2, because I do not allow any values from the prev array
+    // TODO: Currently the mockData.length /RecipeSize needs to be arraySize.length * 2, because I do not allow any values from the prev array
     // in the newly generated array. Currently it's not that big of an issue, but if I decide to add filters the mockdata.length might get
     // quite small. An if the arraySize is large, at the same time, it will be problematic.
     // One option would be to dynamically change the size of the arraySize, or to make sure that the mockdata.lengt is always >= arraySize *2
 
     let arraySize = objectArray.length; // How many objects we need to generate
-    let recipeSize = mockdata.length - 1; // How many objects there is to choose from (affects the random num gen)
+    let recipeSize = recipeData.length - 1; // How many objects there is to choose from (affects the random num gen)
     let newObjectArr = []; // Instantiate the new arr
     let index = 0;
-
     while (newObjectArr.length < arraySize) {
       // Keep running until array is filled
       const object = objectArray[index];
@@ -53,7 +43,7 @@ function App() {
         // if object is not locked, check if the random object exist in newObjectArr
         // if not add to array and increment the value
         let randomNum = Math.floor(Math.random() * recipeSize) + 1;
-        let randomObject = mockdata[randomNum];
+        let randomObject = recipeData[randomNum];
         if (!in_array(randomObject, newObjectArr) && !in_array(randomObject, objectArray)) {
           newObjectArr.push(randomObject)
           index++;
@@ -61,6 +51,13 @@ function App() {
       }
     }
     setObjectArray(newObjectArr)
+  }
+
+  // Helper function that checks whether an object is in an array
+  function in_array(obj, array) {
+    for (var i = 0; i < array.length; i++)
+      if (array[i].name == obj.name) return true;
+    return false;
   }
 
   // A function that specifies an object to lock by index
@@ -129,13 +126,24 @@ function App() {
 
   const GroceryListComponent = () => {
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const [groceries, setGroceries] = useState([])
-
-    function testo() {
-      console.log("testo")
+    const [groceries, setGroceries] = useState();
+    const handleOpen = () => {
+      generateGroceryList();
+      setOpen(true);
     }
+    const handleClose = () => setOpen(false);
+
+    const generateGroceryList = () => { // Find a better way to update groceries
+      const list = [];
+      objectArray.forEach(recipe =>
+      (recipe.ingredients).forEach(ingredient =>
+      list.push(ingredient)))
+      setGroceries(list)
+    }
+
+   const copyToClipBoard = () => {
+    navigator.clipboard.writeText('Copy this text to clipboard');
+   }
 
     return (
       <div>
@@ -153,7 +161,7 @@ function App() {
               </Grid>
               <Grid item xs={3.5} mt={3} align="right">
                 <Tooltip title="Kopier ingredienser">
-                  <IconButton onClick={() => { alert("✔️ This works on every component!"); }}>
+                  <IconButton onClick={() => copyToClipBoard()}>
                     <ContentCopyRoundedIcon fontSize="large" />
                   </IconButton>
                 </Tooltip>
@@ -163,7 +171,7 @@ function App() {
                 <Divider />
               </Grid>
               <Grid item xs={8}>
-                <GroceryList setGroceries={setGroceries}/>
+                <GroceryList list={groceries}/>
               </Grid>
             </Grid>
           </Box>
@@ -173,14 +181,9 @@ function App() {
   }
 
   // Function that displays a list of ingridients. 
-  const GroceryList = (props) => {
-    const list = [];
-    objectArray.forEach(recipe =>
-      (recipe.ingredients).forEach(ingredient =>
-        list.push(ingredient))
-    )
+  const GroceryList = (props) => { // Refactor 
     return (
-      list.map(ingredient => {
+      (props.list).map(ingredient => {
         return (
           <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.meassurement} </Typography>
         )
