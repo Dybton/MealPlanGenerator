@@ -145,11 +145,23 @@ function App() {
       (recipe.ingredients).forEach(ingredient =>
       list.push(ingredient)))
       setGroceries(list)
+      
     }
 
    const copyToClipBoard = () => {
-    navigator.clipboard.writeText('Copy this text to clipboard');
+    navigator.clipboard.writeText(getGroceryItems());
+    getGroceryItems();
    }
+
+   // Function that creates a  multi-lined string of all the ingredients, their amount and their unit of meassurement
+   function getGroceryItems(){
+     let output = "";
+     groceries.forEach(ingredient => {
+        output += ingredient.ingredient + " " + ingredient.amount + " " + ingredient.meassurement + "\n"
+       
+     })
+     return output
+  }
 
     return (
       <div>
