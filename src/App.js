@@ -12,7 +12,6 @@ import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
 import IconButton from '@mui/material/IconButton';
 import recipeData from './data';
 
-
 function App() {
   // Initial dummy variables
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
@@ -85,7 +84,6 @@ function App() {
     }
     // SPACE BAR END
 
-
   }; //function App end 
 
   // COMPONENTS START
@@ -115,18 +113,21 @@ function App() {
     )
   }
 
-  const RecipeImage = (props) => {
+  const RecipeImage = (props) => { // rename this!
+    const index = objectArray.indexOf(props.recipe.recipe)
     function lockObject() {
-      const index = objectArray.indexOf(props.recipe.recipe)
       lockObjectByIndex(index)
     }
     return (
       <div className="RecipeImage">
         <Button onClick={lockObject}>Lock recipe</Button>
+        <img src={objectArray[index].image} height={400} width={250}/>
         {/* This image also needs to contain the two button components */}
       </div>
     )
   }
+
+
 
   // GROCERY LIST COMPONENT START
 
@@ -165,7 +166,7 @@ function App() {
 
     return (
       <div>
-        <Button variant="contained" onClick={() => { handleOpen() }}>Generate grocery list</Button>
+        <Button variant="contained" onClick={() => { handleOpen()}}>Generate grocery list</Button>
         <Modal
           open={open}
           onClose={handleClose}
