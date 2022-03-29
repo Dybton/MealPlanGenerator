@@ -14,6 +14,7 @@ import recipeData from './data';
 
 
 function App() {
+  // Initial dummy variables
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
 
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
@@ -62,7 +63,12 @@ function App() {
 
   // A function that specifies an object to lock by index
   const lockObjectByIndex = (index) => {
-    objectArray[index].locked = true;
+    if(objectArray[index].locked) {
+      objectArray[index].locked = false;
+    }
+    else {
+      objectArray[index].locked = true;
+    }
   }
 
   // SPACE BAR START
