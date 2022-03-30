@@ -194,7 +194,7 @@ function App() {
     );
   }
 
-  // Function that displays a list of ingridients. 
+  // Function that displays a list of ingredients. 
   const GroceryList = (props) => { // Refactor 
     return (
       (props.list).map(ingredient => {
