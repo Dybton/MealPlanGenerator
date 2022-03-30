@@ -34,6 +34,8 @@ body {
   height: 75%;
   border-radius: 15px;
   vertical-align: bottom;
+  /* background-image: url("https://www.valdemarsro.dk/wp-content/2022/02/vegetar-tarteletter_svampe.jpg"); */
+  background-size: cover;
 }
 
 .Modalbox {

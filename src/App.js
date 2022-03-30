@@ -119,16 +119,11 @@ function App() {
       lockObjectByIndex(index)
     }
     return (
-      <div className="RecipeImage">
+      <div className="RecipeImage" style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
         <Button onClick={lockObject}>Lock recipe</Button>
-        <img src={objectArray[index].image} height={400} width={250}/>
-        {/* This image also needs to contain the two button components */}
       </div>
     )
   }
-
-
-
   // GROCERY LIST COMPONENT START
 
   const GroceryListComponent = () => {
