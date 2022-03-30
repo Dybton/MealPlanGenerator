@@ -149,11 +149,11 @@ function App() {
     getGroceryItems();
    }
 
-   // Function that creates a  multi-lined string of all the ingredients, their amount and their unit of meassurement
+   // Function that creates a  multi-lined string of all the ingredients, their amount and their unit of unit
    function getGroceryItems(){
      let output = "";
      groceries.forEach(ingredient => {
-        output += ingredient.ingredient + " " + ingredient.amount + " " + ingredient.meassurement + "\n"
+        output += ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit + "\n"
        
      })
      return output
@@ -199,7 +199,7 @@ function App() {
     return (
       (props.list).map(ingredient => {
         return (
-          <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.meassurement} </Typography>
+          <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit} </Typography>
         )
       })
     )
