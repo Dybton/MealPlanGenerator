@@ -18,6 +18,7 @@ function App() {
 
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     changeObject();
   }, [])
 
@@ -113,22 +114,23 @@ function App() {
   }
 
   const RecipeComponent = (props) => {
+    const index = objectArray.indexOf(props.recipe)
+    function lockObject() {
+      lockObjectByIndex(index)
+    }
     return (
       <div className="RecipeComponent">
         <RecipeImage recipe={props} />
         <p> {props.recipe.name} </p>
+        <div className="LockedElement"><Button  onClick={lockObject}> Lås opskrift</Button></div>
       </div>
     )
   }
 
   const RecipeImage = (props) => { // rename this!
     const index = objectArray.indexOf(props.recipe.recipe)
-    function lockObject() {
-      lockObjectByIndex(index)
-    }
     return (
       <div className="RecipeImage" style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
-        <Button onClick={lockObject}>Lock recipe</Button>
       </div>
     )
   }
@@ -173,7 +175,7 @@ function App() {
 
     return (
       <div>
-        <Button variant="contained" onClick={() => { handleOpen()}}>Generate grocery list</Button>
+        <Button color="success" variant="contained" onClick={() => { handleOpen()}}>Generer Indkøbsseddel</Button>
         <Modal
           open={open}
           onClose={handleClose}
@@ -220,13 +222,13 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1> Hello Foodpreppers</h1>
+        <h1> Velkommen Foodpreppers</h1>
       </div>
       <Grid container spacing={3}
       >
         <Grid item xs></Grid>
         <Grid item xs={6}>
-          <div> <p> Press space to generate new objects</p></div>
+          <div> <p> Tryk på spaceknappen for at generere madplan</p></div>
         </Grid>
         <Grid item xs>
           {/* I need to replace this with a component */}

@@ -15,9 +15,13 @@ body {
   color: #61dafb;
 }
 
+.generateButton {
+  background-color: black;
+}
+
 .RecipeGrid {
   margin-top: 2.5%;
-  height: 575px;
+  height: 675px;
   width: 100%;
   border: 1px solid rgba(97, 16, 16, 0.05);
   background-color: white;
@@ -36,6 +40,9 @@ body {
   /* background-image: url("https://www.valdemarsro.dk/wp-content/2022/02/vegetar-tarteletter_svampe.jpg"); */
   background-size: cover;
   background-position: center;
+}
+
+.LockedElement {
 }
 
 .Modalbox {
