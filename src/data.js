@@ -10,12 +10,6 @@ let Recipe = class {
 
     
 };
-function makeIngredientProperFormat(name) {
-  let output = ((name.toLowerCase())[0].toUpperCase() + name.substring(1)).trim();  
-  return output
-}
-
-
 
 // let Ingredient = class {
 //     constructor(name) {

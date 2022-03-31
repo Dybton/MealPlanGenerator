@@ -69,6 +69,14 @@ function App() {
       objectArray[index].locked = true;
     }
   }
+  
+  // Helper function that properly formats, in this case ingridients. 
+  function firstLetterCapitalized(input) {
+    let output = input.toLowerCase();
+    output = output[0].toUpperCase() + output.substring(1);
+    output.trim();
+    return output
+  }
 
   // SPACE BAR START
   // Triggers the changeNum by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
@@ -126,6 +134,8 @@ function App() {
   }
   // GROCERY LIST COMPONENT START
 
+
+
   const GroceryListComponent = () => {
     const [open, setOpen] = useState(false);
     const [groceries, setGroceries] = useState();
@@ -134,6 +144,7 @@ function App() {
       setOpen(true);
     }
     const handleClose = () => setOpen(false);
+
 
     const generateGroceryList = () => { // Find a better way to update groceries
       const list = [];
@@ -149,11 +160,12 @@ function App() {
     getGroceryItems();
    }
 
+   // TOTO: This code is not DRY. We should not call firstLetterCapitalized several times
    // Function that creates a  multi-lined string of all the ingredients, their amount and their unit of unit
    function getGroceryItems(){
      let output = "";
      groceries.forEach(ingredient => {
-        output += ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit + "\n"
+        output += firstLetterCapitalized(ingredient.ingredient) + " " + ingredient.amount + " " + ingredient.unit + "\n"
        
      })
      return output
@@ -199,7 +211,7 @@ function App() {
     return (
       (props.list).map(ingredient => {
         return (
-          <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit} </Typography>
+          <Typography ml={4} mt={1.5}> {firstLetterCapitalized(ingredient.ingredient) + " " + ingredient.amount + " " + ingredient.unit} </Typography>
         )
       })
     )
