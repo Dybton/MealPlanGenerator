@@ -104,7 +104,7 @@ function App() {
       <div className="RecipeGrid">
         <Grid container spacing={1.5}>
           {objectArray.map(object => (
-            <Grid item xs={2.4}>
+            <Grid item md={2.4} xs={12} >
               <RecipeComponent recipe={object} />
             </Grid>
           ))}
@@ -121,7 +121,9 @@ function App() {
     return (
       <div className="RecipeComponent">
         <RecipeImage recipe={props} />
-        <p className="LockedElement"> {props.recipe.name} </p>
+        <div>
+          <p className="LockedElement"> {props.recipe.name} </p>
+        </div>
         <div id="låsOpskriftKnap"> 
         <Button onClick={lockObject}> Lås opskrift</Button>
         </div>
