@@ -121,8 +121,10 @@ function App() {
     return (
       <div className="RecipeComponent">
         <RecipeImage recipe={props} />
-        <p> {props.recipe.name} </p>
-        <div className="LockedElement"><Button  onClick={lockObject}> Lås opskrift</Button></div>
+        <p className="LockedElement"> {props.recipe.name} </p>
+        <div id="låsOpskriftKnap"> 
+        <Button onClick={lockObject}> Lås opskrift</Button>
+        </div>
       </div>
     )
   }

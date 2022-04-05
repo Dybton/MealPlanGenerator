@@ -43,6 +43,12 @@ body {
 }
 
 .LockedElement {
+  position: absolute;
+  width: 20%;
+}
+
+#låsOpskriftKnap {
+  margin-top: 30%;
 }
 
 .Modalbox {
