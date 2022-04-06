@@ -13,6 +13,10 @@ import IconButton from '@mui/material/IconButton';
 import recipeData from './data';
 
 function App() {
+
+
+  
+
   // Initial dummy variables
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
 
@@ -97,15 +101,16 @@ function App() {
 
   // COMPONENTS START
 
-  // This needs to take the objects to be shown. It then need to loop through them and show the differnet components. 
-  // it also needs to calculate the spacing. 
+  // This is the main container for the recipes. 
+  // TODO: We need to dynamically calculate spacing
   const RecipeGrid = () => {
+    
     return (
       <div className="RecipeGrid">
         <Grid container spacing={1.5}>
           {objectArray.map(object => (
-            <Grid item md={2.4} xs={12} >
-              <RecipeComponent recipe={object} />
+            <Grid item sm={2.4} xs={12}>
+              <RecipeComponent recipe={object}/>
             </Grid>
           ))}
         </Grid>
@@ -138,10 +143,9 @@ function App() {
       </div>
     )
   }
+
+
   // GROCERY LIST COMPONENT START
-
-
-
   const GroceryListComponent = () => {
     const [open, setOpen] = useState(false);
     const [groceries, setGroceries] = useState();
@@ -223,6 +227,8 @@ function App() {
     )
   }
 
+
+  // This grid controls the entirety of the app
   return (
     <div className="App">
       <div>
