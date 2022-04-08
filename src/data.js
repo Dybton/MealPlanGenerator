@@ -5,11 +5,27 @@ let Recipe = class {
       this.locked = false;
       this.ingredients = ingredients; // Needs to be an array of objects containing: ingriedient, amount and maybe brand?
       this.image = image;
-      
+
+      // Function that takes every ingredient.ingredient and formats it properly 
+      function formatIngredients(ingredients) {
+
+      }
     }
+
+
+
+
+    // function firstLetterCapitalized(input) {
+    //     let output = input.toLowerCase();
+    //     output = output[0].toUpperCase() + output.substring(1);
+    //     output.trim();
+    //     return output
+    //   }
 
     
 };
+
+console.log("yiss")
 
 // let Ingredient = class {
 //     constructor(name) {

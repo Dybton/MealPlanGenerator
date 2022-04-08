@@ -21,6 +21,7 @@ body {
 
 .RecipeGrid {
   margin-top: 2.5%;
+  height: 675px;
   width: 100%;
   border: 1px solid rgba(97, 16, 16, 0.05);
   background-color: white;
@@ -31,12 +32,16 @@ body {
   height: 600px;
 }
 
+.RecipeComponentSmall {
+  height: 100px;
+}
+
+/* TODO: This should be different at smaller size */
 .RecipeImage {
   margin-top: 15%;
   height: 50%;
   border-radius: 15px;
   vertical-align: bottom;
-  /* background-image: url("https://www.valdemarsro.dk/wp-content/2022/02/vegetar-tarteletter_svampe.jpg"); */
   background-size: cover;
   background-position: center;
 }

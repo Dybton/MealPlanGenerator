@@ -1,4 +1,5 @@
 import './App.css';
+import './foods'
 import React, { useEffect, useRef, useState } from 'react';
 import { useKey } from "rooks";
 import Grid from '@mui/material/Grid';
@@ -11,11 +12,11 @@ import Tooltip from '@mui/material/Tooltip';
 import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
 import IconButton from '@mui/material/IconButton';
 import recipeData from './data';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function App() {
 
-
-  
 
   // Initial dummy variables
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
@@ -104,7 +105,7 @@ function App() {
   // This is the main container for the recipes. 
   // TODO: We need to dynamically calculate spacing
   const RecipeGrid = () => {
-    
+  
     return (
       <div className="RecipeGrid">
         <Grid container spacing={1.5}>
@@ -119,20 +120,34 @@ function App() {
   }
 
   const RecipeComponent = (props) => {
+    // TODO: Move this up to recipe grid and then pass down prop
+    const theme = useTheme();
+
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
     const index = objectArray.indexOf(props.recipe)
     function lockObject() {
       lockObjectByIndex(index)
     }
     return (
-      <div className="RecipeComponent">
-        <RecipeImage recipe={props} />
-        <div>
-          <p className="LockedElement"> {props.recipe.name} </p>
-        </div>
-        <div id="låsOpskriftKnap"> 
-        <Button onClick={lockObject}> Lås opskrift</Button>
-        </div>
+      // <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
+      //   <RecipeImage recipe={props} />
+      //   <div>
+      //     <p className="LockedElement"> {props.recipe.name} </p>
+      //   </div>
+      //   <div id="låsOpskriftKnap"> 
+      //   <Button onClick={lockObject}> Lås opskrift</Button>
+      //   </div>
+      // </div>
+    <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
+      <RecipeImage recipe={props} />
+      <div>
+        <p className="LockedElement"> {props.recipe.name} </p>
       </div>
+      <div id="låsOpskriftKnap"> 
+      <Button onClick={lockObject}> Lås opskrift</Button>
+      </div>
+    </div>
     )
   }
 
@@ -149,6 +164,10 @@ function App() {
   const GroceryListComponent = () => {
     const [open, setOpen] = useState(false);
     const [groceries, setGroceries] = useState();
+
+    // a function that formats properly.
+    // A function that goes through eact
+
     const handleOpen = () => {
       generateGroceryList();
       setOpen(true);
@@ -160,9 +179,19 @@ function App() {
       const list = [];
       objectArray.forEach(recipe =>
       (recipe.ingredients).forEach(ingredient =>
-      list.push(ingredient)))
+      list.push(ingredient),
+      ))
       setGroceries(list)
-      
+    }
+
+
+
+      // Helper function that properly formats, in this case ingridients. 
+    function firstLetterCapitalized(input) {
+      let output = input.toLowerCase();
+      output = output[0].toUpperCase() + output.substring(1);
+      output.trim();
+      return output
     }
 
    const copyToClipBoard = () => {
