@@ -53,7 +53,7 @@ const Halloumi_Tacos = new Recipe("Halloumi Tacos", "https://img.hellofresh.com/
 const Pasta_m_ost_bacon = new Recipe("Paste med ost og bacon", "https://www.easypeasyfoodie.com/wp-content/uploads/2016/08/Gargano-Pasta-1-1024x1024.jpg", [{ingredient: "Frisk Pasta", amount: 2, unit: "pakker"}, {ingredient: "Bacon", amount: 150, unit: "gram"}, {ingredient: "Creme Fraiche", amount: 3, unit: "spsk"}, {ingredient: "Blue Castello", amount: 75, unit: "gram"}, {ingredient: "Broccoli", amount: 1, unit: "stk"}])
 const Middelhavs_Havaborre = new Recipe("Middelhavs Havaborre", "https://d1yfn1dfres2va.cloudfront.net/001/f4/3c/f43c38f176161cfbc9530c332eeceda2_640m.jpg", [{ingredient: "Aubergine", amount: 1, unit: "stk"}, {ingredient: "Olivenolie", amount: 1, unit: "spsk"}, {ingredient: "Rødløg", amount: 1, unit: "stk"}, {ingredient: "Hvidløg", amount: 1, unit: "stk"}, {ingredient: "Tomat", amount: 2, unit: "stk"}, {ingredient: "Citron", amount: 1, unit: "stk"}, {ingredient: "Hvidvin", amount: 1, unit: "skvt"}, {ingredient: "Grøntsagsbouillon", amount: 2, unit: "spsk"}, {ingredient: "Hakket Tomat", amount: 2, unit: "spsk"}, {ingredient: "Tørret Oregano", amount: 1, unit: "spsk"}, {ingredient: "Havborre", amount: 300, unit: "gram"}, {ingredient: "Couscous", amount: 250, unit: "gram"}, {ingredient: "Hakkede Oliven", amount: 50, unit: "gram"}])
 const Spicy_Oksekød_på_Bulgur = new Recipe("Spicy Oksekød på Bulgur", "https://dagenstallerken.dk/wp-content/uploads/2017/04/Orientalsk-oksek%C3%B8d1.jpg",[{ingredient: "Hakket Oksekød", amount: 250, unit: "gram"}, {ingredient: "Gulerød", amount: 2, unit: "stk"}, {ingredient: "Squash", amount: 0.5, unit: "stk"}, {ingredient: "Ærter", amount: 100, unit: "gram"}, {ingredient: "Rødløg", amount: 1, unit: "stk"}, {ingredient: "Rosiner", amount: 50, unit: "gram"}, {ingredient: "Paprika", amount: 1, unit: "tsk"}, {ingredient: "Spidskommen", amount: 2, unit: "tsk"}, {ingredient: "Chiliflager", amount: 1, unit: "tsk"}, {ingredient: "Citronsaft", amount: 1, unit: "spsk"}, {ingredient: "Fuldkornsbulgur", amount: 1.5, unit: "deciliter"}, {ingredient: "Boullionterning", amount: 1, unit: "stk"}])
-const Lasagne = new Recipe("Lasagne", "https://www.valdemarsro.dk/wp-content/lasagne3.jpg",[{ingredient: "Hakket Oksekød", amount: 250, unit: "gram"}, {ingredient: "Gulerød", amount: 2, unit: "stk"}, {ingredient: "Hvidløg", amount: 3, unit: "fed"}, {ingredient: "Bladselleri", amount: 3, unit: "stilke"}, {ingredient: "Rødløg", amount: 1, unit: "stk"}, {ingredient: "Tomatpure", amount: 35, unit: "gram"}, {ingredient: "Hakkede Tomater", amount: 400, unit: "gram"}, {ingredient: "Oksebouillonterning", amount: 1, unit: "stk"}, {ingredient: "Basilikum", amount: 1, unit: "tsk"}, {ingredient: "Paprika", amount: 1, unit: "tsk"}, {ingredient: "Mælk", amount: 4, unit: "deciliter"}, {ingredient: "Mozerella", amount: 200, unit: "gram"}, {ingredient: "Lasagneplader", amount: 200, unit: "gram"}])
+const Lasagne = new Recipe("Lasagne", "https://www.valdemarsro.dk/wp-content/lasagne3.jpg",[{ingredient: "Hakket Oksekød", amount: 250, unit: "gram"}, {ingredient: "Gulerod", amount: 2, unit: "stk"}, {ingredient: "Hvidløg", amount: 3, unit: "fed"}, {ingredient: "Bladselleri", amount: 3, unit: "stilke"}, {ingredient: "Rødløg", amount: 1, unit: "stk"}, {ingredient: "Tomatpure", amount: 35, unit: "gram"}, {ingredient: "Hakkede Tomater", amount: 400, unit: "gram"}, {ingredient: "Oksebouillonterning", amount: 1, unit: "stk"}, {ingredient: "Basilikum", amount: 1, unit: "tsk"}, {ingredient: "Paprika", amount: 1, unit: "tsk"}, {ingredient: "Mælk", amount: 4, unit: "deciliter"}, {ingredient: "Mozerella", amount: 200, unit: "gram"}, {ingredient: "Lasagneplader", amount: 200, unit: "gram"}])
 const Fiskefrikadeller_m_ovn_kartofler_og_gulerodssalat = new Recipe("Fiskefrikadeller m ovn-kartofler og gulerodssalat", "https://www.valdemarsro.dk/wp-content/2012/09/fiskefrikadeller.jpg", [{ingredient: "Rødløg", amount: 1, unit: "stk"}, {ingredient: "Squash", amount: 0.5, unit: "stk"}, {ingredient: "Torskefars", amount: 150, unit: "gram"}, {ingredient: "Laksefars", amount: 150, unit: "gram"}, {ingredient: "Æg", amount: 1, unit: "stk"}, {ingredient: "Dild", amount: 1, unit: "Håndfuld"}, {ingredient: "Hvedemel", amount: 20, unit: "gram"}, {ingredient: "Smør", amount: 1, unit: "spsk"}, {ingredient: "Gulerod", amount: 3, unit: "stk"}, {ingredient: "Æble", amount: 2, unit: "stk"}, {ingredient: "Honning", amount: 1, unit: "spsk"}, {ingredient: "Rosiner", amount: 100, unit: "gram"}])
 const Fajita_Bowl = new Recipe("Fajita Bowl", "https://static.onecms.io/wp-content/uploads/sites/44/2019/08/26232527/5633964.jpg", [{ingredient: "Kyllingefond-terninger", amount: 2, unit: "stk"}, {ingredient: "Ris", amount: 200, unit: "gram"}, {ingredient: "Kyllingebryst", amount: 200, unit: "gram"}, {ingredient: "Pepperfrugt", amount: 2, unit: "stk"}, {ingredient: "Løg", amount: 2, unit: "stk"}, {ingredient: "Kidneybønner", amount: 1, unit: "Dåse"}, {ingredient: "Salsa", amount: 200, unit: "gram"}, {ingredient: "Paprika", amount: 1, unit: "tsk"}, {ingredient: "Koriander", amount: 1, unit: "tsk"}, {ingredient: "Spidskommen", amount: 1, unit: "spsk"}, {ingredient: "Hvidløg", amount: 2, unit: "fed"}])
 const Chili_sin_carne = new Recipe("Chili sin carne", "https://www.valdemarsro.dk/wp-content/2017/09/chili-sin-carne-1.jpg",[{ingredient: "Spidskommen", amount: 1, unit: "spsk"}, {ingredient: "Kanel", amount: 1, unit: "tsk"}, {ingredient: "Koriander", amount: 1, unit: "tsk"}, {ingredient: "Chiliflager", amount: 0.5, unit: "tsk"}, {ingredient: "Løg", amount: 1, unit: "stk"}, {ingredient: "Kidneybønner", amount: 1, unit: "Dåse"}, {ingredient: "Salsa", amount: 100, unit: "gram"}, {ingredient: "Paprika", amount: 1, unit: "tsk"}, {ingredient: "Squash", amount: 0.5, unit: "stk"}, {ingredient: "Bladselleri", amount: 2, unit: "stænger"}, {ingredient: "Aubergine", amount: 0.5, unit: "stk"}, {ingredient: "Soltørrede Tomater", amount: 2, unit: "spsk"}, {ingredient: "Hakkede Tomater", amount: 1, unit: "dåse"}, {ingredient: "Grøntsagsbouillon", amount: 1, unit: "deciliter"}, {ingredient: "Mørk chokolade", amount: 30, unit: "gram"}, {ingredient: "Olivenolie", amount: 1, unit: "spsk"}, {ingredient: "Brune ris", amount: 200, unit: "gram"}, {ingredient: "Creme fraiche", amount: 50, unit: "gram"}, {ingredient: "Cheddarost", amount: 100, unit: "gram"}, {ingredient: "Lime", amount: 1, unit: "stk"}])
@@ -230,7 +230,7 @@ const Buddha_Bowl = new Recipe("Buddha Bowl", "https://www.valdemarsro.dk/wp-con
       "unit": "stk"
   },
   {
-      "ingredient": "edemanebønner",
+      "ingredient": "edemamebønner",
       "amount": 25,
       "unit": "g"
   },
@@ -405,7 +405,7 @@ const Panang_karry = new Recipe("Panang karry", "https://www.valdemarsro.dk/wp-c
   },
   {
       "ingredient": "gulerod",
-      "amount": "1,5",
+      "amount": 1.5,
       "unit": "stk"
   },
   {
@@ -496,7 +496,7 @@ const Tikka_Massala = new Recipe("Tikka Massala","https://www.valdemarsro.dk/wp-
       "unit": "tsk"
   },
   {
-      "ingredient": "chiliflajer",
+      "ingredient": "chiliflager",
       "amount": 0.5,
       "unit": "tsk"
   },

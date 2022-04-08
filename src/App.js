@@ -175,13 +175,16 @@ function App() {
       list.push(ingredient),
       ))
       
-      // function SortArray(x, y){
-      //   return x.ingredient.localeCompare(y.ingredient);
-      // }
-      // const sortedArray = list.sort(SortArray);
+
+      // We sort the list
+      function SortArray(x, y){
+        return x.ingredient.localeCompare(y.ingredient);
+      }
+      const sortedArray = list.sort(SortArray);
 
       // TODO: REFACTOR THIS SO THAT WE'RE NOT GOING THROUGH THE ARRAY TWO TIMES
-      const output = list.reduce((accumulator, cur) => {
+
+      const output = sortedArray.reduce((accumulator, cur) => {
         let ingredient = cur.ingredient;
         let unit = cur.unit;
         let found = accumulator.find(elem => elem.ingredient === ingredient && elem.unit === unit)
@@ -190,9 +193,6 @@ function App() {
         return accumulator; 
       }, []);
 
-      console.log(list)
-      console.log(output)
-      
       setGroceries(output)
     }
 

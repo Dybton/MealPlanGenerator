@@ -120,7 +120,7 @@ const converter = (foodName, currAmount, currUnit) => {
   
   
   let objArr = [
-    {ingredient: 'Løg', amount: 300, unit: 'gram'},
+    {ingredient: 'Løg', amount: 300, unit: 'deciliter'},
     {ingredient: 'Mælk', amount: 1, unit: 'dl'},
     {ingredient: 'Løg', amount: 2, unit: 'deciliter'},
     {ingredient: 'Kanel', amount: 3, unit: 'tsk'}
@@ -136,3 +136,5 @@ const converter = (foodName, currAmount, currUnit) => {
     else accumulator.push(cur);
     return accumulator;
   }, []);
+
+  console.log(output)
