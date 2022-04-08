@@ -1,9 +1,10 @@
 import recipeData from './data.js'
 
+// // Function 
 
-// Function 
 
-let list = [];
+const generateFoodList = () => {
+  let list = [];
 recipeData.forEach(recipe => 
   (recipe.ingredients).forEach(function (ingredient) 
     {
@@ -34,8 +35,11 @@ recipeData.forEach(recipe =>
         list.push(ingredient)
     })
 )
+}
 
-// TODO: THESE TWO ALSO EXIST IN APPS.JS. WE SHOULD HAVE ONE PLACE FOR THEM.
+
+
+// // TODO: THESE TWO ALSO EXIST IN APPS.JS. WE SHOULD HAVE ONE PLACE FOR THEM.
 
 // Helper function to generateFoodList
 function in_array(obj, array) {
@@ -53,7 +57,7 @@ function firstLetterCapitalized(input) {
 }
 
 
-// Create an array of unique ingredients. Fill out type. Fill out conversion
+// // Create an array of unique ingredients. Fill out type. Fill out conversion
 
 let foodObjects = 
 [{
@@ -97,20 +101,19 @@ const converter = (foodName, currAmount, currUnit) => {
     let currUnitBaseUnitRatio = ingridentObject[currUnit]
     let preferredUnitValue = ingridentObject[ingridentObject.prefferedUnit]
 
-    // let output = currUnitBaseUnitRatio / preferredUnitValue * currAmount
-    let output = currAmount / preferredUnitValue * currUnitBaseUnitRatio
+    let output = currUnitBaseUnitRatio / preferredUnitValue * currAmount
+    // let output = currAmount / preferredUnitValue * currUnitBaseUnitRatio
 
     console.log(output)
-
-  
+    
 }
 
-converter("Græsk yogurt", 200, "gram") // 200 gram
-// 200 / 200 * 200
-converter("Græsk yogurt", 200, "deciliter") // 200 deciliter
+// converter("Græsk yogurt", 200, "gram") // 200 gram
+// // 200 / 200 * 200
+// converter("Græsk yogurt", 200, "deciliter") // 200 deciliter
 
-converter("Græsk yogurt", 200, "liter") // 20 
-converter("Græsk yogurt", 200, "spsk") // 14
+// converter("Græsk yogurt", 200, "liter") // 20 
+// converter("Græsk yogurt", 200, "spsk") // 14
 
 
 
@@ -119,11 +122,11 @@ converter("Græsk yogurt", 200, "spsk") // 14
   let objArr = [
     {ingredient: 'Løg', amount: 300, unit: 'gram'},
     {ingredient: 'Mælk', amount: 1, unit: 'dl'},
-    {ingredient: 'Løg', amount: 2, unit: 'gram'},
+    {ingredient: 'Løg', amount: 2, unit: 'deciliter'},
     {ingredient: 'Kanel', amount: 3, unit: 'tsk'}
   ];
   
-  
+
   
   const output = objArr.reduce((accumulator, cur) => {
     let ingredient = cur.ingredient;
@@ -133,5 +136,3 @@ converter("Græsk yogurt", 200, "spsk") // 14
     else accumulator.push(cur);
     return accumulator;
   }, []);
-
-  // console.log(output)

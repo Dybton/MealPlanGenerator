@@ -75,14 +75,7 @@ function App() {
       objectArray[index].locked = true;
     }
   }
-  
-  // Helper function that properly formats, in this case ingridients. 
-  function firstLetterCapitalized(input) {
-    let output = input.toLowerCase();
-    output = output[0].toUpperCase() + output.substring(1);
-    output.trim();
-    return output
-  }
+
 
   // SPACE BAR START
   // Triggers the changeNum by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
@@ -181,17 +174,26 @@ function App() {
       (recipe.ingredients).forEach(ingredient =>
       list.push(ingredient),
       ))
-      setGroceries(list)
-    }
+      
+      // function SortArray(x, y){
+      //   return x.ingredient.localeCompare(y.ingredient);
+      // }
+      // const sortedArray = list.sort(SortArray);
 
+      // TODO: REFACTOR THIS SO THAT WE'RE NOT GOING THROUGH THE ARRAY TWO TIMES
+      const output = list.reduce((accumulator, cur) => {
+        let ingredient = cur.ingredient;
+        let unit = cur.unit;
+        let found = accumulator.find(elem => elem.ingredient === ingredient && elem.unit === unit)
+        if (found) found.amount += cur.amount;
+        else accumulator.push(cur);
+        return accumulator; 
+      }, []);
 
-
-      // Helper function that properly formats, in this case ingridients. 
-    function firstLetterCapitalized(input) {
-      let output = input.toLowerCase();
-      output = output[0].toUpperCase() + output.substring(1);
-      output.trim();
-      return output
+      console.log(list)
+      console.log(output)
+      
+      setGroceries(output)
     }
 
    const copyToClipBoard = () => {
@@ -199,12 +201,11 @@ function App() {
     getGroceryItems();
    }
 
-   // TOTO: This code is not DRY. We should not call firstLetterCapitalized several times
    // Function that creates a  multi-lined string of all the ingredients, their amount and their unit of unit
    function getGroceryItems(){
      let output = "";
      groceries.forEach(ingredient => {
-        output += firstLetterCapitalized(ingredient.ingredient) + " " + ingredient.amount + " " + ingredient.unit + "\n"
+        output += ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit + "\n"
        
      })
      return output
@@ -250,7 +251,7 @@ function App() {
     return (
       (props.list).map(ingredient => {
         return (
-          <Typography ml={4} mt={1.5}> {firstLetterCapitalized(ingredient.ingredient) + " " + ingredient.amount + " " + ingredient.unit} </Typography>
+          <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit} </Typography>
         )
       })
     )

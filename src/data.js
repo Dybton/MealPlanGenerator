@@ -3,14 +3,20 @@ let Recipe = class {
     constructor(name, image, ingredients, ) {
       this.name = name.toUpperCase();
       this.locked = false;
-      this.ingredients = ingredients; // Needs to be an array of objects containing: ingriedient, amount and maybe brand?
       this.image = image;
+      this.ingredients = ingredients.map(element => ({ ...element, ingredient: firstLetterCapitalized(element.ingredient) }));
+     
+    
+    // Function that properly formats he ingredient names
+    function firstLetterCapitalized(input) {
+            let output = input.toLowerCase()
+            output = output[0].toUpperCase() + output.substring(1);
+            output.trim();
+            return output;
+        };
+    }}
 
-      // Function that takes every ingredient.ingredient and formats it properly 
-      function formatIngredients(ingredients) {
-
-      }
-    }
+    
 
 
 
@@ -22,10 +28,7 @@ let Recipe = class {
     //     return output
     //   }
 
-    
-};
 
-console.log("yiss")
 
 // let Ingredient = class {
 //     constructor(name) {
