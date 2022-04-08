@@ -14,6 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import recipeData from './data';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import ClearIcon from '@mui/icons-material/Clear';
 
 function App() {
 
@@ -167,6 +168,16 @@ function App() {
     }
     const handleClose = () => setOpen(false);
 
+    // Function that removes item from groceries
+      const removeItemFromGroceryList = (input) => {
+          let index = groceries.indexOf(input)
+          let temp_arr = [...groceries];
+          let removed = temp_arr.splice(index, 1)
+          setGroceries(temp_arr)
+        
+    // FUNCTIONS THAT CHANGES THE SIZE OF THE OBJECTS ARR - END
+    }
+
 
     const generateGroceryList = () => { // Find a better way to update groceries
       const list = [];
@@ -175,7 +186,6 @@ function App() {
       list.push(ingredient),
       ))
       
-
       // We sort the list
       function SortArray(x, y){
         return x.ingredient.localeCompare(y.ingredient);
@@ -237,7 +247,7 @@ function App() {
                 <Divider />
               </Grid>
               <Grid item xs={8}>
-                <GroceryList list={groceries}/>
+                <GroceryList list={groceries} func={removeItemFromGroceryList}/>
               </Grid>
             </Grid>
           </Box>
@@ -251,7 +261,7 @@ function App() {
     return (
       (props.list).map(ingredient => {
         return (
-          <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit} </Typography>
+          <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit} <IconButton onClick={() => props.func(ingredient)}> <ClearIcon/> </IconButton>  </Typography>
         )
       })
     )

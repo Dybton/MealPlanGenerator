@@ -38,7 +38,6 @@ recipeData.forEach(recipe =>
 }
 
 
-
 // // TODO: THESE TWO ALSO EXIST IN APPS.JS. WE SHOULD HAVE ONE PLACE FOR THEM.
 
 // Helper function to generateFoodList
@@ -56,8 +55,7 @@ function firstLetterCapitalized(input) {
         return output
 }
 
-
-// // Create an array of unique ingredients. Fill out type. Fill out conversion
+// Create an array of unique ingredients. Fill out type. Fill out conversion
 
 let foodObjects = 
 [{
@@ -74,17 +72,16 @@ let foodObjects =
 {
   "ingredient": "Kyllingebryst",
   "type": "",
-  "prefferedUnit": "",
-  "gram": 0,
-  "dl": 0,
-  "mililiter": 0,
-  "spsk": 0,
-  "tsk": 0,
-  "pakker": 0,
-  "skvt": 0,
-  "flasker": 0,
-  "håndfuld": 0,
-  "dåse": 0
+  "prefferedUnit": "g",
+  "g": 0,
+  "dl": null,
+  "mililiter": null,
+  "spsk": null,
+  "tsk": null,
+  "skvt": null,
+  "flasker": null,
+  "håndfuld": null,
+  "dåse": null
 }]
 
   
@@ -94,7 +91,6 @@ const findIngridientByName = (name) => {
   return filteredResult
 }
 
-
 const converter = (foodName, currAmount, currUnit) => {
     let ingridentObject = findIngridientByName(foodName)
     let prefferedUnit = ingridentObject.prefferedUnit
@@ -103,38 +99,6 @@ const converter = (foodName, currAmount, currUnit) => {
 
     let output = currUnitBaseUnitRatio / preferredUnitValue * currAmount
     // let output = currAmount / preferredUnitValue * currUnitBaseUnitRatio
-
-    console.log(output)
-    
 }
 
-// converter("Græsk yogurt", 200, "gram") // 200 gram
-// // 200 / 200 * 200
-// converter("Græsk yogurt", 200, "deciliter") // 200 deciliter
 
-// converter("Græsk yogurt", 200, "liter") // 20 
-// converter("Græsk yogurt", 200, "spsk") // 14
-
-
-
-  
-  
-  let objArr = [
-    {ingredient: 'Løg', amount: 300, unit: 'deciliter'},
-    {ingredient: 'Mælk', amount: 1, unit: 'dl'},
-    {ingredient: 'Løg', amount: 2, unit: 'deciliter'},
-    {ingredient: 'Kanel', amount: 3, unit: 'tsk'}
-  ];
-  
-
-  
-  const output = objArr.reduce((accumulator, cur) => {
-    let ingredient = cur.ingredient;
-    let unit = cur.unit;
-    let found = accumulator.find(elem => elem.ingredient === ingredient && 		elem.unit === unit)
-    if (found) found.amount += cur.amount;
-    else accumulator.push(cur);
-    return accumulator;
-  }, []);
-
-  console.log(output)
