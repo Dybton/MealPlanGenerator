@@ -231,7 +231,7 @@ function App() {
           aria-describedby="modal-modal-description"
         >
           <Box className="Modalbox">
-            <Grid container>
+            <Grid container className='groceryListTop'>
               <Grid item xs={8}>
                 <Typography id="modal-modal-title" variant="h5" component="h2" mt={3} ml={4} > Indkøbsseddel </Typography>
               </Grid>
@@ -246,9 +246,9 @@ function App() {
               <Grid item xs={10.7} mt={2} ml={4} align="center">
                 <Divider />
               </Grid>
-              <Grid item xs={8}>
+            </Grid>
+            <Grid item xs={12} marginTop={5}>
                 <GroceryList list={groceries} func={removeItemFromGroceryList}/>
-              </Grid>
             </Grid>
           </Box>
         </Modal>
@@ -261,7 +261,14 @@ function App() {
     return (
       (props.list).map(ingredient => {
         return (
-          <Typography ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit} <IconButton onClick={() => props.func(ingredient)}> <ClearIcon/> </IconButton>  </Typography>
+          <Grid container>
+            <Grid item xs={8}>
+              <Typography className="groceryItem" ml={4} mt={1.5}> {ingredient.ingredient + " " + ingredient.amount + " " + ingredient.unit} </Typography>
+            </Grid>       
+            <Grid item xs={3.45} align="right">
+              <IconButton  onClick={() => props.func(ingredient)}> <ClearIcon /> </IconButton>
+            </Grid>
+          </Grid>
         )
       })
     )

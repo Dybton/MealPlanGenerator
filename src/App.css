@@ -51,8 +51,18 @@ body {
   width: 20%;
 }
 
+.groceryListTop {
+  position: fixed;
+}
+
+
 #låsOpskriftKnap {
   margin-top: 25%;
+}
+
+.groceryItem {
+  display: flex;
+  align-items: center;
 }
 
 .Modalbox {
