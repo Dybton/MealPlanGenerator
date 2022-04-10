@@ -17,20 +17,19 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import ClearIcon from '@mui/icons-material/Clear';
 import LockIcon from '@mui/icons-material/LockRounded';
 import LockOpenIcon from '@mui/icons-material/LockOpenRounded';
+import Alert from '@mui/material/Alert';
 
 function App() {
 
-
   // Initial dummy variables
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
-
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
     document.body.style.overflow = "hidden";
     changeObject();
   }, [])
 
-
+  
   const changeObject = () => {
     // TODO: Currently the mockData.length /RecipeSize needs to be arraySize.length * 2, because I do not allow any values from the prev array
     // in the newly generated array. Currently it's not that big of an issue, but if I decide to add filters the mockdata.length might get
@@ -101,7 +100,6 @@ function App() {
   // This is the main container for the recipes. 
   // TODO: We need to dynamically calculate spacing
   const RecipeGrid = () => {
-  
     return (
       <div className="RecipeGrid">
         <Grid container spacing={1.5}>
@@ -118,10 +116,10 @@ function App() {
   const RecipeComponent = (props) => {
     const [locked, setLocked] = useState(props.recipe.locked)
     // TODO: Move this up to recipe grid and then pass down prop
+
+    // Boolean that tells whether we've reached the sm breakpoint. I may want to move this up.
     const theme = useTheme();
-
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-
     const index = objectArray.indexOf(props.recipe)
     function lockObject() {
       if(locked) 
@@ -130,8 +128,6 @@ function App() {
         setLocked(true)
       lockObjectByIndex(index)
     }
-
-
     return (
       // <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
       //   <RecipeImage recipe={props} />
@@ -148,7 +144,7 @@ function App() {
         <p className="LockedElement"> {props.recipe.name} </p>
       </div>
       <div id="låsOpskriftKnap"> 
-      {/* <Button > Lås opskrift </Button>   */}
+      <p>12 Personer</p>
       <IconButton onClick={lockObject}>
         {locked ? <LockIcon/> : <LockOpenIcon/> }
       </IconButton>
@@ -160,11 +156,13 @@ function App() {
   const RecipeImage = (props) => { // rename this!
     const index = objectArray.indexOf(props.recipe.recipe)
     return (
-      <div className="RecipeImage" style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
-      </div>
+      // TODO ADD THE LINK ONCE 
+      <a href="https://stackoverflow.com/questions/2188272/html-how-to-make-an-entire-div-a-hyperlink " target="_blank">
+        <div className="RecipeImage" style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
+        </div>
+      </a>
     )
   }
-
 
   // GROCERY LIST COMPONENT START
   const GroceryListComponent = () => {
@@ -181,17 +179,16 @@ function App() {
     const handleClose = () => setOpen(false);
 
     // Function that removes item from groceries
-      const removeItemFromGroceryList = (input) => {
-          let index = groceries.indexOf(input)
-          let temp_arr = [...groceries];
-          let removed = temp_arr.splice(index, 1)
-          setGroceries(temp_arr)
+    function removeItemFromGroceryList(input){
+        let index = groceries.indexOf(input)
+        let temp_arr = [...groceries];
+        let removed = temp_arr.splice(index, 1)
+        setGroceries(temp_arr)
         
     // FUNCTIONS THAT CHANGES THE SIZE OF THE OBJECTS ARR - END
     }
 
-
-    const generateGroceryList = () => { // Find a better way to update groceries
+    function generateGroceryList(){ // Find a better way to update groceries
       const list = [];
       objectArray.forEach(recipe =>
       (recipe.ingredients).forEach(ingredient =>
@@ -205,7 +202,6 @@ function App() {
       const sortedArray = list.sort(SortArray);
 
       // TODO: REFACTOR THIS SO THAT WE'RE NOT GOING THROUGH THE ARRAY TWO TIMES
-
       const output = sortedArray.reduce((accumulator, cur) => {
         let ingredient = cur.ingredient;
         let unit = cur.unit;
@@ -218,7 +214,7 @@ function App() {
       setGroceries(output)
     }
 
-   const copyToClipBoard = () => {
+   function copyToClipBoard(){
     navigator.clipboard.writeText(getGroceryItems());
     getGroceryItems();
    }
@@ -277,6 +273,7 @@ function App() {
       </div>
     );
   }
+  
 
   // Function that displays a list of ingredients. 
   const GroceryList = (props) => { // Refactor 
