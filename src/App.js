@@ -15,6 +15,8 @@ import recipeData from './data';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import ClearIcon from '@mui/icons-material/Clear';
+import LockIcon from '@mui/icons-material/LockRounded';
+import LockOpenIcon from '@mui/icons-material/LockOpenRounded';
 
 function App() {
 
@@ -114,6 +116,7 @@ function App() {
   }
 
   const RecipeComponent = (props) => {
+    const [locked, setLocked] = useState(props.recipe.locked)
     // TODO: Move this up to recipe grid and then pass down prop
     const theme = useTheme();
 
@@ -121,8 +124,14 @@ function App() {
 
     const index = objectArray.indexOf(props.recipe)
     function lockObject() {
+      if(locked) 
+        setLocked(false);
+      else
+        setLocked(true)
       lockObjectByIndex(index)
     }
+
+
     return (
       // <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
       //   <RecipeImage recipe={props} />
@@ -139,7 +148,10 @@ function App() {
         <p className="LockedElement"> {props.recipe.name} </p>
       </div>
       <div id="låsOpskriftKnap"> 
-      <Button onClick={lockObject}> Lås opskrift</Button>
+      {/* <Button > Lås opskrift </Button>   */}
+      <IconButton onClick={lockObject}>
+        {locked ? <LockIcon/> : <LockOpenIcon/> }
+      </IconButton>
       </div>
     </div>
     )
@@ -230,7 +242,8 @@ function App() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box className="Modalbox">
+          <Box className="Modalbox" container>
+            {/* Grocery list top start */}
             <Grid container className='groceryListTop'>
               <Grid item xs={8}>
                 <Typography id="modal-modal-title" variant="h5" component="h2" mt={3} ml={4} > Indkøbsseddel </Typography>
@@ -247,9 +260,18 @@ function App() {
                 <Divider />
               </Grid>
             </Grid>
-            <Grid item xs={12} marginTop={5}>
-                <GroceryList list={groceries} func={removeItemFromGroceryList}/>
+            {/* Grocery list top end */}
+            {/* Grocery list middle start */}
+            <Grid container className='groceryListMiddle'>
+              <Grid item xs={12} >
+                  <GroceryList list={groceries} func={removeItemFromGroceryList}/>
+              </Grid>
             </Grid>
+            <Grid container className='groceryListBottom'>
+              <Grid item xs={12} >
+              </Grid>
+            </Grid>
+            {/* Grocery list middle end */}
           </Box>
         </Modal>
       </div>
