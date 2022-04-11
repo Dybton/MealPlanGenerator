@@ -144,7 +144,7 @@ function App() {
         <p className="LockedElement"> {props.recipe.name} </p>
       </div>
       <div id="låsOpskriftKnap"> 
-      <p>12 Personer</p>
+      {/* <p>12 Personer</p> */}
       <IconButton onClick={lockObject}>
         {locked ? <LockIcon/> : <LockOpenIcon/> }
       </IconButton>
@@ -157,10 +157,10 @@ function App() {
     const index = objectArray.indexOf(props.recipe.recipe)
     return (
       // TODO ADD THE LINK ONCE 
-      <a href="https://stackoverflow.com/questions/2188272/html-how-to-make-an-entire-div-a-hyperlink " target="_blank">
+      // <a href="https://stackoverflow.com/questions/2188272/html-how-to-make-an-entire-div-a-hyperlink " target="_blank">
         <div className="RecipeImage" style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
         </div>
-      </a>
+      // </a>
     )
   }
 
