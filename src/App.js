@@ -20,7 +20,6 @@ import LockOpenIcon from '@mui/icons-material/LockOpenRounded';
 import Alert from '@mui/material/Alert';
 
 function App() {
-
   // Initial dummy variables
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
@@ -29,7 +28,6 @@ function App() {
     changeObject();
   }, [])
 
-  
   const changeObject = () => {
     // TODO: Currently the mockData.length /RecipeSize needs to be arraySize.length * 2, because I do not allow any values from the prev array
     // in the newly generated array. Currently it's not that big of an issue, but if I decide to add filters the mockdata.length might get
@@ -95,72 +93,24 @@ function App() {
 
   }; //function App end 
 
+
   // COMPONENTS START
-
-  // This is the main container for the recipes. 
-  // TODO: We need to dynamically calculate spacing
-  const RecipeGrid = () => {
+  
+  // TODO: FIND OTHER NAME
+  const UpperContent = () => {
     return (
-      <div className="RecipeGrid">
-        <Grid container spacing={1.5}>
-          {objectArray.map(object => (
-            <Grid item sm={2.4} xs={12}>
-              <RecipeComponent recipe={object}/>
-            </Grid>
-          ))}
+    <div>
+      <h1> Velkommen Foodpreppers</h1>
+      <Grid container spacing={3}>
+        <Grid item xs></Grid>
+        <Grid item xs={6}>
+          <div> <p> Tryk på spaceknappen for at generere madplan</p></div>
         </Grid>
-      </div>
-    )
-  }
-
-  const RecipeComponent = (props) => {
-    const [locked, setLocked] = useState(props.recipe.locked)
-    // TODO: Move this up to recipe grid and then pass down prop
-
-    // Boolean that tells whether we've reached the sm breakpoint. I may want to move this up.
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    const index = objectArray.indexOf(props.recipe)
-    function lockObject() {
-      if(locked) 
-        setLocked(false);
-      else
-        setLocked(true)
-      lockObjectByIndex(index)
-    }
-    return (
-      // <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
-      //   <RecipeImage recipe={props} />
-      //   <div>
-      //     <p className="LockedElement"> {props.recipe.name} </p>
-      //   </div>
-      //   <div id="låsOpskriftKnap"> 
-      //   <Button onClick={lockObject}> Lås opskrift</Button>
-      //   </div>
-      // </div>
-    <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
-      <RecipeImage recipe={props} />
-      <div>
-        <p className="LockedElement"> {props.recipe.name} </p>
-      </div>
-      <div id="låsOpskriftKnap"> 
-      {/* <p>12 Personer</p> */}
-      <IconButton onClick={lockObject}>
-        {locked ? <LockIcon/> : <LockOpenIcon/> }
-      </IconButton>
-      </div>
+        <Grid item xs>
+          <GroceryListComponent/>
+        </Grid>
+    </Grid>
     </div>
-    )
-  }
-
-  const RecipeImage = (props) => { // rename this!
-    const index = objectArray.indexOf(props.recipe.recipe)
-    return (
-      // TODO ADD THE LINK ONCE 
-      // <a href="https://stackoverflow.com/questions/2188272/html-how-to-make-an-entire-div-a-hyperlink " target="_blank">
-        <div className="RecipeImage" style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
-        </div>
-      // </a>
     )
   }
 
@@ -168,9 +118,6 @@ function App() {
   const GroceryListComponent = () => {
     const [open, setOpen] = useState(false);
     const [groceries, setGroceries] = useState();
-
-    // a function that formats properly.
-    // A function that goes through eact
 
     const handleOpen = () => {
       generateGroceryList();
@@ -240,27 +187,12 @@ function App() {
         >
           <Box className="Modalbox" container>
             {/* Grocery list top start */}
-            <Grid container className='groceryListTop'>
-              <Grid item xs={8}>
-                <Typography id="modal-modal-title" variant="h5" component="h2" mt={3} ml={4} > Indkøbsseddel </Typography>
-              </Grid>
-              <Grid item xs={3.5} mt={3} align="right">
-                <Tooltip title="Kopier ingredienser">
-                  <IconButton onClick={() => copyToClipBoard()}>
-                    <ContentCopyRoundedIcon fontSize="large" />
-                  </IconButton>
-                </Tooltip>
-              </Grid>
-
-              <Grid item xs={10.7} mt={2} ml={4} align="center">
-                <Divider />
-              </Grid>
-            </Grid>
+            <GroceryListHeader copyToClipBoard={copyToClipBoard}/>
             {/* Grocery list top end */}
             {/* Grocery list middle start */}
             <Grid container className='groceryListMiddle'>
               <Grid item xs={12} >
-                  <GroceryList list={groceries} func={removeItemFromGroceryList}/>
+                  <IngredientTable list={groceries} func={removeItemFromGroceryList}/>
               </Grid>
             </Grid>
             <Grid container className='groceryListBottom'>
@@ -273,10 +205,101 @@ function App() {
       </div>
     );
   }
-  
 
-  // Function that displays a list of ingredients. 
-  const GroceryList = (props) => { // Refactor 
+  const GroceryListHeader = (props) => {
+    return (
+    <Grid container className='groceryListTop'>
+        <Grid item xs={8}>
+          <Typography id="modal-modal-title" variant="h5" component="h2" mt={3} ml={4} > Indkøbsseddel </Typography>
+        </Grid>
+        <Grid item xs={3.5} mt={3} align="right">
+          <Tooltip title="Kopier ingredienser">
+            <IconButton onClick={() => props.copyToClipBoard()}>
+              <ContentCopyRoundedIcon fontSize="large" />
+            </IconButton>
+          </Tooltip>
+        </Grid>
+        <Grid item xs={10.7} mt={2} ml={4} align="center">
+          <Divider />
+        </Grid>
+    </Grid>
+    )
+  }
+
+  // TODO Add the ability to add stuff to the list
+  const GroceryListBottom = () => {
+  }
+
+  // This is the main container for the recipes. 
+  // TODO: We need to dynamically calculate spacing
+  const RecipeGrid = () => {
+    return (
+      <div className="RecipeGrid">
+        <Grid container spacing={1.5}>
+          {objectArray.map(object => (
+            <Grid item sm={2.4} xs={12}>
+              <RecipeComponent recipe={object}/>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+    )
+  }
+
+  const RecipeComponent = (props) => {
+    const [locked, setLocked] = useState(props.recipe.locked)
+    // TODO: Move this up to recipe grid and then pass down prop
+
+    // Boolean that tells whether we've reached the sm breakpoint. I may want to move this up.
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    
+    const index = objectArray.indexOf(props.recipe)
+    function lockObject() {
+      if(locked) 
+        setLocked(false);
+      else
+        setLocked(true)
+      lockObjectByIndex(index)
+    }
+    return (
+      // <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
+      //   <RecipeImage recipe={props} />
+      //   <div>
+      //     <p className="LockedElement"> {props.recipe.name} </p>
+      //   </div>
+      //   <div id="låsOpskriftKnap"> 
+      //   <Button onClick={lockObject}> Lås opskrift</Button>
+      //   </div>
+      // </div>
+    <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
+      <RecipeImage recipe={props} />
+      <div>
+        <p className="LockedElement"> {props.recipe.name} </p>
+      </div>
+      <div id="låsOpskriftKnap"> 
+      {/* <p>12 Personer</p> */}
+      <IconButton onClick={lockObject}>
+        {locked ? <LockIcon/> : <LockOpenIcon/> }
+      </IconButton>
+      </div>
+    </div>
+    )
+  }
+
+  const RecipeImage = (props) => { // rename this!
+    const index = objectArray.indexOf(props.recipe.recipe)
+    return (
+      // TODO ADD THE LINK ONCE 
+      // <a href="https://stackoverflow.com/questions/2188272/html-how-to-make-an-entire-div-a-hyperlink " target="_blank">
+        <div className="RecipeImage" style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
+        </div>
+      // </a>
+    )
+  }
+  
+  // Function that displays a list of ingredients.
+  const IngredientTable = (props) => { // Refactor 
     return (
       (props.list).map(ingredient => {
         return (
@@ -293,24 +316,10 @@ function App() {
     )
   }
 
-
   // This grid controls the entirety of the app
   return (
     <div className="App">
-      <div>
-        <h1> Velkommen Foodpreppers</h1>
-      </div>
-      <Grid container spacing={3}
-      >
-        <Grid item xs></Grid>
-        <Grid item xs={6}>
-          <div> <p> Tryk på spaceknappen for at generere madplan</p></div>
-        </Grid>
-        <Grid item xs>
-          {/* I need to replace this with a component */}
-          <GroceryListComponent />
-        </Grid>
-      </Grid>
+      <UpperContent/>
       <div>
         <RecipeGrid array={objectArray} />
       </div>
