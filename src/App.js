@@ -296,20 +296,39 @@ function App() {
         setLocked(true)
       lockObjectByIndex(index)
     }
-    return (
-    <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
-      <RecipeImage recipe={props} />
-      <div>
-        <p className="LockedElement"> {props.recipe.name} </p>
+
+    if(!matches)
+      return (
+        <div className="RecipeComponent">
+          <RecipeImage recipe={props}/>
+            <div>
+              <p className="LockedElement"> {props.recipe.name} </p>
+            </div>
+          <div id="låsOpskriftKnap"> 
+            <IconButton onClick={lockObject}>
+              {locked ? <LockIcon/> : <LockOpenIcon/> }
+            </IconButton>
+        </div>
       </div>
-      <div id="låsOpskriftKnap"> 
-      {/* <p>12 Personer</p> */}
-      <IconButton onClick={lockObject}>
-        {locked ? <LockIcon/> : <LockOpenIcon/> }
-      </IconButton>
-      </div>
-    </div>
-    )
+      ) 
+    else 
+        return (
+          <div>
+            <Grid container className="RecipeComponentSmall">
+              <Grid item xs={4}>
+                <RecipeImage recipe={props} />
+              </Grid>
+              <Grid item xs={4}>
+                <p> {props.recipe.name}</p>
+              </Grid>
+              <Grid item xs={4}>
+              <IconButton onClick={lockObject}>
+                  {locked ? <LockIcon/> : <LockOpenIcon/> }
+              </IconButton>
+              </Grid>
+            </Grid>
+          </div>
+        )
   }
 
   const RecipeImage = (props) => { // rename this!
@@ -317,7 +336,7 @@ function App() {
     return (
       // TODO ADD THE LINK ONCE 
       // <a href="https://stackoverflow.com/questions/2188272/html-how-to-make-an-entire-div-a-hyperlink " target="_blank">
-        <div className="RecipeImage" style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
+        <div className={matches ? "RecipeImageSmall" : "RecipeImage"} style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
         </div>
       // </a>
     )

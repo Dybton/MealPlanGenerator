@@ -36,11 +36,19 @@ body {
   height: 100px;
 }
 
-/* TODO: This should be different at smaller size */
 .RecipeImage {
   margin-top: 15%;
   height: 50%;
   border-radius: 15px;
+  vertical-align: bottom;
+  background-size: cover;
+  background-position: center;
+}
+
+.RecipeImageSmall {
+  border-radius: 5px;
+  margin-top: 15%;
+  height: 80%;
   vertical-align: bottom;
   background-size: cover;
   background-position: center;
@@ -91,7 +99,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    height: 63%;
+    height: 80%;
     background-color: white;
     box-shadow: 24;
     border-radius: 15px;
