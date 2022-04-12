@@ -17,7 +17,12 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import ClearIcon from '@mui/icons-material/Clear';
 import LockIcon from '@mui/icons-material/LockRounded';
 import LockOpenIcon from '@mui/icons-material/LockOpenRounded';
-import Alert from '@mui/material/Alert';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+
+
+
+
 
 function App() {
   // Initial dummy variables
@@ -27,6 +32,9 @@ function App() {
     document.body.style.overflow = "hidden";
     changeObject();
   }, [])
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
   const changeObject = () => {
     // TODO: Currently the mockData.length /RecipeSize needs to be arraySize.length * 2, because I do not allow any values from the prev array
@@ -106,12 +114,34 @@ function App() {
         <Grid item xs={6}>
           <div> <p> Tryk på spaceknappen for at generere madplan</p></div>
         </Grid>
+        {/* TODO move this down. It's not a child of upperContnet */}
         <Grid item xs>
           <GroceryListComponent/>
         </Grid>
     </Grid>
     </div>
     )
+  }
+
+  // Othername
+  const FooterComponent = () => {
+    return (
+      <div>
+        <AppBar position="fixed" color="transparent" sx={{ top: 'auto', bottom: 0 }}>
+          <Toolbar>
+            <Grid container>
+              <Grid item xs={6}>
+                <Button variant="outlined">Generer</Button>
+              </Grid>
+              <Grid item xs={6}>
+                <Button variant="contained">Skab Liste</Button>
+              </Grid>
+            </Grid>
+          </Toolbar>
+        </AppBar>
+        <GroceryListComponent/>
+      </div>
+      )
   }
 
   // GROCERY LIST COMPONENT START
@@ -253,7 +283,7 @@ function App() {
     // Boolean that tells whether we've reached the sm breakpoint. I may want to move this up.
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    
+
     const index = objectArray.indexOf(props.recipe)
     function lockObject() {
       if(locked) 
@@ -263,15 +293,6 @@ function App() {
       lockObjectByIndex(index)
     }
     return (
-      // <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
-      //   <RecipeImage recipe={props} />
-      //   <div>
-      //     <p className="LockedElement"> {props.recipe.name} </p>
-      //   </div>
-      //   <div id="låsOpskriftKnap"> 
-      //   <Button onClick={lockObject}> Lås opskrift</Button>
-      //   </div>
-      // </div>
     <div className={matches ? "RecipeComponentSmall" : "RecipeComponent"}>
       <RecipeImage recipe={props} />
       <div>
@@ -319,11 +340,15 @@ function App() {
   // This grid controls the entirety of the app
   return (
     <div className="App">
-      <UpperContent/>
-      <div>
-        <RecipeGrid array={objectArray} />
+      <div style={{display: matches ? 'none' : 'block' }}>
+        <UpperContent/>
       </div>
-
+      <div>
+        {/* <RecipeGrid array={objectArray}/> */}
+      </div>
+      <div style={{display: matches ? 'block' : 'none' }}>
+        <FooterComponent/>
+      </div>
     </div>
   );
 }
