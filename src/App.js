@@ -29,6 +29,8 @@ function App() {
     changeObject();
   }, [])
 
+
+  // TODO MAKE THIS A CONTEXT STATE?
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -216,7 +218,7 @@ function App() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box className="Modalbox" container>
+          <Box className={matches ? "GroceryListSmall" : "GroceryList"}>
             {/* Grocery list top start */}
             <GroceryListHeader copyToClipBoard={copyToClipBoard}/>
             {/* Grocery list top end */}

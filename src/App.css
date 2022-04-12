@@ -68,29 +68,35 @@ body {
   align-items: center;
 }
 
-.Modalbox {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40%;
-  height: 63%;
-  background-color: white;
-  box-shadow: 24;
-  border-radius: 15px;
-  flex-direction: column;
-  display: flex;
-  overflow-y: scroll;
-}
+/* TODO: MAKE THIS DRY SO THAT WE DON'T HAVE TWO GROCERYLISTS*/
 
-/* const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-}; */
+  .GroceryList {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 63%;
+    background-color: white;
+    box-shadow: 24;
+    border-radius: 15px;
+    flex-direction: column;
+    display: flex;
+    overflow-y: scroll;
+  }
+
+  .GroceryListSmall {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 63%;
+    background-color: white;
+    box-shadow: 24;
+    border-radius: 15px;
+    flex-direction: column;
+    display: flex;
+    overflow-y: scroll;
+  }
+
