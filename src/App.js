@@ -1,6 +1,6 @@
 import './App.css';
 import './foods'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import { useKey } from "rooks";
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -96,11 +96,13 @@ function App() {
 
   }; //function App end 
 
+  const ref = useRef(null);
+
 
   // COMPONENTS START
   
   // TODO: FIND OTHER NAME
-  const UpperContent = () => {
+  const UpperContent = (props) => {
     return (
     <div>
       <h1> Velkommen Foodpreppers</h1>
@@ -111,7 +113,7 @@ function App() {
         </Grid>
         {/* TODO move this down. It's not a child of upperContnet */}
         <Grid item xs>
-          <GroceryListComponent/>
+          <Button variant="contained" color="success" onClick={() => {props.callB(); }}>Generer Indkøbsliste</Button>
         </Grid>
     </Grid>
     </div>
@@ -129,20 +131,25 @@ function App() {
                 <Button variant="outlined" onClick={() => { props.changeObject()}}>Generer</Button>
               </Grid>
               <Grid item xs={6}>
-                <Button variant="contained">Skab Liste</Button>
+                <Button variant="contained" color="success" onClick={() => {props.callB(); }}>Skab Liste</Button>
               </Grid>
             </Grid>
           </Toolbar>
         </AppBar>
-        <GroceryListComponent/>
       </div>
       )
   }
 
   // GROCERY LIST COMPONENT START
-  const GroceryListComponent = () => {
+  const GroceryListComponent = forwardRef((props, ref) => {
     const [open, setOpen] = useState(false);
     const [groceries, setGroceries] = useState();
+
+    useImperativeHandle(ref, () => ({
+      f() {
+        handleOpen();
+      }
+    }))
 
     const handleOpen = () => {
       generateGroceryList();
@@ -203,7 +210,6 @@ function App() {
 
     return (
       <div>
-        <Button color="success" variant="contained" onClick={() => { handleOpen()}}>Generer Indkøbsseddel</Button>
         <Modal
           open={open}
           onClose={handleClose}
@@ -214,6 +220,7 @@ function App() {
             {/* Grocery list top start */}
             <GroceryListHeader copyToClipBoard={copyToClipBoard}/>
             {/* Grocery list top end */}
+            
             {/* Grocery list middle start */}
             <Grid container className='groceryListMiddle'>
               <Grid item xs={12} >
@@ -229,7 +236,7 @@ function App() {
         </Modal>
       </div>
     );
-  }
+  })
 
   const GroceryListHeader = (props) => {
     return (
@@ -336,15 +343,17 @@ function App() {
   return (
     <div className="App">
       <div style={{display: matches ? 'none' : 'block' }}>
-        <UpperContent/>
+        <UpperContent callB={() => {ref.current.f();}}/>
       </div>
       <div>
+        <GroceryListComponent ref={ref}/>
         <RecipeGrid array={objectArray}/>
       </div>
       <div style={{display: matches ? 'block' : 'none' }}>
-        <FooterComponent changeObject={changeObject}/>
+        <FooterComponent changeObject={changeObject}  callB={() => {ref.current.f();}} />
       </div>
     </div>
   );
 }
 export default App;
+
