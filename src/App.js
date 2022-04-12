@@ -20,10 +20,6 @@ import LockOpenIcon from '@mui/icons-material/LockOpenRounded';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
-
-
-
-
 function App() {
   // Initial dummy variables
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
@@ -84,9 +80,8 @@ function App() {
     }
   }
 
-
   // SPACE BAR START
-  // Triggers the changeNum by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
+  // Triggers the changeObject by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
   function spacePress(e) {
     changeObject();
   }
@@ -124,14 +119,14 @@ function App() {
   }
 
   // Othername
-  const FooterComponent = () => {
+  const FooterComponent = (props) => {
     return (
       <div>
         <AppBar position="fixed" color="transparent" sx={{ top: 'auto', bottom: 0 }}>
           <Toolbar>
             <Grid container>
               <Grid item xs={6}>
-                <Button variant="outlined">Generer</Button>
+                <Button variant="outlined" onClick={() => { props.changeObject()}}>Generer</Button>
               </Grid>
               <Grid item xs={6}>
                 <Button variant="contained">Skab Liste</Button>
@@ -344,10 +339,10 @@ function App() {
         <UpperContent/>
       </div>
       <div>
-        {/* <RecipeGrid array={objectArray}/> */}
+        <RecipeGrid array={objectArray}/>
       </div>
       <div style={{display: matches ? 'block' : 'none' }}>
-        <FooterComponent/>
+        <FooterComponent changeObject={changeObject}/>
       </div>
     </div>
   );
