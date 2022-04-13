@@ -375,7 +375,7 @@ function App() {
   return (
     
     <div className="App">
-      <AppBar position="static">
+      {/* <AppBar position="static">
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
           </IconButton>
@@ -383,7 +383,7 @@ function App() {
             Hushovmester
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <div style={{display: matches ? 'none' : 'block' }}>
         <UpperContent callB={() => {ref.current.f();}}/>
       </div>
