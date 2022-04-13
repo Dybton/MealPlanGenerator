@@ -20,7 +20,12 @@ import LockOpenIcon from '@mui/icons-material/LockOpenRounded';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
+
 function App() {
+
+  
+
+
   // Initial dummy variables
   const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
@@ -33,6 +38,11 @@ function App() {
   // TODO MAKE THIS A CONTEXT STATE?
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
+  if(matches)
+    document.body.style = 'background: white;';
+  else 
+    document.body.style = 'background-color: rgba(229, 234, 240, 1)';
 
   const changeObject = () => {
     // TODO: Currently the mockData.length /RecipeSize needs to be arraySize.length * 2, because I do not allow any values from the prev array
@@ -108,6 +118,7 @@ function App() {
     return (
     <div>
       <h1> Velkommen Foodpreppers</h1>
+      
       <Grid container spacing={3}>
         <Grid item xs></Grid>
         <Grid item xs={6}>
@@ -362,7 +373,17 @@ function App() {
 
   // This grid controls the entirety of the app
   return (
+    
     <div className="App">
+      {/* <AppBar position="static">
+        <Toolbar variant="dense">
+          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+          </IconButton>
+          <Typography variant="h6" color="inherit" component="div">
+            Hushovmester
+          </Typography>
+        </Toolbar>
+      </AppBar> */}
       <div style={{display: matches ? 'none' : 'block' }}>
         <UpperContent callB={() => {ref.current.f();}}/>
       </div>
