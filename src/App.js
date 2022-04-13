@@ -255,7 +255,7 @@ function App() {
     return (
     <Grid container className='groceryListTop'>
         <Grid item xs={8}>
-          <Typography id="modal-modal-title" variant="h5" component="h2" mt={3} ml={4} > Indkøbsseddel </Typography>
+          <Typography id="modal-modal-title" variant="h5" component="h2" mt={3} ml={4} > Indkøbsliste </Typography>
         </Grid>
         <Grid item xs={3.5} mt={3} align="right">
           <Tooltip title="Kopier ingredienser">
@@ -375,7 +375,7 @@ function App() {
   return (
     
     <div className="App">
-      {/* <AppBar position="static">
+      <AppBar position="static">
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
           </IconButton>
@@ -383,7 +383,7 @@ function App() {
             Hushovmester
           </Typography>
         </Toolbar>
-      </AppBar> */}
+      </AppBar>
       <div style={{display: matches ? 'none' : 'block' }}>
         <UpperContent callB={() => {ref.current.f();}}/>
       </div>
