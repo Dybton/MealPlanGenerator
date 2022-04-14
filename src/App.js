@@ -310,17 +310,17 @@ function App() {
 
     if(!matches)
       return (
-        <div className="RecipeComponent">
+      <Box className="RecipeComponent">
           <RecipeImage recipe={props}/>
             <div>
-              <p className="LockedElement"> {props.recipe.name} </p>
+              <p className="LockedElement" > {props.recipe.name} </p>
             </div>
           <div id="låsOpskriftKnap"> 
             <IconButton onClick={lockObject}>
               {locked ? <LockIcon/> : <LockOpenIcon/> }
             </IconButton>
         </div>
-      </div>
+      </Box>
       ) 
     else 
         return (
@@ -329,12 +329,12 @@ function App() {
               <Grid item xs={4}>
                 <RecipeImage recipe={props} />
               </Grid>
-              <Grid item xs={4}>
-                <p> {props.recipe.name}</p>
+              <Grid item xs={4} >
+                <p className="RecipeComponentSmallText"> {props.recipe.name}</p>
               </Grid>
               <Grid item xs={4}>
               <IconButton onClick={lockObject}>
-                  {locked ? <LockIcon/> : <LockOpenIcon/> }
+                  {locked ? <LockIcon className="RecipeComponentSmallLogo"/> : <LockOpenIcon/> }
               </IconButton>
               </Grid>
             </Grid>

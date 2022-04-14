@@ -20,16 +20,34 @@
   height: 675px;
   width: 100%;
   background-color: white;
-  flex-direction: row;
+  flex-direction: column;
+
 }
 
 .RecipeComponent {
-  height: 600px;
+  /* height: 600px; */
+  height: 70vh;
 }
 
 .RecipeComponentSmall {
-  height: 100px;
+  /* text-align: start; */
+  height: 17vh;
+  /* align-items: flex-start; */
+  direction: row;
+  justify-content: center;
+  margin-left: 5%;
 }
+
+/* .RecipeComponentSmallText {
+  margin-top: 20%;
+  margin-left: 10px;
+  max-width: 90%;
+} */
+
+.RecipeComponentSmallLogo{
+}
+
+
 
 .RecipeImage {
   margin-top: 15%;
@@ -53,6 +71,7 @@
   position: absolute;
   width: 20%;
 }
+
 
 /* .groceryListTop {
   position: fixed;
