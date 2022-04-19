@@ -19,15 +19,16 @@ import LockIcon from '@mui/icons-material/LockRounded';
 import LockOpenIcon from '@mui/icons-material/LockOpenRounded';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 function App() {
-
-  
-
-
   // Initial dummy variables
-  const [objectArray, setObjectArray] = useState([{ val: "A", locked: false }, { val: "A", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }, { val: "C", locked: false }])
+  const [objectArray, setObjectArray] = useState([{ val: "A" }, { val: "B"}, { val: "C"}, { val: "C" }, { val: "C"}])
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -82,7 +83,7 @@ function App() {
     return false;
   }
 
-  // A function that specifies an object to lock by index
+  // A function that specifies an object to lock by index. It is also here the locked property is set
   const lockObjectByIndex = (index) => {
     if(objectArray[index].locked) {
       objectArray[index].locked = false;
@@ -91,7 +92,7 @@ function App() {
       objectArray[index].locked = true;
     }
   }
-
+  
   // SPACE BAR START
   // Triggers the changeObject by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
   function spacePress(e) {
@@ -292,9 +293,10 @@ function App() {
   }
 
   const RecipeComponent = (props) => {
+    // This locked state is used for the icon illustration only
     const [locked, setLocked] = useState(props.recipe.locked)
-    // TODO: Move this up to recipe grid and then pass down prop
 
+    // TODO: Move this up to recipe grid and then pass down prop
     // Boolean that tells whether we've reached the sm breakpoint. I may want to move this up.
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -307,7 +309,7 @@ function App() {
         setLocked(true)
       lockObjectByIndex(index)
     }
-
+    
     if(!matches)
       return (
       <Box className="RecipeComponent">
@@ -315,11 +317,18 @@ function App() {
             <div>
               <p className="LockedElement" > {props.recipe.name} </p>
             </div>
-          <div id="låsOpskriftKnap"> 
-            <IconButton onClick={lockObject}>
-              {locked ? <LockIcon/> : <LockOpenIcon/> }
-            </IconButton>
-        </div>
+            <div id="låsOpskriftKnap">
+            <SelectSmall/>
+            </div>
+            <div>
+            <p>Est. tid 20 min</p>
+            </div>
+            <div> 
+              <IconButton onClick={lockObject}>
+                {locked ? <LockIcon/> : <LockOpenIcon/> }
+              </IconButton>
+            </div>
+            
       </Box>
       ) 
     else 
@@ -329,17 +338,49 @@ function App() {
               <Grid item xs={4}>
                 <RecipeImage recipe={props} />
               </Grid>
-              <Grid item xs={4} >
-                <p className="RecipeComponentSmallText"> {props.recipe.name}</p>
+              <Grid container item xs={4} className="RecipeComponentSmallTextBox">
+                <p className='RecipeComponentSmallText'> {props.recipe.name}</p>
               </Grid>
-              <Grid item xs={4}>
+              <Grid container item xs={4} className="RecipeComponentSmallLogo">
               <IconButton onClick={lockObject}>
-                  {locked ? <LockIcon className="RecipeComponentSmallLogo"/> : <LockOpenIcon/> }
+                  {locked ? <LockIcon/> : <LockOpenIcon/> }
               </IconButton>
               </Grid>
             </Grid>
           </div>
         )
+  }
+
+    const SelectSmall = () => {
+    const [pers, setPer] = React.useState(2);
+  
+    const handleChange = (event) => {
+      setPer(event.target.value);
+    };
+  
+    return (
+      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+        </InputLabel>
+        <Select
+          defaultValue={2}
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          onChange={handleChange}
+        >
+          <MenuItem value={1}>1 pers</MenuItem>
+          <MenuItem value={2}>2 pers</MenuItem>
+          <MenuItem value={3}>3 pers</MenuItem>
+          <MenuItem value={4}>4 pers</MenuItem>
+          <MenuItem value={5}>5 pers</MenuItem>
+          <MenuItem value={6}>6 pers</MenuItem>
+          <MenuItem value={7}>7 pers</MenuItem>
+          <MenuItem value={8}>8 pers</MenuItem>
+          <MenuItem value={9}>9 pers</MenuItem>
+          <MenuItem value={10}>10 pers</MenuItem>
+        </Select>
+      </FormControl>
+    );
   }
 
   const RecipeImage = (props) => { // rename this!
@@ -355,7 +396,7 @@ function App() {
   
   // Function that displays a list of ingredients.
   const IngredientTable = (props) => { // Refactor 
-    return (
+    return (  
       (props.list).map(ingredient => {
         return (
           <Grid container>

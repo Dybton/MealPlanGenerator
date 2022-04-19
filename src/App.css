@@ -25,12 +25,11 @@
 }
 
 .RecipeComponent {
-  /* height: 600px; */
   height: 70vh;
 }
 
 .RecipeComponentSmall {
-  /* text-align: start; */
+  text-align: start;
   height: 15vh;
   /* align-items: flex-start; */
   direction: row;
@@ -38,13 +37,23 @@
   margin-left: 5%;
 }
 
-/* .RecipeComponentSmallText {
-  margin-top: 20%;
+
+.RecipeComponentSmallTextBox {
+  justify-content: start;
+  margin-top: 18%;
   margin-left: 10px;
-  max-width: 90%;
-} */
+  font-size: small;
+}
+
+.RecipeComponentSmallText {
+  margin-top: 27%;
+  margin-left: 10px;
+  font-size: small;
+  max-height: 20px;
+}
 
 .RecipeComponentSmallLogo{
+  justify-content: center;
 }
 
 
@@ -70,6 +79,10 @@
 .LockedElement {
   position: absolute;
   width: 20%;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border: #61dafb;
 }
 
 
