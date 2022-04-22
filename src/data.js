@@ -2,11 +2,10 @@
 let Recipe = class {
     constructor(name, image, ingredients) {
       this.name = name.toUpperCase();
-      this.link = 
+    //   this.link = 
       this.image = image;
       this.ingredients = ingredients.map(element => ({ ...element, ingredient: firstLetterCapitalized(element.ingredient) }));
-     
-    
+      this.persons = 3;
     // Function that properly formats he ingredient names
     function firstLetterCapitalized(input) {
             let output = input.toLowerCase()

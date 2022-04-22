@@ -27,8 +27,16 @@ import Select from '@mui/material/Select';
 
 
 function App() {
+  
   // Initial dummy variables
-  const [objectArray, setObjectArray] = useState([{ val: "A" }, { val: "B"}, { val: "C"}, { val: "C" }, { val: "C"}])
+
+  // Todo: Both of these should be dynamic
+  const [recipeArray, setRecipeArray] = useState([{ val: "A" }, { val: "B"}, { val: "C"}, { val: "C" }, { val: "C"}])
+  
+  // Todo: Persons per day should depend on the number of elements in the recipeArray
+  const [personsPerDay, setPersonsPerDay] = useState([2, 2,  2, 2, 2])
+
+  
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -51,13 +59,13 @@ function App() {
     // quite small. An if the arraySize is large, at the same time, it will be problematic.
     // One option would be to dynamically change the size of the arraySize, or to make sure that the mockdata.lengt is always >= arraySize *2
 
-    let arraySize = objectArray.length; // How many objects we need to generate
+    let arraySize = recipeArray.length; // How many objects we need to generate
     let recipeSize = recipeData.length - 1; // How many objects there is to choose from (affects the random num gen)
     let newObjectArr = []; // Instantiate the new arr
     let index = 0;
     while (newObjectArr.length < arraySize) {
       // Keep running until array is filled
-      const object = objectArray[index];
+      const object = recipeArray[index];
       // if object from old array is locked, add to array
       if (object.locked) {
         newObjectArr.push(object)
@@ -67,13 +75,13 @@ function App() {
         // if not add to array and increment the value
         let randomNum = Math.floor(Math.random() * recipeSize) + 1;
         let randomObject = recipeData[randomNum];
-        if (!in_array(randomObject, newObjectArr) && !in_array(randomObject, objectArray)) {
+        if (!in_array(randomObject, newObjectArr) && !in_array(randomObject, recipeArray)) {
           newObjectArr.push(randomObject)
           index++;
         }
       }
     }
-    setObjectArray(newObjectArr)
+    setRecipeArray(newObjectArr)
   }
 
   // Helper function that checks whether an object is in an array
@@ -85,14 +93,14 @@ function App() {
 
   // A function that specifies an object to lock by index. It is also here the locked property is set
   const lockObjectByIndex = (index) => {
-    if(objectArray[index].locked) {
-      objectArray[index].locked = false;
+    if(recipeArray[index].locked) {
+      recipeArray[index].locked = false;
     }
     else {
-      objectArray[index].locked = true;
+      recipeArray[index].locked = true;
     }
   }
-  
+
   // SPACE BAR START
   // Triggers the changeObject by pressing space. UseKey is a custom hook downloaded from: https://react-hooks.org/docs/useKey
   function spacePress(e) {
@@ -175,7 +183,7 @@ function App() {
     function removeItemFromGroceryList(input){
         let index = groceries.indexOf(input)
         let temp_arr = [...groceries];
-        let removed = temp_arr.splice(index, 1)
+        temp_arr.splice(index, 1)
         setGroceries(temp_arr)
         
     // FUNCTIONS THAT CHANGES THE SIZE OF THE OBJECTS ARR - END
@@ -183,7 +191,7 @@ function App() {
 
     function generateGroceryList(){ // Find a better way to update groceries
       const list = [];
-      objectArray.forEach(recipe =>
+      recipeArray.forEach(recipe =>
       (recipe.ingredients).forEach(ingredient =>
       list.push(ingredient),
       ))
@@ -278,13 +286,13 @@ function App() {
 
   // This is the main container for the recipes. 
   // TODO: We need to dynamically calculate spacing
-  const RecipeGrid = () => {
+  const RecipeGrid = (pers) => {
     return (
       <div className="RecipeGrid">
         <Grid container spacing={1.5}>
-          {objectArray.map(object => (
+          {recipeArray.map(object => (
             <Grid item sm={2.4} xs={12}>
-              <RecipeComponent recipe={object}/>
+              <RecipeComponent recipe={object} pers={pers}/>
             </Grid>
           ))}
         </Grid>
@@ -301,7 +309,7 @@ function App() {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const index = objectArray.indexOf(props.recipe)
+    const index = recipeArray.indexOf(props.recipe)
     function lockObject() {
       if(locked) 
         setLocked(false);
@@ -309,7 +317,7 @@ function App() {
         setLocked(true)
       lockObjectByIndex(index)
     }
-    
+
     if(!matches)
       return (
       <Box className="RecipeComponent">
@@ -318,7 +326,7 @@ function App() {
               <p className="LockedElement" > {props.recipe.name} </p>
             </div>
             <div id="låsOpskriftKnap">
-            <SelectSmall/>
+            <SelectSmall pers={props.pers.pers} index={index}/>
             </div>
             <div>
             <p>Est. tid 20 min</p>
@@ -351,22 +359,25 @@ function App() {
         )
   }
 
-    const SelectSmall = () => {
-    const [pers, setPer] = React.useState(2);
-  
-    const handleChange = (event) => {
-      setPer(event.target.value);
-    };
-  
+    // Cont from here
+    const SelectSmall = (props) => {
+
+    const handleClick = (event) => {
+      let temp_arr = [... personsPerDay]
+      temp_arr.splice((props.index), 1, event.target.value)
+      setPersonsPerDay(temp_arr);
+    }
+
     return (
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
         </InputLabel>
         <Select
-          defaultValue={2}
+          // Todo: Find a way to avoid propdrilling - Maybe context?
+          defaultValue={props.pers[props.index]}
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          onChange={handleChange}
+          onChange={handleClick}
         >
           <MenuItem value={1}>1 pers</MenuItem>
           <MenuItem value={2}>2 pers</MenuItem>
@@ -384,11 +395,11 @@ function App() {
   }
 
   const RecipeImage = (props) => { // rename this!
-    const index = objectArray.indexOf(props.recipe.recipe)
+    const index = recipeArray.indexOf(props.recipe.recipe)
     return (
       // TODO ADD THE LINK ONCE 
       // <a href="https://stackoverflow.com/questions/2188272/html-how-to-make-an-entire-div-a-hyperlink " target="_blank">
-        <div className={matches ? "RecipeImageSmall" : "RecipeImage"} style={{backgroundImage: "url(" + objectArray[index].image +")"}}>      
+        <div className={matches ? "RecipeImageSmall" : "RecipeImage"} style={{backgroundImage: "url(" + recipeArray[index].image +")"}}>      
         </div>
       // </a>
     )
@@ -430,7 +441,7 @@ function App() {
       </div>
       <div>
         <GroceryListComponent ref={ref}/>
-        <RecipeGrid array={objectArray}/>
+        <RecipeGrid array={recipeArray} pers={personsPerDay}/>
       </div>
       <div style={{display: matches ? 'block' : 'none' }}>
         <FooterComponent changeObject={changeObject}  callB={() => {ref.current.f();}} />
