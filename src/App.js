@@ -32,11 +32,15 @@ function App() {
 
   // Todo: Both of these should be dynamic
   const [recipeArray, setRecipeArray] = useState([{ val: "A" }, { val: "B"}, { val: "C"}, { val: "C" }, { val: "C"}])
-  
+
+
+
+
   // Todo: Persons per day should depend on the number of elements in the recipeArray
   const [personsPerDay, setPersonsPerDay] = useState([2, 2,  2, 2, 2])
 
-  
+
+
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -185,24 +189,35 @@ function App() {
         let temp_arr = [...groceries];
         temp_arr.splice(index, 1)
         setGroceries(temp_arr)
-        
-    // FUNCTIONS THAT CHANGES THE SIZE OF THE OBJECTS ARR - END
     }
 
     function generateGroceryList(){ // Find a better way to update groceries
-      const list = [];
-      recipeArray.forEach(recipe =>
-      (recipe.ingredients).forEach(ingredient =>
-      list.push(ingredient),
-      ))
+      const temp_arr = JSON.parse(JSON.stringify(recipeArray))
+      console.log(Object.is(temp_arr, recipeArray))
+      const list = []; 
       
+      // Based on the recipe and it's place in the recipeArray we need to cross check the persons array to see how many people
+      // We are cooking for. We then need to use this to adjust the amount for each ingridients - do this is in union with update groceries
+
+      for (let i = 0; i < temp_arr.length; i++) {
+        const persons = personsPerDay[i]
+        const recipe = temp_arr[i];
+        const ingredients = recipe.ingredients
+        
+        for (let j = 0; j < ingredients.length; j++) {
+          let ingredient = ingredients[j]
+          ingredient.amount = ingredient.amount * persons
+          list.push(ingredient)
+        }
+      }
+
       // We sort the list
       function SortArray(x, y){
         return x.ingredient.localeCompare(y.ingredient);
       }
       const sortedArray = list.sort(SortArray);
 
-      // TODO: REFACTOR THIS SO THAT WE'RE NOT GOING THROUGH THE ARRAY TWO TIMES
+      // TODO: REFACTOR THIS SO THAT WE'RE NOT GOING THROUGH THE ARRAY TWO TIMES 
       const output = sortedArray.reduce((accumulator, cur) => {
         let ingredient = cur.ingredient;
         let unit = cur.unit;
@@ -211,8 +226,8 @@ function App() {
         else accumulator.push(cur);
         return accumulator; 
       }, []);
-
-      setGroceries(output)
+      console.log(recipeArray[0].ingredients)
+      setGroceries(list)
     }
 
    function copyToClipBoard(){
