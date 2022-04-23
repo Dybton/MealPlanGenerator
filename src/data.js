@@ -2,7 +2,6 @@
 let Recipe = class {
     constructor(name, image, ingredients) {
       this.name = name.toUpperCase();
-    //   this.link = 
       this.image = image;
       this.ingredients = ingredients.map(element => ({ ...element, ingredient: firstLetterCapitalized(element.ingredient) }));
       this.persons = 3;
@@ -15,7 +14,6 @@ let Recipe = class {
             return output;
         };
     }}
-
 
 const Gyros = new Recipe("Græsk gyros med kyllingekebab", "https://img.mummum.dk/wp-content/uploads/2020/06/9DF5C32D-C4AB-455F-8B10-C8A7CEEF7460-1350x1013.jpg", [{ingredient: "Pitabrød", amount: 3, unit: "stk"}, {ingredient: "Kyllingebryst", amount: 225, unit: "g"}, {ingredient: "Græsk Yogurt", amount: 0.8, unit: "dl"}, {ingredient: "Citron", amount: 1, unit: "stk"}, {ingredient: "Tomat", amount: 4, unit: "stk"}, {ingredient: "Rødløg", amount: 1, unit: "stk"}, {ingredient: "Koriander", amount: 1, unit: "tsk"}, {ingredient: "Hvidløg", amount: 1, unit: "fed"}, {ingredient: "Røget paprika", amount: 2, unit: "spsk"}, {ingredient: "Tørret Timian", amount: 1, unit: "spsk"}, {ingredient: "Hjertesalat", amount: 1, unit: "stk"}, {ingredient: "Olivenolie", amount: 1, unit: "spsk"}])
 const Halloumi_Tacos = new Recipe("Halloumi Tacos", "https://img.hellofresh.com/c_fit,f_auto,fl_lossy,h_1100,q_auto,w_2600/hellofresh_s3/image/HF191125_R05_W04_SE_C12343603-1_Main_low-f2a950e1.jpg", [{ingredient: "Halloumi", amount: 200, unit: "g"}, {ingredient: "Rødløg", amount: 2, unit: "stk"}, {ingredient: "Tomat", amount: 2, unit: "stk"}, {ingredient: "Hjertesalat", amount: 1, unit: "stk"}, {ingredient: "Tortilla pandekager", amount: 6, unit: "stk"}, {ingredient: "Avocado", amount: 1, unit: "stk"}, {ingredient: "Mayonaise", amount: 25, unit: "g"}, {ingredient: "Citron", amount: 1, unit: "stk"}, {ingredient: "Hvidløg", amount: 1, unit: "fed"}, {ingredient: "Agurk", amount: 1, unit: "stk"}, {ingredient: "Tørret Oregano", amount: 1, unit: "spsk"}])

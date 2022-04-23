@@ -32,13 +32,8 @@ function App() {
 
   // Todo: Both of these should be dynamic
   const [recipeArray, setRecipeArray] = useState([{ val: "A" }, { val: "B"}, { val: "C"}, { val: "C" }, { val: "C"}])
-
-
-
-
   // Todo: Persons per day should depend on the number of elements in the recipeArray
   const [personsPerDay, setPersonsPerDay] = useState([2, 2,  2, 2, 2])
-
 
 
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
@@ -332,6 +327,17 @@ function App() {
       lockObjectByIndex(index)
     }
 
+    const removeObj = () => {
+      if(recipeArray.length !== 1) {
+        let tempRecipeArr = [...recipeArray];
+        let tempPersArray = [...personsPerDay];
+        tempRecipeArr.splice(index, 1)
+        tempPersArray.splice(index, 1)
+        setRecipeArray(tempRecipeArr)
+        setPersonsPerDay(tempPersArray)
+      }
+    }
+
     if(!matches)
       return (
       <Box className="RecipeComponent">
@@ -349,6 +355,9 @@ function App() {
               <IconButton onClick={lockObject}>
                 {locked ? <LockIcon/> : <LockOpenIcon/> }
               </IconButton>
+            </div>
+            <div>
+            <IconButton  onClick={removeObj}> <ClearIcon /> </IconButton>
             </div>
             
       </Box>
