@@ -319,7 +319,7 @@ function App() {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     const index = recipeArray.indexOf(props.recipe)
-    function lockObject() {
+    function changeLockStatus() {
       if(locked) 
         setLocked(false);
       else
@@ -331,6 +331,7 @@ function App() {
       if(recipeArray.length !== 1) {
         let tempRecipeArr = [...recipeArray];
         let tempPersArray = [...personsPerDay];
+        changeLockStatus(); // Call the changeLockStatus funtion to unlock the object if we delete it. 
         tempRecipeArr.splice(index, 1)
         tempPersArray.splice(index, 1)
         setRecipeArray(tempRecipeArr)
@@ -349,10 +350,10 @@ function App() {
             <SelectSmall pers={props.pers.pers} index={index}/>
             </div>
             <div>
-            <p>Est. tid 20 min</p>
+            {/* <p>Est. tid 20 min</p> */}
             </div>
             <div> 
-              <IconButton onClick={lockObject}>
+              <IconButton onClick={changeLockStatus}>
                 {locked ? <LockIcon/> : <LockOpenIcon/> }
               </IconButton>
             </div>
@@ -373,7 +374,7 @@ function App() {
                 <p className='RecipeComponentSmallText'> {props.recipe.name}</p>
               </Grid>
               <Grid container item xs={4} className="RecipeComponentSmallLogo">
-              <IconButton onClick={lockObject}>
+              <IconButton onClick={changeLockStatus}>
                   {locked ? <LockIcon/> : <LockOpenIcon/> }
               </IconButton>
               </Grid>
