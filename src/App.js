@@ -226,8 +226,7 @@ function App() {
         else accumulator.push(cur);
         return accumulator; 
       }, []);
-      console.log(recipeArray[0].ingredients)
-      setGroceries(list)
+      setGroceries(output)
     }
 
    function copyToClipBoard(){

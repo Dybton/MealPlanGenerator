@@ -451,21 +451,21 @@ const Tikka_Massala = new Recipe("Tikka Massala","https://www.valdemarsro.dk/wp-
   },
   {
       "ingredient": "ingefær",
-      "amount": "2,5",
+      "amount": 2.5,
       "unit": "tsk"
   },
   {
       "ingredient": "garam masala",
-      "amount": "1,5",
+      "amount": 1.5,
       "unit": "tsk"
   },
   {
       "ingredient": "stødt gurkemeje",
-      "amount": "1,75",
+      "amount": 1.75,
       "unit": "tsk"
   },
   {
-      "ingredient": "chiliflajer",
+      "ingredient": "chiliflager",
       "amount": 0.5,
       "unit": "tsk"
   },
