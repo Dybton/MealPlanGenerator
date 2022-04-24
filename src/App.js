@@ -297,15 +297,13 @@ function App() {
   // TODO: We need to dynamically calculate spacing
   const RecipeGrid = (pers) => {
     return (
-      <div className="RecipeGrid">
-        <Grid container spacing={1.5}>
+        <Grid container spacing={1.5} mt={5} className="RecipeGrid">
           {recipeArray.map(object => (
             <Grid item sm={2.4} xs={12}>
               <RecipeComponent recipe={object} pers={pers}/>
             </Grid>
           ))}
         </Grid>
-      </div>
     )
   }
 
@@ -331,7 +329,8 @@ function App() {
       if(recipeArray.length !== 1) {
         let tempRecipeArr = [...recipeArray];
         let tempPersArray = [...personsPerDay];
-        changeLockStatus(); // Call the changeLockStatus funtion to unlock the object if we delete it. 
+        if(locked)
+          changeLockStatus(); // Call the changeLockStatus funtion to unlock the object if we delete it. 
         tempRecipeArr.splice(index, 1)
         tempPersArray.splice(index, 1)
         setRecipeArray(tempRecipeArr)

@@ -14,14 +14,16 @@
 .generateButton {
   background-color: black;
 }
-
+  
 .RecipeGrid {
-  margin-top: 2.5%;
   height: 675px;
   width: 100%;
   background-color: white;
   flex-direction: column;
-
+  direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
 }
 
 .RecipeComponent {
