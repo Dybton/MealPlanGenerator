@@ -116,7 +116,7 @@ const Chili_sin_carne = {
   name: 'CHILI SIN CARNE',
   image: 'https://www.valdemarsro.dk/wp-content/2017/09/chili-sin-carne-1.jpg',
   link: 'https://www.valdemarsro.dk/chili-sin-carne/?antal=1',
-  estTime: '45 min.',
+  estTime: '45 min',
   ingredients: [
     { amount: '0.38', unit: 'tsk', ingredient: 'Stødt Spidskommen' },
     { amount: '0.25', unit: 'tsk', ingredient: 'Kanel' },
@@ -150,7 +150,7 @@ const Boller_i_karry = {
     name: 'BOLLER I KARRY',
     image: 'https://www.valdemarsro.dk/wp-content/2010/10/boller_karry-1.jpg',
     link: 'https://www.valdemarsro.dk/boller-i-karry/?antal=1',
-    estTime: '35 min.',
+    estTime: '35 min',
     ingredients: [
       { amount: '100', unit: 'g', ingredient: 'Hakket' },
       { amount: '0.25', unit: 'stk', ingredient: 'Løg' },
@@ -175,7 +175,7 @@ const Orientalsk_risret_med_oksekød
     name: 'ORIENTALSK RISRET MED OKSEKØD',
     image: 'https://www.valdemarsro.dk/wp-content/2022/02/orientalsk-risret.jpg',
     link: 'https://www.valdemarsro.dk/orientalsk-risret/?antal=1',
-    estTime: '45 min.',
+    estTime: '45 min',
     ingredients: [
       { amount: '0.25', unit: 'stk', ingredient: 'Løg' },
       { amount: '0.75', unit: 'fed', ingredient: 'Hvidløg' },
@@ -199,7 +199,7 @@ const Buddha_Bowl = {
     name: 'BUDDHA BOWL',
     image: 'https://www.valdemarsro.dk/wp-content/2018/09/buddha-bowl-1.jpg',
     link: 'https://www.valdemarsro.dk/buddha-bowl/?antal=1',
-    estTime: '40 min.',
+    estTime: '40 min',
     ingredients: [
       { amount: '0.50', unit: 'dl', ingredient: 'Brune Ris' },
       { amount: '75', unit: 'g', ingredient: 'Sød Kartoffel' },
@@ -230,7 +230,7 @@ const Panang_karry = {
     name: 'PANANG KARRY MED KYLLING',
     image: 'https://www.valdemarsro.dk/wp-content/2020/01/penang-kylling.jpg',
     link: 'https://www.valdemarsro.dk/panang-karry-med-kylling/?antal=1',
-    estTime: '35 min.',
+    estTime: '35 min',
     ingredients: [
       { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
       { amount: '1', unit: 'fed', ingredient: 'Hvidløg' },
@@ -259,7 +259,7 @@ const Panang_karry = {
         name: 'KYLLING MED CASHEW',
         image: 'https://www.valdemarsro.dk/wp-content/2022/02/kylling-med-cashew.jpg',
         link: 'https://www.valdemarsro.dk/kylling-med-cashew/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '15', unit: 'g', ingredient: 'Cashewnødder' },
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
@@ -284,7 +284,7 @@ const Panang_karry = {
         name: 'MEXICANSK RISRET',
         image: 'https://www.valdemarsro.dk/wp-content/2020/01/mexicansk-risret.jpg',
         link: 'https://www.valdemarsro.dk/mexicansk-risret/?antal=1',
-        estTime: '45 min.',
+        estTime: '45 min',
         ingredients: [
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
           { amount: '1', unit: 'fed', ingredient: 'Hvidløg' },
@@ -315,7 +315,7 @@ const Panang_karry = {
         name: 'CHILI CON CARNE',
         image: 'https://www.valdemarsro.dk/wp-content/2013/04/chili-con-carne-2.jpg',
         link: 'https://www.valdemarsro.dk/chili-con-carne/?antal=1',
-        estTime: '50 min.',
+        estTime: '50 min',
         ingredients: [
           { amount: '0.25', unit: 'tsk', ingredient: 'Stødt Spidskommen' },
           { amount: '0.25', unit: 'tsk', ingredient: 'Kanel' },
@@ -343,7 +343,7 @@ const Panang_karry = {
         name: 'TORTELLINI I FAD',
         image: 'https://www.valdemarsro.dk/wp-content/2022/02/tortellini-fad.jpg',
         link: 'https://www.valdemarsro.dk/tortellini-i-fad/?antal=1',
-        estTime: '35 min.',
+        estTime: '35 min',
         ingredients: [
           { amount: '0.25', unit: 'stk', ingredient: 'Løg' },
           { amount: '0.75', unit: 'fed', ingredient: 'Hvidløg' },
@@ -367,7 +367,7 @@ const Panang_karry = {
         name: 'TACO MED TORSK OG MANGOSALSA',
         image: 'https://www.valdemarsro.dk/wp-content/2022/02/tacos-torsk-mangosalsa.jpg',
         link: 'https://www.valdemarsro.dk/tacos-med-torsk/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '0.25', unit: 'stk', ingredient: 'Mango' },
           { amount: '1.25', unit: 'stk', ingredient: 'Cherrytomater' },
@@ -391,7 +391,7 @@ const Panang_karry = {
         name: 'FISKELASAGNE',
         image: 'https://www.valdemarsro.dk/wp-content/2016/06/fiskelasagne-3.jpg',
         link: 'https://www.valdemarsro.dk/fiskelasagne/?antal=1',
-        estTime: '1 time 30 min.',
+        estTime: '1 time 30 min',
         ingredients: [
           { amount: '0.25', unit: 'stk', ingredient: 'Løg' },
           { amount: '0.50', unit: 'fed', ingredient: 'Hvidløg' },
@@ -423,7 +423,7 @@ const Panang_karry = {
         name: 'LAKSELASAGNE MED SPINAT',
         image: 'https://www.valdemarsro.dk/wp-content/2011/08/lakselasagne-spinat-opskrift-1.jpg',
         link: 'https://www.valdemarsro.dk/lakselasagne/?antal=1',
-        estTime: '60 min.',
+        estTime: '60 min',
         ingredients: [
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
           { amount: '125', unit: 'g', ingredient: 'Spinat' },
@@ -443,7 +443,7 @@ const Panang_karry = {
         name: 'BYGOTTO MED VARMRØGET LAKS OG PERSILLE',
         image: 'https://www.valdemarsro.dk/wp-content/2013/09/bygotto-med-laks.jpg',
         link: 'https://www.valdemarsro.dk/bygotto-med-varmroget-laks/?antal=1',
-        estTime: '40 min.',
+        estTime: '40 min',
         ingredients: [
           { amount: '52.50', unit: 'g', ingredient: 'Bygkerner' },
           { amount: '0.25', unit: 'stk', ingredient: 'Rødløg' },
@@ -462,7 +462,7 @@ const Panang_karry = {
         name: 'VIKINGEGRYDE',
         image: 'https://www.valdemarsro.dk/wp-content/2019/09/vikingegryde-1.jpg',
         link: 'https://www.valdemarsro.dk/vikingegryde/?antal=1',
-        estTime: '50 min.',
+        estTime: '50 min',
         ingredients: [
           { amount: '1.25', unit: 'skiver', ingredient: 'Bacon' },
           { amount: '62.50', unit: 'g', ingredient: 'Champignon' },
@@ -489,7 +489,7 @@ const Panang_karry = {
         name: 'KYLLING MED PARMESAN, SALVIE OG TOMATER I FAD',
         image: 'https://www.valdemarsro.dk/wp-content/2019/10/kylling-salvie-linser.jpg',
         link: 'https://www.valdemarsro.dk/kylling-med-parmesan/?antal=1',
-        estTime: '45 min.',
+        estTime: '45 min',
         ingredients: [
           { amount: '0.50', unit: 'dl', ingredient: 'Grønne Linser' },
           { amount: '0.50', unit: 'dl', ingredient: 'Kyllingebouillon' },
@@ -505,7 +505,7 @@ const Panang_karry = {
         name: 'KYLLINGEQUESADILLAS MED KRYDRET TOMATSAUCE OG SPINAT',
         image: 'https://www.valdemarsro.dk/wp-content/2018/11/quesadillas-kylling.jpg',
         link: 'https://www.valdemarsro.dk/kylling-quesadillas/?antal=1',
-        estTime: '40 min.',
+        estTime: '40 min',
         ingredients: [
           { amount: '0.25', unit: 'stk', ingredient: 'Løg' },
           { amount: '1', unit: 'fed', ingredient: 'Hvidløg' },
@@ -531,7 +531,7 @@ const Panang_karry = {
         name: 'JAMBALAYA',
         image: 'https://www.valdemarsro.dk/wp-content/2017/09/jambalaya-1.jpg',
         link: 'https://www.valdemarsro.dk/jambalaya/?antal=1',
-        estTime: '40 min.',
+        estTime: '40 min',
         ingredients: [
           { amount: '62.50', unit: 'g', ingredient: 'Kyllingebryst' },
           { amount: '25', unit: 'g', ingredient: 'Chorizo' },
@@ -561,7 +561,7 @@ const Panang_karry = {
         name: 'GRÆSK FARSBRØD',
         image: 'https://www.valdemarsro.dk/wp-content/2016/10/graesk-farsbroed.jpg',
         link: 'https://www.valdemarsro.dk/graesk-farsbroed/?antal=1',
-        estTime: '60 min.',
+        estTime: '60 min',
         ingredients: [
           { amount: '125', unit: 'g', ingredient: 'Hakket' },
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
@@ -586,7 +586,7 @@ const Panang_karry = {
         name: 'PAD THAI MED KYLLING',
         image: 'https://www.valdemarsro.dk/wp-content/2019/05/pad-thai.jpg',
         link: 'https://www.valdemarsro.dk/pad-thai/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '0.75', unit: 'fed', ingredient: 'Hvidløg' },
           { amount: '0.50', unit: 'stk', ingredient: 'Skalotteløg' },
@@ -614,7 +614,7 @@ const Panang_karry = {
         name: 'ONE POT PASTA MED CHORIZO',
         image: 'https://www.valdemarsro.dk/wp-content/2017/03/one-pot-pasta-4.jpg',
         link: 'https://www.valdemarsro.dk/one-pot-pasta/?antal=1',
-        estTime: '25 min.',
+        estTime: '25 min',
         ingredients: [
           { amount: '100', unit: 'g', ingredient: 'Spaghetti' },
           { amount: '0.25', unit: 'dåse', ingredient: 'Hakkede Tomater' },
@@ -637,7 +637,7 @@ const Panang_karry = {
         name: 'FAJITAS',
         image: 'https://www.valdemarsro.dk/wp-content/2021/04/fajitas.jpg',
         link: 'https://www.valdemarsro.dk/fajitas/?antal=1',
-        estTime: '60 min.',
+        estTime: '60 min',
         ingredients: [
           { amount: '0.50', unit: 'stk', ingredient: 'Lime' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Sukker' },
@@ -661,7 +661,7 @@ const Panang_karry = {
         name: 'VEGETAR PANANG KARRY MED KIKÆRTER OG GRØNTSAGER',
         image: 'https://www.valdemarsro.dk/wp-content/2020/05/panang-curry-vegetar.jpg',
         link: 'https://www.valdemarsro.dk/vegetar-panang-karry/?antal=1',
-        estTime: '40 min.',
+        estTime: '40 min',
         ingredients: [
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
           { amount: '1', unit: 'fed', ingredient: 'Hvidløg' },
@@ -688,7 +688,7 @@ const Panang_karry = {
         name: 'STEGTE RIS MED ÆG',
         image: 'https://www.valdemarsro.dk/wp-content/2020/01/stegte-ris.jpg',
         link: 'https://www.valdemarsro.dk/stegte-ris/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '1', unit: 'stk', ingredient: 'Æg' },
           { amount: '0.25', unit: 'stk', ingredient: 'Løg' },
@@ -714,7 +714,7 @@ const Panang_karry = {
         name: 'CHANA MASALA',
         image: 'https://www.valdemarsro.dk/wp-content/2020/02/chana-masala.jpg',
         link: 'https://www.valdemarsro.dk/chana-masala/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
           { amount: '0.50', unit: 'tsk', ingredient: 'Stødt Spidskommen' },
@@ -739,7 +739,7 @@ const Panang_karry = {
         name: 'RED THAI CURRY',
         image: 'https://www.valdemarsro.dk/wp-content/2019/11/red-thai-curry.jpg',
         link: 'https://www.valdemarsro.dk/red-thai-curry/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
           { amount: '0.50', unit: 'fed', ingredient: 'Hvidløg' },
@@ -766,7 +766,7 @@ const Panang_karry = {
         name: 'TOM YUM SUPPE',
         image: 'https://www.valdemarsro.dk/wp-content/2017/01/Tom-yum-suppe-opskrift.jpg',
         link: 'https://www.valdemarsro.dk/tom-yum-suppe/?antal=1',
-        estTime: '40 min.',
+        estTime: '40 min',
         ingredients: [
           { amount: '37.50', unit: 'g', ingredient: 'Rejer' },
           { amount: '0.25', unit: 'liter', ingredient: 'Grøntsagsbouillon' },
@@ -792,7 +792,7 @@ const Panang_karry = {
         name: 'CITRONGRÆS MARINERET MØRBRAD MED NUDLER',
         image: 'https://www.valdemarsro.dk/wp-content/2022/03/citrongraes-moerbrad-nudler.jpg',
         link: 'https://www.valdemarsro.dk/citrongraes-moerbrad/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '0.25', unit: 'stk', ingredient: 'Svinemørbrad' },
           { amount: '0.25', unit: 'stk', ingredient: 'Citrongræs' },
@@ -819,7 +819,7 @@ const Panang_karry = {
         name: 'TACOSALAT MED KYLLING',
         image: 'https://www.valdemarsro.dk/wp-content/2019/05/tacosalat_kylling.jpg',
         link: 'https://www.valdemarsro.dk/taco-salat/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '125', unit: 'g', ingredient: 'Kyllingefilet' },
           { amount: '0.50', unit: 'tsk', ingredient: 'Stødt Spidskommen' },
@@ -849,7 +849,7 @@ const Panang_karry = {
         name: 'FRITTATA MED SQUASH OG CHORIZO',
         image: 'https://www.valdemarsro.dk/wp-content/2018/06/frittata-squash.jpg',
         link: 'https://www.valdemarsro.dk/frittata/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
           { amount: '12.50', unit: 'g', ingredient: 'Chorizo' },
@@ -891,7 +891,7 @@ const Panang_karry = {
         name: 'FRISKE FORÅRSRULLER MED NAKKEKOTELETTER',
         image: 'https://www.valdemarsro.dk/wp-content/2016/08/friske-foraarsruller.jpg',
         link: 'https://www.valdemarsro.dk/friske-foraarsruller/?antal=1',
-        estTime: '1 time 30 min.',
+        estTime: '1 time 30 min',
         ingredients: [
           { amount: '0.75', unit: 'stk', ingredient: 'Nakkekoteletter' },
           { amount: '0.25', unit: 'stængel', ingredient: 'Citrongræs' },
@@ -949,7 +949,7 @@ const Panang_karry = {
         name: 'WRAPS MED RISTEDE KIKÆRTER, BLOMKÅL OG SUMAK',
         image: 'https://www.valdemarsro.dk/wp-content/2017/01/blomkaal_kikaerter.jpg',
         link: 'https://www.valdemarsro.dk/wraps-med-ristede-kikaerter-og-blomkaal-med-sumak/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '31.25', unit: 'g', ingredient: 'Kikærter' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Olivenolie' },
@@ -972,7 +972,7 @@ const Panang_karry = {
         name: 'KOTELETTER MED CHAMPIGNON OG FLØDE',
         image: 'https://www.valdemarsro.dk/wp-content/2016/04/koteletter-champignon.jpg',
         link: 'https://www.valdemarsro.dk/koteletter/?antal=1',
-        estTime: '50 min.',
+        estTime: '50 min',
         ingredients: [
           { amount: '0.75', unit: 'stk', ingredient: 'Koteletter' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Olivenolie' },
@@ -991,7 +991,7 @@ const Panang_karry = {
         name: 'FRIED RICE MED KYLLING',
         image: 'https://www.valdemarsro.dk/wp-content/2016/08/fried-rice.jpg',
         link: 'https://www.valdemarsro.dk/fried-rice-med-kylling/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '0.25', unit: 'stk', ingredient: 'Rødløg' },
           { amount: '0.50', unit: 'fed', ingredient: 'Hvidløg' },
@@ -1016,7 +1016,7 @@ const Panang_karry = {
         name: 'GRØNTSAGSGRYDE MED KIKÆRTER',
         image: 'https://www.valdemarsro.dk/wp-content/2016/03/groentsagsgryde_opskrift.jpg',
         link: 'https://www.valdemarsro.dk/varmende-nem-og-krydret-groentsagsgryde-med-kikaerter/?antal=1',
-        estTime: '30 min.',
+        estTime: '30 min',
         ingredients: [
           { amount: '0.50', unit: 'tsk', ingredient: 'Stødt Spidskommen' },
           { amount: '0.25', unit: 'tsk', ingredient: 'Stødt Ingefær' },
@@ -1045,7 +1045,7 @@ const Panang_karry = {
         name: 'BANH MI BURGER',
         image: 'https://www.valdemarsro.dk/wp-content/2014/08/burger-banh-mi.jpg',
         link: 'https://www.valdemarsro.dk/banh-mi-burger/?antal=1',
-        estTime: '1 time 30 min.',
+        estTime: '1 time 30 min',
         ingredients: [
           { amount: '1', unit: 'stk', ingredient: 'Burgerboller' },
           { amount: '75', unit: 'g', ingredient: 'Culottesteg' },

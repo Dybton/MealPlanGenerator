@@ -26,6 +26,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import useScrollBlock from './useScrollBlock';
+import { Handyman } from '@mui/icons-material';
 
 
 function App() {
@@ -36,7 +37,6 @@ function App() {
   const [recipeArray, setRecipeArray] = useState([{ val: "A" }, { val: "B"}, { val: "C"}, { val: "C" }, { val: "C"}])
   // Todo: Persons per day should depend on the number of elements in the recipeArray
   const [personsPerDay, setPersonsPerDay] = useState([2, 2,  2, 2, 2])
-
 
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
@@ -297,23 +297,38 @@ function App() {
   // This is the main container for the recipes. 
   // TODO: We need to dynamically calculate spacing
   const RecipeGrid = (pers) => {
-    // TODO: Create some conditional logic to determine whether we should create the recipeButton or not. 
-
+    // conditional logic to determine whether we should create the recipeButton or not. 
+    // if less than max recipes then show. Else don't show
+    let status = false;
+    if(recipeArray.length < 5) {
+      status = true;
+    }
+    
     return (
         <Grid container mt={5} className="RecipeGrid">
-          {/* TODO: THESE SHOULD BE SEPARATE COMPONENTS */}
-          <div className="AddRecipeButton">
+          
+          {status ? (
+            <div className="AddRecipeButtonLeft">
             <AddRecipeButton/>
           </div>
+          ) : (
+            null
+          )}
           
           {recipeArray.map(object => (
             <Grid item sm={2.4} xs={12}>
               <RecipeComponent recipe={object} pers={pers}/>
             </Grid>
           ))}
-          <div className="AddRecipeButton">
+          
+          {status ? (
+            <div className="AddRecipeButtonRight">
             <AddRecipeButton/>
           </div>
+          ) : (
+            null
+          )}
+
         </Grid>
     )
   }
@@ -398,7 +413,7 @@ function App() {
             <SelectSmall pers={props.pers.pers} index={index}/>
             </div>
             <div>
-            {/* <p>Est. tid 20 min</p> */}
+            <p>Est. tid {props.recipe.estTime}</p>
             </div>
             <div> 
               <IconButton onClick={changeLockStatus}>
@@ -468,10 +483,18 @@ function App() {
 
   const RecipeImage = (props) => { // rename this!
     const index = recipeArray.indexOf(props.recipe.recipe)
+
+    const handleClick = () => {
+      const recipeClone = {... props.recipe}
+      const link = recipeClone.recipe.link
+      const numberOfPeople = "antal=" + personsPerDay[index]
+      const link2 = link.replace('antal=1', numberOfPeople)
+      window.open(link2, '_blank');
+    } 
+
     return (
-      // TODO ADD THE LINK ONCE 
-      // <a href="https://stackoverflow.com/questions/2188272/html-how-to-make-an-entire-div-a-hyperlink " target="_blank">
-        <div className={matches ? "RecipeImageSmall" : "RecipeImage"} style={{backgroundImage: "url(" + recipeArray[index].image +")"}}>      
+      // <a href={(props.recipe.recipe.link)} target="_blank">
+        <div onClick={handleClick} className={matches ? "RecipeImageSmall" : "RecipeImage"} style={{backgroundImage: "url(" + recipeArray[index].image +")"}}>      
         </div>
       // </a>
     )

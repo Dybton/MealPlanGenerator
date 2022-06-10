@@ -36,6 +36,7 @@
 }
 
 .AddButton {
+  margin-left: 20px;
 }
 
 .RecipeComponentSmall {
@@ -66,12 +67,20 @@
 }
 
 .RecipeImage {
+  display: block;
   margin-top: 15%;
   height: 50%;
   border-radius: 15px;
   vertical-align: bottom;
   background-size: cover;
   background-position: center;
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+}
+
+.RecipeImage:hover {
+  transform: scale(1.1);
 }
 
 .RecipeImageSmall {
@@ -145,8 +154,14 @@
 
 
 
-  .AddRecipeButton {
+  .AddRecipeButtonLeft {
     margin-bottom: 13.5%;
+    margin-right: 1.6%;
+  }
+
+  .AddRecipeButtonRight {
+    margin-bottom: 13.5%;
+    margin-left: 1.6%;
   }
 
 
