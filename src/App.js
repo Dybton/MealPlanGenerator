@@ -24,6 +24,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import useScrollBlock from './useScrollBlock';
 
 
 function App() {
@@ -38,7 +40,6 @@ function App() {
 
   // TODO: Implement some check that ensures there's enough mock data / recipes. Especially important before 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
     changeObject();
   }, [])
 
@@ -296,14 +297,42 @@ function App() {
   // This is the main container for the recipes. 
   // TODO: We need to dynamically calculate spacing
   const RecipeGrid = (pers) => {
+    // TODO: Create some conditional logic to determine whether we should create the recipeButton or not. 
+
     return (
-        <Grid container spacing={1.5} mt={5} className="RecipeGrid">
+        <Grid container mt={5} className="RecipeGrid">
+          {/* TODO: THESE SHOULD BE SEPARATE COMPONENTS */}
+          <div className="AddRecipeButton">
+            <AddRecipeButton/>
+          </div>
+          
           {recipeArray.map(object => (
             <Grid item sm={2.4} xs={12}>
               <RecipeComponent recipe={object} pers={pers}/>
             </Grid>
           ))}
+          <div className="AddRecipeButton">
+            <AddRecipeButton/>
+          </div>
         </Grid>
+    )
+  }
+
+  const AddRecipeButton = () => {
+    
+    function handleClick(){
+      console.log("todo")
+      // Add a new recipe
+    }
+    
+    return (
+      <div>
+      {
+        (recipeArray.length < 5) ? (
+        <IconButton onClick={handleClick}> <AddCircleOutlineOutlinedIcon sx={{ fontSize: 33 }}/> </IconButton>
+        ) : null
+      }
+      </div>
     )
   }
 
@@ -324,6 +353,24 @@ function App() {
         setLocked(true)
       lockObjectByIndex(index)
     }
+    
+    // NA: Implement this
+    // const increaseArraySize = (index) => {
+    //   const recipeSize = mockdata.length - 1;
+    //   let temp_arr = [...objectArray];
+    //     if(objectArray.length < 10) {
+    //       let uniqueArrayAdded = false;
+    //       while(uniqueArrayAdded == false) {
+    //         let randomNum = Math.floor(Math.random()*recipeSize) +1;
+    //         let newValue = mockdata[randomNum];
+    //         if(!in_array(newValue, temp_arr)) {
+    //           temp_arr.splice(index, 0, newValue);
+    //           uniqueArrayAdded = true;
+    //         }
+    //       }
+    //       setObjectArray(temp_arr)
+    //     }
+    // }
 
     const removeObj = () => {
       if(recipeArray.length !== 1) {
@@ -340,7 +387,9 @@ function App() {
 
     if(!matches)
       return (
-      <Box className="RecipeComponent">
+      // <Box className="RecipeComponent" style={{border: '1px solid rgba(0, 0, 0, 0.05)'}}>
+      <Box className="RecipeComponent" >
+        
           <RecipeImage recipe={props}/>
             <div>
               <p className="LockedElement" > {props.recipe.name} </p>
@@ -370,7 +419,7 @@ function App() {
                 <RecipeImage recipe={props} />
               </Grid>
               <Grid container item xs={4} className="RecipeComponentSmallTextBox">
-                <p className='RecipeComponentSmallText'> {props.recipe.name}</p>
+              <p className='RecipeComponentSmallText'>{props.recipe.name}</p>
               </Grid>
               <Grid container item xs={4} className="RecipeComponentSmallLogo">
               <IconButton onClick={changeLockStatus}>
@@ -463,8 +512,8 @@ function App() {
         <UpperContent callB={() => {ref.current.f();}}/>
       </div>
       <div>
-        <GroceryListComponent ref={ref}/>
-        <RecipeGrid array={recipeArray} pers={personsPerDay}/>
+      <GroceryListComponent ref={ref}/>
+      <RecipeGrid array={recipeArray} pers={personsPerDay}/>
       </div>
       <div style={{display: matches ? 'block' : 'none' }}>
         <FooterComponent changeObject={changeObject}  callB={() => {ref.current.f();}} />

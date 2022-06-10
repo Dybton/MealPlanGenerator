@@ -3,6 +3,7 @@
   background-color: rgba(229, 234, 240, 1);
 }
 
+
 .App-logo {
   pointer-events: none;
 }
@@ -16,7 +17,7 @@
 }
   
 .RecipeGrid {
-  height: 675px;
+  height: 625px;
   width: 100%;
   background-color: white;
   flex-direction: column;
@@ -24,16 +25,22 @@
   align-items: center;
   justify-content: center;
   margin-top: 100px;
+  display: grid
 }
 
 .RecipeComponent {
   height: 70vh;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-width: 5px;
+}
+
+.AddButton {
 }
 
 .RecipeComponentSmall {
   text-align: start;
   height: 15vh;
-  /* align-items: flex-start; */
   direction: row;
   justify-content: center;
   margin-left: 5%;
@@ -57,8 +64,6 @@
 .RecipeComponentSmallLogo{
   justify-content: center;
 }
-
-
 
 .RecipeImage {
   margin-top: 15%;
@@ -86,6 +91,7 @@
 .MuiOutlinedInput-notchedOutline {
   border: #61dafb;
 }
+
 
 
 /* .groceryListTop {
@@ -137,3 +143,15 @@
     overflow-y: scroll;
   }
 
+
+
+  .AddRecipeButton {
+    margin-bottom: 13.5%;
+  }
+
+
+  
+
+
+
+  .material-icons.md-36 { font-size: 36px; }
