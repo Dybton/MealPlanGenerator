@@ -121,8 +121,6 @@ function App() {
 
 
   // COMPONENTS START
-  
-  // TODO: FIND OTHER NAME
   const UpperContent = (props) => {
     return (
     <div>
@@ -142,7 +140,6 @@ function App() {
     )
   }
 
-  // Othername
   const FooterComponent = (props) => {
     return (
       <div>
@@ -309,7 +306,7 @@ function App() {
           
           {status ? (
             <div className="AddRecipeButtonLeft">
-            <AddRecipeButton/>
+           <AddRecipeButton index={0}/>
           </div>
           ) : (
             null
@@ -323,22 +320,46 @@ function App() {
           
           {status ? (
             <div className="AddRecipeButtonRight">
-            <AddRecipeButton/>
+            <AddRecipeButton index={recipeArray.length}/>
           </div>
           ) : (
             null
           )}
-
         </Grid>
     )
   }
 
-  const AddRecipeButton = () => {
+  const AddRecipeButton = (props) => {
     
     function handleClick(){
-      console.log("todo")
       // Add a new recipe
+      addRecipe(props.index)
     }
+
+    const addRecipe = (index) => {
+      const recipeSize = recipeData.length - 1;
+      let temp_arr = [...recipeArray];
+        if(recipeArray.length < 10) {
+          let uniqueArrayAdded = false;
+          while(uniqueArrayAdded == false) {
+            let randomNum = Math.floor(Math.random()*recipeSize) +1;
+            let newValue = recipeData[randomNum];
+            if(!in_array(newValue, temp_arr)) {
+              temp_arr.splice(index, 0, newValue);
+              uniqueArrayAdded = true;
+            }
+          }
+          let personsPerDayCopy = [... personsPerDay]
+          if(index == 0) {
+            personsPerDayCopy.unshift(2)
+          } else {
+            personsPerDayCopy.push(2)
+          }
+          setPersonsPerDay(personsPerDayCopy)
+          setRecipeArray(temp_arr)
+        }
+    }
+    
     
     return (
       <div>
@@ -369,23 +390,6 @@ function App() {
       lockObjectByIndex(index)
     }
     
-    // NA: Implement this
-    // const increaseArraySize = (index) => {
-    //   const recipeSize = mockdata.length - 1;
-    //   let temp_arr = [...objectArray];
-    //     if(objectArray.length < 10) {
-    //       let uniqueArrayAdded = false;
-    //       while(uniqueArrayAdded == false) {
-    //         let randomNum = Math.floor(Math.random()*recipeSize) +1;
-    //         let newValue = mockdata[randomNum];
-    //         if(!in_array(newValue, temp_arr)) {
-    //           temp_arr.splice(index, 0, newValue);
-    //           uniqueArrayAdded = true;
-    //         }
-    //       }
-    //       setObjectArray(temp_arr)
-    //     }
-    // }
 
     const removeObj = () => {
       if(recipeArray.length !== 1) {
@@ -449,6 +453,7 @@ function App() {
     // Cont from here
     const SelectSmall = (props) => {
 
+  
     const handleClick = (event) => {
       let temp_arr = [... personsPerDay]
       temp_arr.splice((props.index), 1, event.target.value)
@@ -488,8 +493,8 @@ function App() {
       const recipeClone = {... props.recipe}
       const link = recipeClone.recipe.link
       const numberOfPeople = "antal=" + personsPerDay[index]
-      const link2 = link.replace('antal=1', numberOfPeople)
-      window.open(link2, '_blank');
+      const modifiedLink = link.replace('antal=1', numberOfPeople)
+      window.open(modifiedLink, '_blank');
     } 
 
     return (
