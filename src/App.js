@@ -43,7 +43,6 @@ function App() {
     changeObject();
   }, [])
 
-
   // TODO MAKE THIS A CONTEXT STATE?
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -300,10 +299,14 @@ function App() {
     if(recipeArray.length < 5) {
       status = true;
     }
-    
-    return (
-        <Grid container mt={5} className="RecipeGrid">
+
+    let condtionalClassName = "RecipeGrid"
+    if (matches) {
+      condtionalClassName = "RecipeGridSmall"
+    }
           
+    return (
+        <Grid container className={`${condtionalClassName }`}>
           {status ? (
             <div className="AddRecipeButtonLeft">
            <AddRecipeButton index={0}/>
