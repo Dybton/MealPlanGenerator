@@ -19,7 +19,6 @@ import LockIcon from '@mui/icons-material/LockRounded';
 import LockOpenIcon from '@mui/icons-material/LockOpenRounded';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -307,7 +306,7 @@ function App() {
           
     return (
         <Grid container className={`${condtionalClassName }`}>
-          {status ? (
+          {(status && !matches)  ?  (
             <div className="AddRecipeButtonLeft">
            <AddRecipeButton index={0}/>
           </div>
@@ -320,7 +319,6 @@ function App() {
               <RecipeComponent recipe={object} pers={pers}/>
             </Grid>
           ))}
-          
           {status ? (
             <div className="AddRecipeButtonRight">
             <AddRecipeButton index={recipeArray.length}/>
