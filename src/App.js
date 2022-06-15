@@ -25,8 +25,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import useScrollBlock from './useScrollBlock';
-import { Handyman } from '@mui/icons-material';
+
+import NativeSelect from '@mui/material/NativeSelect';
 
 
 function App() {
@@ -409,7 +409,6 @@ function App() {
 
     if(!matches)
       return (
-      // <Box className="RecipeComponent" style={{border: '1px solid rgba(0, 0, 0, 0.05)'}}>
       <Box className="RecipeComponent" >
         
           <RecipeImage recipe={props}/>
@@ -440,13 +439,16 @@ function App() {
               <Grid item xs={4}>
                 <RecipeImage recipe={props} />
               </Grid>
-              <Grid container item xs={4} className="RecipeComponentSmallTextBox">
-              <p className='RecipeComponentSmallText'>{props.recipe.name}</p>
+              <Grid container item xs={6} className="RecipeComponentSmallTextBox">
+                <p className='RecipeComponentSmallText'>{props.recipe.name}</p>
+                <SelectSmall pers={props.pers.pers} index={index} style="position: fixed;"/>
+
               </Grid>
-              <Grid container item xs={4} className="RecipeComponentSmallLogo">
-              <IconButton onClick={changeLockStatus}>
+              <Grid container item xs={2} className="RecipeComponentSmallLogoContainer">
+              <IconButton  onClick={changeLockStatus}>
                   {locked ? <LockIcon/> : <LockOpenIcon/> }
               </IconButton>
+              <IconButton  onClick={removeObj}> <ClearIcon /> </IconButton>
               </Grid>
             </Grid>
           </div>
@@ -455,8 +457,6 @@ function App() {
 
     // Cont from here
     const SelectSmall = (props) => {
-
-  
     const handleClick = (event) => {
       let temp_arr = [... personsPerDay]
       temp_arr.splice((props.index), 1, event.target.value)
@@ -467,12 +467,13 @@ function App() {
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
         </InputLabel>
-        <Select
+        <Select 
           // Todo: Find a way to avoid propdrilling - Maybe context?
           defaultValue={props.pers[props.index]}
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           onChange={handleClick}
+          style={{ height: 30}}
         >
           <MenuItem value={1}>1 pers</MenuItem>
           <MenuItem value={2}>2 pers</MenuItem>
@@ -482,8 +483,6 @@ function App() {
           <MenuItem value={6}>6 pers</MenuItem>
           <MenuItem value={7}>7 pers</MenuItem>
           <MenuItem value={8}>8 pers</MenuItem>
-          <MenuItem value={9}>9 pers</MenuItem>
-          <MenuItem value={10}>10 pers</MenuItem>
         </Select>
       </FormControl>
     );

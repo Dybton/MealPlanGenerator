@@ -205,7 +205,7 @@ const Buddha_Bowl = {
       { amount: '75', unit: 'g', ingredient: 'Sød Kartoffel' },
       { amount: '0.25', unit: 'stk', ingredient: 'Squash' },
       { amount: '3.75', unit: 'stk', ingredient: 'Cherrytomater' },
-      { amount: '0.25', unit: 'stk', ingredient: 'Rødløg' },
+      { amount: '0.25', unit: 'stk', ingredient: 'Løg' },
       { amount: '12.50', unit: 'g', ingredient: 'Edemamebønner' },
       { amount: '0.25', unit: 'dåse', ingredient: 'Sorte Bønner' },
       { amount: '0.25', unit: 'stk', ingredient: 'Avocado' },
@@ -383,7 +383,7 @@ const Panang_karry = {
           { amount: '2', unit: 'tortillas', ingredient: 'Pandekager' },
           { amount: '15', unit: 'g', ingredient: 'Baby Spinat' },
           { amount: '0.50', unit: 'stk', ingredient: 'Avocado' },
-          { amount: '0.25', unit: 'håndfuld', ingredient: 'Frisk' }
+          { amount: '0.25', unit: 'håndfuld', ingredient: 'Frisk Koriander' }
         ]
       }
     
@@ -563,7 +563,7 @@ const Panang_karry = {
         link: 'https://www.valdemarsro.dk/graesk-farsbroed/?antal=1',
         estTime: '60 min',
         ingredients: [
-          { amount: '125', unit: 'g', ingredient: 'Hakket' },
+          { amount: '125', unit: 'g', ingredient: 'Hakket Lammekød' },
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
           { amount: '0.50', unit: 'fed', ingredient: 'Hvidløg' },
           { amount: '0.25', unit: 'dl', ingredient: 'Mælk' },
@@ -572,7 +572,7 @@ const Panang_karry = {
           { amount: '0.25', unit: 'dl', ingredient: 'Havregryn' },
           { amount: '0.50', unit: 'spsk', ingredient: 'Frisk Timian' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Frisk Rosmarin' },
-          { amount: '0.75', unit: 'spsk', ingredient: 'Soltørrede' },
+          { amount: '0.75', unit: 'spsk', ingredient: 'Soltørrede Tomater' },
           { amount: '2.50', unit: 'stk', ingredient: 'Sorte Oliven' },
           { amount: '18.75', unit: 'g', ingredient: 'Feta' },
           { amount: '200', unit: 'g', ingredient: 'Babykartofler' },

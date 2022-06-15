@@ -45,6 +45,7 @@
   margin-left: 2%;
   margin-right: 2%;
   border-width: 5px;
+  
 }
 
 .AddButton {
@@ -53,29 +54,41 @@
 
 .RecipeComponentSmall {
   text-align: start;
-  height: 18vh;
+  min-height: 16vh;
+  max-height: 19vh;
   direction: row;
-  justify-content: center;
   margin-left: 5%;
+  /* border-color: red;
+  border-style: solid; */
+  
 }
-
 
 .RecipeComponentSmallTextBox {
   justify-content: start;
   margin-top: 18%;
   margin-left: 10px;
   font-size: small;
+  border-color: red;
+  border-style: solid;
 }
 
 .RecipeComponentSmallText {
-  margin-top: 27%;
+  margin-top: 10%;
   margin-left: 10px;
   font-size: small;
-  max-height: 20px;
+  /* border-color: red;
+  border-style: solid; */
 }
 
+.RecipeComponentSmallLogoContainer{
+  /* border-color: red; */
+  /* border-style: solid; */
+  /* align-content: center; */
+}
 .RecipeComponentSmallLogo{
-  justify-content: center;
+  vertical-align: top;
+  border-color: blue;
+  border-style: solid;
 }
 
 .RecipeImage {
