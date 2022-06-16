@@ -44,8 +44,10 @@ function App() {
   }, [])
 
   // TODO MAKE THIS A CONTEXT STATE?
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesMedium = useMediaQuery(theme.breakpoints.down('md'));
 
   if(matches)
     document.body.style = 'background: white;';
@@ -475,24 +477,25 @@ function App() {
       <FormControl sx={{ m: 1, minWidth: width, position: position}} size="small" >
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
         </InputLabel>
-        <Select 
-          // Todo: Find a way to avoid propdrilling - Maybe context?
-          defaultValue={props.pers[props.index]}
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          onChange={handleClick}
-          style={{ height: selectHeight}}
-          className={`${matches ? "smallSelectorContainer" : ""}`}
-        >
-          <MenuItem value={1}>1 pers</MenuItem>
-          <MenuItem value={2}>2 pers</MenuItem>
-          <MenuItem value={3}>3 pers</MenuItem>
-          <MenuItem value={4}>4 pers</MenuItem>
-          <MenuItem value={5}>5 pers</MenuItem>
-          <MenuItem value={6}>6 pers</MenuItem>
-          <MenuItem value={7}>7 pers</MenuItem>
-          <MenuItem value={8}>8 pers</MenuItem>
-        </Select>
+          <Select 
+            // Todo: Find a way to avoid propdrilling - Maybe context?
+            defaultValue={props.pers[props.index]}
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            onChange={handleClick}
+            style={{ height: selectHeight}}
+            className={`${matches ? "smallSelectorContainer" : ""}`}
+          >
+            <MenuItem value={1}>1 pers</MenuItem>
+            <MenuItem value={2}>2 pers</MenuItem>
+            <MenuItem value={3}>3 pers</MenuItem>
+            <MenuItem value={4}>4 pers</MenuItem>
+            <MenuItem value={5}>5 pers</MenuItem>
+            <MenuItem value={6}>6 pers</MenuItem>
+            <MenuItem value={7}>7 pers</MenuItem>
+            <MenuItem value={8}>8 pers</MenuItem>
+          </Select>
+          
       </FormControl>
     );
   }

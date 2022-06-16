@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
   background-color: rgba(229, 234, 240, 1);
@@ -130,9 +132,8 @@
 }
 
 .smallSelectorContainer {
-  margin-top: 72%;
+  margin-top: 90%;
 }
-
 
 #låsOpskriftKnap {
   margin-top: 25%;
@@ -142,6 +143,7 @@
   display: flex;
   align-items: center;
 }
+
 
 /* TODO: MAKE THIS DRY SO THAT WE DON'T HAVE TWO GROCERYLISTS*/
 
