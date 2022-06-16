@@ -30,6 +30,7 @@ import NativeSelect from '@mui/material/NativeSelect';
 
 function App() {
   
+
   // Initial dummy variables
 
   // Todo: Both of these should be dynamic
@@ -410,6 +411,7 @@ function App() {
       <Box className="RecipeComponent" >
         
           <RecipeImage recipe={props}/>
+          
             <div>
               <p className="LockedElement" > {props.recipe.name} </p>
             </div>
@@ -434,26 +436,24 @@ function App() {
         return (
           <div>
             <Grid container className="RecipeComponentSmall">
-              <Grid item xs={4}>
+              <Grid item xs={4} className="funny">
                 <RecipeImage recipe={props} />
               </Grid>
               <Grid container item xs={6} className="RecipeComponentSmallTextBox">
                 <p className='RecipeComponentSmallText'>{props.recipe.name}</p>
-                <SelectSmall pers={props.pers.pers} index={index} style="position: fixed;"/>
-
+                <SelectSmall pers={props.pers.pers} index={index}/>
               </Grid>
               <Grid container item xs={2} className="RecipeComponentSmallLogoContainer">
-              <IconButton  onClick={changeLockStatus}>
+              <IconButton className="RecipeComponentSmallLogo" onClick={changeLockStatus}>
                   {locked ? <LockIcon/> : <LockOpenIcon/> }
               </IconButton>
-              <IconButton  onClick={removeObj}> <ClearIcon /> </IconButton>
+                <IconButton  onClick={removeObj}> <ClearIcon /> </IconButton>
               </Grid>
             </Grid>
           </div>
         )
   }
 
-    // Cont from here
     const SelectSmall = (props) => {
     const handleClick = (event) => {
       let temp_arr = [... personsPerDay]
@@ -461,8 +461,18 @@ function App() {
       setPersonsPerDay(temp_arr);
     }
 
+    // Determines the size of select
+    let selectHeight = 40;
+    let width = 120;
+    let position = 'relative'
+    if(matches) {
+      selectHeight = 30;
+      width = 90;
+      position = 'absolute'
+    }
+
     return (
-      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <FormControl sx={{ m: 1, minWidth: width, position: position}} size="small" >
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
         </InputLabel>
         <Select 
@@ -471,7 +481,8 @@ function App() {
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           onChange={handleClick}
-          style={{ height: 30}}
+          style={{ height: selectHeight}}
+          className={`${matches ? "smallSelectorContainer" : ""}`}
         >
           <MenuItem value={1}>1 pers</MenuItem>
           <MenuItem value={2}>2 pers</MenuItem>
