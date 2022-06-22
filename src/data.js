@@ -16,6 +16,8 @@ let Recipe = class {
 
 const Gyros = new Recipe("Græsk gyros med kyllingekebab", "https://img.mummum.dk/wp-content/uploads/2020/06/9DF5C32D-C4AB-455F-8B10-C8A7CEEF7460-1350x1013.jpg", [{ingredient: "Pitabrød", amount: 3, unit: "stk"}, {ingredient: "Kyllingebryst", amount: 225, unit: "g"}, {ingredient: "Græsk Yogurt", amount: 0.8, unit: "dl"}, {ingredient: "Citron", amount: 1, unit: "stk"}, {ingredient: "Tomat", amount: 4, unit: "stk"}, {ingredient: "Rødløg", amount: 1, unit: "stk"}, {ingredient: "Koriander", amount: 1, unit: "tsk"}, {ingredient: "Hvidløg", amount: 1, unit: "fed"}, {ingredient: "Røget paprika", amount: 2, unit: "spsk"}, {ingredient: "Tørret Timian", amount: 1, unit: "spsk"}, {ingredient: "Hjertesalat", amount: 1, unit: "stk"}, {ingredient: "Olivenolie", amount: 1, unit: "spsk"}])
 
+
+
 // const Halloumi_Tacos = new Recipe("Halloumi Tacos", "https://img.hellofresh.com/c_fit,f_auto,fl_lossy,h_1100,q_auto,w_2600/hellofresh_s3/image/HF191125_R05_W04_SE_C12343603-1_Main_low-f2a950e1.jpg", [{ingredient: "Halloumi", amount: 200, unit: "g"}, {ingredient: "Rødløg", amount: 2, unit: "stk"}, {ingredient: "Tomat", amount: 2, unit: "stk"}, {ingredient: "Hjertesalat", amount: 1, unit: "stk"}, {ingredient: "Tortilla pandekager", amount: 6, unit: "stk"}, {ingredient: "Avocado", amount: 1, unit: "stk"}, {ingredient: "Mayonaise", amount: 25, unit: "g"}, {ingredient: "Citron", amount: 1, unit: "stk"}, {ingredient: "Hvidløg", amount: 1, unit: "fed"}, {ingredient: "Agurk", amount: 1, unit: "stk"}, {ingredient: "Tørret Oregano", amount: 1, unit: "spsk"}])
 // const Pasta_m_ost_bacon = new Recipe("Paste med ost og bacon", "https://www.easypeasyfoodie.com/wp-content/uploads/2016/08/Gargano-Pasta-1-1024x1024.jpg", [{ingredient: "Frisk Pasta", amount: 2, unit: "pakker"}, {ingredient: "Bacon", amount: 150, unit: "g"}, {ingredient: "Creme Fraiche", amount: 3, unit: "spsk"}, {ingredient: "Blue Castello", amount: 75, unit: "g"}, {ingredient: "Broccoli", amount: 1, unit: "stk"}])
 // const Middelhavs_Havaborre = new Recipe("Middelhavs Havaborre", "https://d1yfn1dfres2va.cloudfront.net/001/f4/3c/f43c38f176161cfbc9530c332eeceda2_640m.jpg", [{ingredient: "Aubergine", amount: 1, unit: "stk"}, {ingredient: "Olivenolie", amount: 1, unit: "spsk"}, {ingredient: "Rødløg", amount: 1, unit: "stk"}, {ingredient: "Hvidløg", amount: 1, unit: "stk"}, {ingredient: "Tomat", amount: 2, unit: "stk"}, {ingredient: "Citron", amount: 1, unit: "stk"}, {ingredient: "Hvidvin", amount: 1, unit: "skvt"}, {ingredient: "Grøntsagsbouillon", amount: 2, unit: "spsk"}, {ingredient: "Hakket Tomat", amount: 2, unit: "spsk"}, {ingredient: "Tørret Oregano", amount: 1, unit: "spsk"}, {ingredient: "Havborre", amount: 300, unit: "g"}, {ingredient: "Couscous", amount: 250, unit: "g"}, {ingredient: "Hakkede Oliven", amount: 50, unit: "g"}])
@@ -105,9 +107,8 @@ const Lasagne = {
     { amount: '0.50', unit: 'spsk', ingredient: 'Hvedemel' },
     { amount: '0.75', unit: 'dl', ingredient: 'Mælk' },
     { amount: '0.25', unit: 'knivspids', ingredient: 'Muskatnød' },
-    { amount: '31.25', unit: 'g', ingredient: 'Frisk' },
     { amount: '50', unit: 'g', ingredient: 'Lasagneplader' },
-    { amount: '31.25', unit: 'g', ingredient: 'Frisk' }
+    { amount: '62.50', unit: 'g', ingredient: 'Frisk Mozzarella' }
   ]
 }
 
@@ -352,11 +353,11 @@ const Panang_karry = {
           { amount: '50', unit: 'g', ingredient: 'Squash' },
           { amount: '0.13', unit: 'tsk', ingredient: 'Chiliflager' },
           { amount: '1', unit: 'dl', ingredient: 'Grøntsagsbouillon' },
-          { amount: '0.25', unit: 'dåse', ingredient: 'Hakkede' },
+          { amount: '0.25', unit: 'dåse', ingredient: 'Hakkede Tomater' },
           { amount: '0.25', unit: 'dl', ingredient: 'Piskefløde' },
           { amount: '125', unit: 'g', ingredient: 'Frisk Mozzarella' },
           { amount: '18.75', unit: 'g', ingredient: 'Parmesan' },
-          { amount: '31.25', unit: 'g', ingredient: 'Frisk' },
+          { amount: '31.25', unit: 'g', ingredient: 'Frisk Mozzarella' },
           { amount: '7.50', unit: 'g', ingredient: 'Rasp' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Olivenolie' },
           { amount: '0.25', unit: 'håndfuld', ingredient: 'Frisk Tortelinni' }
@@ -401,7 +402,7 @@ const Panang_karry = {
           { amount: '0.25', unit: 'stk', ingredient: 'Løg' },
           { amount: '0.25', unit: 'fed', ingredient: 'Hvidløg' },
           { amount: '125', unit: 'g', ingredient: 'Spinat' },
-          { amount: '0.25', unit: 'håndfuld', ingredient: 'Frisk' },
+          { amount: '0.25', unit: 'håndfuld', ingredient: 'Frisk Basilikum' },
           { amount: '0.38', unit: 'dl', ingredient: 'Piskefløde' },
           { amount: '0.25', unit: 'knivspids', ingredient: 'Muskatnød' },
           { amount: '0.25', unit: 'tsk', ingredient: 'Olivenolie' },
@@ -494,7 +495,7 @@ const Panang_karry = {
           { amount: '0.50', unit: 'dl', ingredient: 'Grønne Linser' },
           { amount: '0.50', unit: 'dl', ingredient: 'Kyllingebouillon' },
           { amount: '0.25', unit: 'kg', ingredient: 'Kyllingebryst' },
-          { amount: '3.75', unit: 'frisk', ingredient: 'Salvie' },
+          { amount: '3.75', unit: 'stk', ingredient: 'Frisk Salvie' },
           { amount: '12.50', unit: 'g', ingredient: 'Parmesan' },
           { amount: '18.75', unit: 'g', ingredient: 'Cherrytomater' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Smør' },
@@ -514,7 +515,7 @@ const Panang_karry = {
           { amount: '0.25', unit: 'tsk', ingredient: 'Stødt Koriander' },
           { amount: '0.25', unit: 'tsk', ingredient: 'Stødt Spidskommen' },
           { amount: '0.13', unit: 'dl', ingredient: 'Grøntsagsbouillon' },
-          { amount: '0.25', unit: 'dåse', ingredient: 'Hakkede' },
+          { amount: '0.25', unit: 'dåse', ingredient: 'Hakkede Tomater' },
           { amount: '0.26', unit: 'stk', ingredient: 'Chili' },
           { amount: '0.25', unit: 'pakke', ingredient: 'Tortillas' },
           { amount: '50', unit: 'g', ingredient: 'Cheddar' },
@@ -1056,16 +1057,48 @@ const Panang_karry = {
           { amount: '0.25', unit: 'dl', ingredient: 'Græsk Yoghurt' },
           { amount: '0.25', unit: 'tsk', ingredient: 'Tabasco' },
           { amount: '0.25', unit: 'fed', ingredient: 'Hvidløg' },
-          { amount: '0.13', unit: 'tsk', ingredient: 'Røget' },
+          { amount: '0.13', unit: 'tsk', ingredient: 'Røget Paprika' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Fishsauce' },
           { amount: '0.25', unit: 'stk', ingredient: 'Lime' },
           { amount: '0.25', unit: 'tsk', ingredient: 'Ingefær' },
         ]
       }
-  
+
+
+      
+
 //    Halloumi_Tacos, Pasta_m_ost_bacon, Middelhavs_Havaborre, Spicy_Oksekød_på_Bulgur, , Fiskefrikadeller_m_ovn_kartofler_og_gulerodssalat, Fajita_Bowl, , Sød_chililaks, greek_chicken_and_potatoes_recipe
 
 let recipeData = [Gyros, Lasagne, Chili_sin_carne, Boller_i_karry, Orientalsk_risret_med_oksekød, Buddha_Bowl, Panang_karry, recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe8, recipe9, recipe10, recipe11, recipe12, recipe13, recipe14, recipe15, recipe16, recipe17, recipe18, recipe19, recipe20, recipe21, recipe22, recipe23, recipe24, recipe25, recipe26, recipe27, recipe28, recipe29, recipe30, recipe31, recipe32]
+
+const getUniqueIngridients = () => {
+  let ingredientSet = new Set();
+  for (let i = 0; i < recipeData.length; i++) {
+    const recipeIngredients = recipeData[i].ingredients;
+    for (let j = 0; j < recipeIngredients.length; j++) {
+      const ingredient = recipeIngredients[j];
+      ingredientSet.add(ingredient.ingredient)
+    }
+  }
+  let ingredientArray = Array.from(ingredientSet)
+  return ingredientArray
+}
+
+
+const transformUniqueIngredientsToObject = (array) => {
+  let ingridientObjectArray = []
+  array.forEach(element => {
+    let ingridientObject = {
+      name: element,
+      type: "",
+    }
+    ingridientObjectArray.push(ingridientObject)
+  });
+
+  console.log(ingridientObjectArray)
+}
+
+transformUniqueIngredientsToObject(getUniqueIngridients())
 
 export default recipeData;
 
