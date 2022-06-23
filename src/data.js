@@ -133,7 +133,7 @@ const Chili_sin_carne = {
     { amount: '0.25', unit: 'dåse', ingredient: 'Hakkede Tomater' },
     { amount: '0.25', unit: 'dl', ingredient: 'Grøntsagsbouillon' },
     { amount: '0.50', unit: 'dåser', ingredient: 'Kidneybønner' },
-    { amount: '7.50', unit: 'g', ingredient: 'Mørk' },
+    { amount: '7.50', unit: 'g', ingredient: 'Mørk Chokolade' },
     { amount: '0.75', unit: 'spsk', ingredient: 'Olivenolie' },
     { amount: '31.25', unit: 'g', ingredient: 'Nachos' },
     { amount: '100', unit: 'g', ingredient: 'Ris' },
@@ -184,7 +184,7 @@ const Orientalsk_risret_med_oksekød
       { amount: '0.50', unit: 'spsk', ingredient: 'Karry' },
       { amount: '0.25', unit: 'tsk', ingredient: 'Stødt Spidskommen' },
       { amount: '0.13', unit: 'tsk', ingredient: 'Stødt Gurkemeje' },
-      { amount: '100', unit: 'g', ingredient: 'Hakket' },
+      { amount: '100', unit: 'g', ingredient: 'Hakket Oksekød' },
       { amount: '62.50', unit: 'g', ingredient: 'Squash' },
       { amount: '0.25', unit: 'stk', ingredient: 'Rød Peberfrugt' },
       { amount: '75', unit: 'g', ingredient: 'Ris' },
@@ -651,7 +651,7 @@ const Panang_karry = {
           { amount: '0.75', unit: 'stk', ingredient: 'Løg' },
           { amount: '0.50', unit: 'stk', ingredient: 'Lime' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Olivenolie' },
-          { amount: '2', unit: 'tortillas', ingredient: 'Pandekager' },
+          { amount: '2', unit: 'tortillas', ingredient: 'Tortillas Pandekager' },
           { amount: '0.50', unit: 'håndfulde', ingredient: 'Frisk Koriander' },
           { amount: '1', unit: 'spsk', ingredient: 'Sriracha' },
           { amount: '0.25', unit: 'stk', ingredient: 'Avocado' }
@@ -830,7 +830,7 @@ const Panang_karry = {
           { amount: '75', unit: 'g', ingredient: 'Majs' },
           { amount: '0.50', unit: 'stk', ingredient: 'Avocado' },
           { amount: '0.50', unit: 'stk', ingredient: 'Rødløg' },
-          { amount: '60', unit: 'g', ingredient: 'Blandet' },
+          { amount: '60', unit: 'g', ingredient: 'Blandet Salat' },
           { amount: '1', unit: 'håndfuld', ingredient: 'Frisk Koriander' },
           { amount: '5', unit: 'stk', ingredient: 'Cherrytomater' },
           { amount: '0.25', unit: 'stk', ingredient: 'Agurk' },
@@ -856,7 +856,7 @@ const Panang_karry = {
           { amount: '12.50', unit: 'g', ingredient: 'Chorizo' },
           { amount: '2', unit: 'stk', ingredient: 'Æg' },
           { amount: '0.25', unit: 'dl', ingredient: 'Mælk' },
-          { amount: '12.50', unit: 'g', ingredient: 'Ost' },
+          { amount: '12.50', unit: 'g', ingredient: 'Chedder' },
           { amount: '0.50', unit: 'stk', ingredient: 'Squash' },
           { amount: '0.25', unit: 'tsk', ingredient: 'Olivenolie' },
           { amount: '0.25', unit: 'håndfuld', ingredient: 'Purløg' }
@@ -909,11 +909,9 @@ const Panang_karry = {
           { amount: '0.25', unit: 'håndfuld', ingredient: 'Frisk Mynte' },
           { amount: '0.25', unit: 'håndfuld', ingredient: 'Frisk Basilikum' },
           { amount: '0.25', unit: 'stk', ingredient: 'Chili' },
-          { amount: '0.13', unit: 'dl', ingredient: 'Saltede Peanuts' },
-          { amount: '0.13', unit: 'dl', ingredient: 'Hoisin' },
-          { amount: '0.13', unit: 'dl', ingredient: 'Vand' },
+          { amount: '0.38', unit: 'dl', ingredient: 'Saltede Peanuts' },
+          { amount: '0.13', unit: 'dl', ingredient: 'Hoisin Sauce' },
           { amount: '0.25', unit: 'tsk', ingredient: 'Kokossukker' },
-          { amount: '0.25', unit: 'spsk', ingredient: 'Saltede' }
         ]
       }
 
@@ -1099,6 +1097,7 @@ const transformUniqueIngredientsToObject = (array) => {
 }
 
 transformUniqueIngredientsToObject(getUniqueIngridients())
+
 
 export default recipeData;
 

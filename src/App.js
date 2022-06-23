@@ -24,7 +24,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-
+import Alert from '@mui/material/Alert';
 import NativeSelect from '@mui/material/NativeSelect';
 
 
@@ -368,11 +368,13 @@ function App() {
     
     return (
       <div>
+        <p> 
       {
         (recipeArray.length < 5) ? (
         <IconButton onClick={handleClick}> <AddCircleOutlineOutlinedIcon sx={{ fontSize: 33 }}/> </IconButton>
         ) : null
       }
+      </p>
       </div>
     )
   }
