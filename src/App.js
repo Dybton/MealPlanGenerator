@@ -26,11 +26,10 @@ import Select from '@mui/material/Select';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import Alert from '@mui/material/Alert';
 import NativeSelect from '@mui/material/NativeSelect';
+import ingredientsData from './ingredientData';
 
 
 function App() {
-
-  
 
   // Initial dummy variables
 
@@ -172,6 +171,7 @@ function App() {
       }
     }))
 
+
     const handleOpen = () => {
       generateGroceryList();
       setOpen(true);
@@ -186,14 +186,12 @@ function App() {
         setGroceries(temp_arr)
     }
 
-    function generateGroceryList(){ // Find a better way to update groceries
+    // Function that generates and sorts the grocery list
+    function generateGroceryList(){ 
       const temp_arr = JSON.parse(JSON.stringify(recipeArray))
-      console.log(Object.is(temp_arr, recipeArray))
-      const list = []; 
-      
-      // Based on the recipe and it's place in the recipeArray we need to cross check the persons array to see how many people
-      // We are cooking for. We then need to use this to adjust the amount for each ingridients - do this is in union with update groceries
+      const groceryList = []; 
 
+      // Calculates how much we need of each ingredient and adds it to the groceryList. 
       for (let i = 0; i < temp_arr.length; i++) {
         const persons = personsPerDay[i]
         const recipe = temp_arr[i];
@@ -202,31 +200,66 @@ function App() {
         for (let j = 0; j < ingredients.length; j++) {
           let ingredient = ingredients[j]
           ingredient.amount = ingredient.amount * persons
-          list.push(ingredient)
+          groceryList.push(ingredient)
         }
       }
 
-      // We sort the list
-      function SortArray(x, y){
-        return x.ingredient.localeCompare(y.ingredient);
-      }
-      const sortedArray = list.sort(SortArray);
-
-      // TODO: REFACTOR THIS SO THAT WE'RE NOT GOING THROUGH THE ARRAY TWO TIMES 
-      const output = sortedArray.reduce((accumulator, cur) => {
-        let ingredient = cur.ingredient;
-        let unit = cur.unit;
-        let found = accumulator.find(elem => elem.ingredient === ingredient && elem.unit === unit)
-        if (found) found.amount += cur.amount;
-        else accumulator.push(cur);
-        return accumulator; 
-      }, []);
-      setGroceries(output)
+    // Function that compares two elements. We use this to sort lists. 
+    function compareElements(x, y){
+      return x.ingredient.localeCompare(y.ingredient);
     }
+    
+    // Function that divides groceryListNoDupes into arrays based on ingredient type.
+    function sortListBasedOnType(){
+      // Instantiate ingredientType arrays
+      let arr0 = []
+      let arr1 = []
+      let arr2 = []
+      let arr3 = []
+      let arr4 = []      
+
+      for (let i = 0; i < groceryList.length; i++) {
+        const groceryListElem = groceryList[i];
+        for (let j = 0; j < ingredientsData.length; j++) {
+          const ingredientsDataElement = ingredientsData[j];
+          if(ingredientsDataElement.name == groceryListElem.ingredient) {
+            if(ingredientsDataElement.type == 'Fisk & Kød') {
+              arr0.push(groceryListElem)
+            } else if (ingredientsDataElement.type == 'Frugt & Grøntsager') {
+              arr1.push(groceryListElem)
+            } else if (ingredientsDataElement.type == 'Mejeri & Æg') {
+              arr2.push(groceryListElem)
+            } else if (ingredientsDataElement.type == 'Dåse & Tørvarer') {
+              arr3.push(groceryListElem)
+            } else {
+              arr4.push(groceryListElem)
+            }
+          }
+        }
+      }
+
+      // We create a sortedArray from the categorized arrays, by sorting each of those alphabetically and then spread them out.
+      let sortedArr = [...arr0.sort(compareElements), ...arr1.sort(compareElements), ...arr2.sort(compareElements), ...arr3.sort(compareElements), ...arr4.sort(compareElements)]
+
+      // We accumulate all duplicates
+     const groceryListNoDupes = sortedArr.reduce((accumulator, cur) => {
+      let ingredient = cur.ingredient;
+      let unit = cur.unit;
+      let found = accumulator.find(elem => elem.ingredient === ingredient && elem.unit === unit)
+      if (found) found.amount += cur.amount;
+      else accumulator.push(cur);
+      return accumulator; 
+    }, []);
+
+    setGroceries(groceryListNoDupes)
+    }
+    sortListBasedOnType()
+  }
 
    function copyToClipBoard(){
     navigator.clipboard.writeText(getGroceryItems());
     getGroceryItems();
+    
    }
 
    // Function that creates a  multi-lined string of all the ingredients, their amount and their unit of unit

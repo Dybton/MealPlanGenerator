@@ -1,16 +1,16 @@
-// Frugt & grøntsager
+// Frugt & Grøntsager
 // Mejeri & Æg
 // Dåse & Tørvarer
 // Fisk & Kød
 
-let ingredients = [
+let ingredientsData = [
     {
         "name": "Pitabrød",
         "type": "Dåse & Tørvarer"
     },
     {
         "name": "Kyllingebryst",
-        "type": "Kød og fisk"
+        "type": "Fisk & Kød"
     },
     {
         "name": "Græsk yogurt",
@@ -18,15 +18,15 @@ let ingredients = [
     },
     {
         "name": "Citron",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Tomat",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Rødløg",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Koriander",
@@ -34,7 +34,7 @@ let ingredients = [
     },
     {
         "name": "Hvidløg",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Røget paprika",
@@ -46,7 +46,7 @@ let ingredients = [
     },
     {
         "name": "Hjertesalat",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Olivenolie",
@@ -54,7 +54,7 @@ let ingredients = [
     },
     {
         "name": "Løg",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Hakket Oksekød",
@@ -70,15 +70,15 @@ let ingredients = [
     },
     {
         "name": "Gulerod",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Bladselleri",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Squash",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Tomatpuré",
@@ -138,7 +138,7 @@ let ingredients = [
     },
     {
         "name": "Aubergine",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Soltørrede Tomater",
@@ -174,15 +174,15 @@ let ingredients = [
     },
     {
         "name": "Rød Chili",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Frisk Koriander",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Lime",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Hakket Oksekød",
@@ -202,15 +202,15 @@ let ingredients = [
     },
     {
         "name": "Æble",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Mango",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Bredbladet Persille",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Stødt Gurkemeje",
@@ -218,15 +218,15 @@ let ingredients = [
     },
     {
         "name": "Rød Peberfrugt",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Majs",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Ærter",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Brune Ris",
@@ -234,15 +234,15 @@ let ingredients = [
     },
     {
         "name": "Sød Kartoffel",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Cherrytomater",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Edemamebønner",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Sorte Bønner",
@@ -250,11 +250,11 @@ let ingredients = [
     },
     {
         "name": "Avocado",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Rucola",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Sesamfrø",
@@ -282,7 +282,7 @@ let ingredients = [
     },
     {
         "name": "Ingefær",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Rød Karrypasta",
@@ -290,11 +290,11 @@ let ingredients = [
     },
     {
         "name": "Broccoli",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Edamamebønner",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Kokosmælk",
@@ -302,7 +302,7 @@ let ingredients = [
     },
     {
         "name": "Peberfrugt",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Peanutbutter",
@@ -318,7 +318,7 @@ let ingredients = [
     },
     {
         "name": "Øko Lime",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Saltede Peanuts",
@@ -342,7 +342,7 @@ let ingredients = [
     },
     {
         "name": "Forårsløg",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Sriracha",
@@ -358,7 +358,7 @@ let ingredients = [
     },
     {
         "name": "Frisk Basilikum",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Piskefløde",
@@ -378,11 +378,11 @@ let ingredients = [
     },
     {
         "name": "Agurk",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Chili",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Torskefilet",
@@ -390,7 +390,7 @@ let ingredients = [
     },
     {
         "name": "Frisk Mynte",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Tortillas Pandekager",
@@ -398,11 +398,11 @@ let ingredients = [
     },
     {
         "name": "Baby Spinat",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Spinat",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Laks",
@@ -442,7 +442,7 @@ let ingredients = [
     },
     {
         "name": "Champignon",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Wienerpølser",
@@ -462,7 +462,7 @@ let ingredients = [
     },
     {
         "name": "Frisk Salvie",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Tortillas",
@@ -482,7 +482,7 @@ let ingredients = [
     },
     {
         "name": "Persille",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Hakket Lammekød",
@@ -506,11 +506,11 @@ let ingredients = [
     },
     {
         "name": "Babykartofler",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Skalotteløg",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Nudler",
@@ -518,7 +518,7 @@ let ingredients = [
     },
     {
         "name": "Bønnespirer",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Æblecidereddike",
@@ -550,11 +550,11 @@ let ingredients = [
     },
     {
         "name": "Kartoffel",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Blomkål",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Tom Yum Pasta",
@@ -562,7 +562,7 @@ let ingredients = [
     },
     {
         "name": "Citrongræs",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Kaffirblade",
@@ -570,7 +570,7 @@ let ingredients = [
     },
     {
         "name": "Galangarod",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Svinemørbrad",
@@ -578,15 +578,15 @@ let ingredients = [
     },
     {
         "name": "Spidskål",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Blandet Salat",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Purløg",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Yoghurt",
@@ -610,7 +610,7 @@ let ingredients = [
     },
     {
         "name": "Nektarin",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Hoisin Sauce",
@@ -634,7 +634,7 @@ let ingredients = [
     },
     {
         "name": "Thaibasilikum",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Kapers",
@@ -654,7 +654,7 @@ let ingredients = [
     },
     {
         "name": "Jordskokker",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Stødt Ingefær",
@@ -666,7 +666,7 @@ let ingredients = [
     },
     {
         "name": "Butternut Squash",
-        "type": "Frugt & grøntsager"
+        "type": "Frugt & Grøntsager"
     },
     {
         "name": "Burgerboller",
@@ -685,3 +685,5 @@ let ingredients = [
         "type": "Mejeri & Æg"
     }
 ]
+
+export default ingredientsData

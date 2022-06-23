@@ -524,7 +524,7 @@ const Panang_karry = {
           { amount: '0.25', unit: 'spsk', ingredient: 'Cremefraiche' },
           { amount: '0.25', unit: 'dryp', ingredient: 'Sriracha' },
           { amount: '0.50', unit: 'stk', ingredient: 'Lime' },
-          { amount: '0.50', unit: 'håndfulde', ingredient: 'Frisk Koriander' }
+          { amount: '0.50', unit: 'håndfuld', ingredient: 'Frisk Koriander' }
         ]
       }
 
@@ -652,7 +652,7 @@ const Panang_karry = {
           { amount: '0.50', unit: 'stk', ingredient: 'Lime' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Olivenolie' },
           { amount: '2', unit: 'tortillas', ingredient: 'Tortillas Pandekager' },
-          { amount: '0.50', unit: 'håndfulde', ingredient: 'Frisk Koriander' },
+          { amount: '0.50', unit: 'håndfuld', ingredient: 'Frisk Koriander' },
           { amount: '1', unit: 'spsk', ingredient: 'Sriracha' },
           { amount: '0.25', unit: 'stk', ingredient: 'Avocado' }
         ]
@@ -926,7 +926,7 @@ const Panang_karry = {
           { amount: '0.50', unit: 'stk', ingredient: 'Løg' },
           { amount: '0.50', unit: 'stk', ingredient: 'Gulerod' },
           { amount: '0.25', unit: 'stk', ingredient: 'Kanelstang' },
-          { amount: '1.50', unit: 'hele', ingredient: 'Nelliker' },
+          { amount: '1.50', unit: 'stk', ingredient: 'Nelliker' },
           { amount: '0.25', unit: 'spsk', ingredient: 'Ingefær' },
           { amount: '0.50', unit: 'fed', ingredient: 'Hvidløg' },
           { amount: '0.50', unit: 'tsk', ingredient: 'Sukker' },
@@ -1069,6 +1069,7 @@ const Panang_karry = {
 
 let recipeData = [Gyros, Lasagne, Chili_sin_carne, Boller_i_karry, Orientalsk_risret_med_oksekød, Buddha_Bowl, Panang_karry, recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe8, recipe9, recipe10, recipe11, recipe12, recipe13, recipe14, recipe15, recipe16, recipe17, recipe18, recipe19, recipe20, recipe21, recipe22, recipe23, recipe24, recipe25, recipe26, recipe27, recipe28, recipe29, recipe30, recipe31, recipe32]
 
+// Generates an array of unique ingridents
 const getUniqueIngridients = () => {
   let ingredientSet = new Set();
   for (let i = 0; i < recipeData.length; i++) {
@@ -1082,7 +1083,7 @@ const getUniqueIngridients = () => {
   return ingredientArray
 }
 
-
+// Takes an array of stings and convert them into ingredient objects 
 const transformUniqueIngredientsToObject = (array) => {
   let ingridientObjectArray = []
   array.forEach(element => {
@@ -1096,7 +1097,14 @@ const transformUniqueIngredientsToObject = (array) => {
   console.log(ingridientObjectArray)
 }
 
-transformUniqueIngredientsToObject(getUniqueIngridients())
+
+// Triggers the two functions above
+let printIngridientObjects = false
+if(printIngridientObjects) {
+  transformUniqueIngredientsToObject(getUniqueIngridients())
+}
+
+
 
 
 export default recipeData;
