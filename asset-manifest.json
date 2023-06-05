@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/randomImageGenerator/static/css/main.7dc5d654.css",
-    "main.js": "/randomImageGenerator/static/js/main.0d0f477a.js",
-    "static/js/787.c9ae2528.chunk.js": "/randomImageGenerator/static/js/787.c9ae2528.chunk.js",
-    "index.html": "/randomImageGenerator/index.html",
-    "main.7dc5d654.css.map": "/randomImageGenerator/static/css/main.7dc5d654.css.map",
-    "main.0d0f477a.js.map": "/randomImageGenerator/static/js/main.0d0f477a.js.map",
-    "787.c9ae2528.chunk.js.map": "/randomImageGenerator/static/js/787.c9ae2528.chunk.js.map"
+    "main.css": "/MealPlanGenerator/static/css/main.7dc5d654.css",
+    "main.js": "/MealPlanGenerator/static/js/main.d74d5854.js",
+    "static/js/787.c9ae2528.chunk.js": "/MealPlanGenerator/static/js/787.c9ae2528.chunk.js",
+    "index.html": "/MealPlanGenerator/index.html",
+    "main.7dc5d654.css.map": "/MealPlanGenerator/static/css/main.7dc5d654.css.map",
+    "main.d74d5854.js.map": "/MealPlanGenerator/static/js/main.d74d5854.js.map",
+    "787.c9ae2528.chunk.js.map": "/MealPlanGenerator/static/js/787.c9ae2528.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7dc5d654.css",
-    "static/js/main.0d0f477a.js"
+    "static/js/main.d74d5854.js"
   ]
 }
